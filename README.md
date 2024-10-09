@@ -11,7 +11,7 @@ $ npm install -g @quasar/cli
 ## Dependencies Installation
 
 ```bash
-$ cd /"{InventorySystem project root folder}"
+$ cd /"{BRGYSystem project root folder}"
 $ npm install
 $ cp .env.example .env
 $ cp .env.prod.example .env.prod

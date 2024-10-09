@@ -1,8 +1,8 @@
 {
-  "name": "InventorySystem",
+  "name": "BRGYSystem",
   "version": "0.0.1",
-  "description": "InventorySystem",
-  "productName": "InventorySystem",
+  "description": "BRGYSystem",
+  "productName": "BRGYSystem",
   "author": "John Paul Ustaris <johnpaulustaris@gmail.com>",
   "private": true,
   "scripts": {
