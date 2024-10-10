@@ -156,6 +156,20 @@
                 </q-item-section>
               </q-item>
 
+              <q-item to="/profiling" clickable v-ripple exact  :class="{ 'selected-sidenav': $route.path === '/profiling' }">
+                <q-item-section avatar>
+                  <q-avatar>
+                    <q-tooltip class="bg-dark text-subtitle2" anchor="center right" self="center start" v-if="miniState">
+                      Profiling
+                    </q-tooltip>
+                    <q-icon name="fa-solid fa-user" size="1.7rem"/>
+                  </q-avatar>
+                </q-item-section>
+                <q-item-section class="text-bold">
+                  Profiling
+                </q-item-section>
+              </q-item>
+
               <q-item to="/health-workers" clickable v-ripple exact  :class="{ 'selected-sidenav': $route.path === '/health-workers' }">
                 <q-item-section avatar>
                   <q-avatar>

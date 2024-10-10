@@ -2,9 +2,10 @@
 <template>
   <div style="overflow: auto; height: 86vh;">
       <div>
+        <img src="~assets/change-password-banner.jpg" width="100%">
             <div class="q-pa-md row" style="margin-left: 15px; margin-right: 15px; padding-left: 0px; border-bottom: 2px solid #DEDEDE; ">
                 <div class="col-6">
-                    <div style="font-size: 20px"><b> Mayapa > Brgy System > Settings > Change Password Page</b></div>
+                    <!-- <div style="font-size: 20px"><b> Mayapa > Brgy System > Settings > Change Password Page</b></div> -->
                 </div>
                 <div class="col-6">
                     <div style="font-size: 15px; text-align: right"><b>Date: </b>{{this.todate}}</div>
@@ -28,6 +29,7 @@
                           class="login-input"
                           outlined
                           v-model="current_password"
+                          type="password" hint="Current Password" 
                           placeholder="Current Password"
                           lazy-rules
                           color="black"
@@ -41,45 +43,43 @@
                             </q-avatar>
                           </template>
                         </q-input>
-              
                         <q-input
                           input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                           class="login-input"
                           outlined
-                          type="text"
                           v-model="new_password"
+                          type="password" hint="New Password" 
                           placeholder="New Password"
                           lazy-rules
-                          color="dark"
+                          color="black"
                           bg-color="secondary"
                           label-color="primary"
                           no-error-icon
-                          autogrow
                         >
                           <template v-slot:append>
                             <q-avatar>
-                              <q-icon color="dark" name="fa-solid fa-edit" />
+                              <q-icon color="dark" name="fa-solid fa-lock" />
                             </q-avatar>
                           </template>
                         </q-input>
+              
 
                         <q-input
                           input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                           class="login-input"
                           outlined
-                          type="password"
                           v-model="confirm_password"
+                          type="password" hint="Confirm Password" 
                           placeholder="Confirm Password"
                           lazy-rules
-                          color="dark"
+                          color="black"
                           bg-color="secondary"
                           label-color="primary"
                           no-error-icon
-                          autogrow
                         >
                           <template v-slot:append>
                             <q-avatar>
-                              <q-icon color="dark" name="fa-solid fa-edit" />
+                              <q-icon color="dark" name="fa-solid fa-lock" />
                             </q-avatar>
                           </template>
                         </q-input>
