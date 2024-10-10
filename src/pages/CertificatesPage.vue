@@ -2,7 +2,7 @@
 <template>
   <div style="overflow: auto; height: 86vh;">
       <div>
-        <img src="~assets/blotters-banner.jpg" width="100%">
+        <img src="~assets/certificates-banner.jpg" width="100%">
             <div class="q-pa-md row" style="margin-left: 15px; margin-right: 15px; padding-left: 0px; border-bottom: 2px solid #DEDEDE; ">
                 <div class="col-6">
                     <!-- <div style="font-size: 20px"><b> Mayapa > Brgy System > Certificates Page</b></div> -->
@@ -12,6 +12,55 @@
                 </div>
             </div>
       </div>
+      <div class="q-pa-md row">
+        <div class="col-md-6">
+          <div class=" q-ma-sm" style="font-size: 15px">
+            <b>Filters:</b>
+          </div>
+            <div class="items-start q-pa-md row">
+                <div class="col-sm-6 col-xs-6 q-pa-sm">
+                  <q-input class="textbox" rounded outlined v-model="filter" placeholder="Search" >
+                    <template v-slot:append>
+                      <q-avatar>
+                          <q-icon name="search" />
+                      </q-avatar>
+                    </template>
+                  </q-input>
+                </div>
+                <div class="col-sm-6 col-xs-6 q-pa-sm">
+                  <div>
+                    <q-btn 
+                    :disabled="loading"
+                    :loading="loading" 
+                    class="q-mx-sm q-pa-md" 
+                    rounded  
+                    color="green" 
+                    icon-right="add" 
+                    label="Request Certificate" 
+                    @click="openAddUserForm()" />
+                  </div>
+                </div>
+            </div> 
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+          <q-card
+            class="my-card text-white"
+            style="background: radial-gradient(circle, rgb(53 255 241) 0%, rgb(1 136 92) 100%)"
+            >
+            <q-card-section>
+              <div class="text-h1 text-center">{{ 100 }}</div> 
+              <div class="text-subtitle2">TOTAL CERTIFICATES REQUESTED</div>
+            </q-card-section>
+
+            <!-- <q-card-section class="q-pt-none">
+              {{ lorem }}
+            </q-card-section> -->
+            </q-card>
+        </div>
+      </div>
+<!-- 
+
       <div style="margin-left: 15px; margin-top: 15px; font-size: 15px">
         <b>Filters:</b>
       </div>
@@ -39,11 +88,11 @@
             </div>
 
           </div>
-      </div> 
+      </div>  -->
 
         
           <div class="q-pa-md" style="padding-top:20px">
-              <q-table
+              <!-- <q-table
                 class="table"
                 title="User Management"
                 :rows="rows"
@@ -78,17 +127,10 @@
                     icon-right="delete" 
                     label="Disable User" 
                     @click="disableUserMethod(props)" />
-                    <!-- <div>
-                        <div v-if="props.value == 1">
-                            <q-btn color="positive" icon="check" @click="clickToggle(props)" />
-                        </div>
-                        <div v-else>
-                            <q-btn color="secondary" icon="close" @click="clickToggle(props)" />
-                        </div>
-                    </div> -->
+  
                   </q-td>
                 </template>
-              </q-table>
+              </q-table> -->
 
 
               <!-- <q-dialog v-model="persistent" persistent transition-show="scale" transition-hide="scale">

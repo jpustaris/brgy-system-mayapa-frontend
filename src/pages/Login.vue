@@ -13,7 +13,7 @@
         <div class="right-section col-md-6 col-sm-12">
           <div class="field-container">
             <div class="q-mb-lg  q-pb-lg">
-                <p class="q-pb-lg text-center">Login to access your
+                <p class="q-pb-lg text-center text-black">Login to access your
                   <br><span class="text-title-login">Barangay System</span>
                 </p>
               </div>  
@@ -67,7 +67,7 @@
                 </template>
               </q-input>
               <div class="row justify-between">
-                <q-btn class="login-btn" label="Log in" type="submit" text-color="secondary" :loading="loader"/>
+                <q-btn class="full-width bg-teal text-white" label="Log in" type="submit" :loading="loader"/>
                 <!-- <q-btn label="Forgot Password?" flat @click="forgotPassword()"/> -->
               </div>
               

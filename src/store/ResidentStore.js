@@ -35,7 +35,8 @@ export default {
             context.commit("SET_LOADING", false)
         },
 
-        async addSingleResident(context, payload) {
+        async saveResidentProfile(context, payload) {
+            console.log(payload.added_by)
             context.commit("SET_LOADING", true)
             await this.$axios.post('/api/residents', {
                 salutation: payload.salutation,
@@ -46,10 +47,11 @@ export default {
                 nationality: payload.nationality,
                 contact_number: payload.contact_number,
                 email: payload.email,
+                age: payload.age,
                 is_voter: payload.is_voter,
                 is_HW: payload.is_HW,
+                is_PWD: payload.is_PWD,
                 is_deceased: payload.is_deceased,
-                age: payload.age,
                 birthdate: payload.birthdate,
                 gender: payload.gender,                
                 height_ft: payload.height_ft,
@@ -57,9 +59,11 @@ export default {
                 marital_status: payload.marital_status,
                 unique_identity: payload.unique_identity,
                 house_number: payload.house_number,
+                street: payload.street,
                 building: payload.building,
                 other_location: payload.other_location,
                 note: payload.note,
+                added_by:payload.added_by
               }).then(response => {
                 console.log(response)
               })

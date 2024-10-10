@@ -12,34 +12,41 @@
                 </div>
             </div>
       </div>
-      <div style="margin-left: 15px; margin-top: 15px; font-size: 15px">
-        <b>Filters:</b>
-      </div>
-      <div class="items-start q-pa-md row">
-          <div class="col-sm-3 col-xs-6 q-pa-sm">
-            <q-input class="textbox" rounded outlined v-model="filter" placeholder="Search" >
-              <template v-slot:append>
-                <q-avatar>
-                    <q-icon name="search" />
-                </q-avatar>
-              </template>
-            </q-input>
+      
+      <div class="q-pa-md row">
+        <div class="col-md-6">
+          <div class=" q-ma-sm" style="font-size: 15px">
+            <b>Filters:</b>
           </div>
-          <div class="col-sm-3 col-xs-6 q-pa-sm">
-            <!-- <div>
-              <q-btn 
-              :disabled="loading"
-              :loading="loading" 
-              class="q-mx-sm q-pa-md" 
-              rounded  
-              color="green" 
-              icon-right="add" 
-              label="Add" 
-              @click="openAddSeniorForm()" />
-            </div> -->
+            <div class="items-start q-pa-md row">
+                <div class="col-sm-6 col-xs-6 q-pa-sm">
+                  <q-input class="textbox" rounded outlined v-model="filter" placeholder="Search" >
+                    <template v-slot:append>
+                      <q-avatar>
+                          <q-icon name="search" />
+                      </q-avatar>
+                    </template>
+                  </q-input>
+                </div>
+            </div> 
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+          <q-card
+            class="my-card text-white"
+            style="background: radial-gradient(circle, rgb(53 255 241) 0%, rgb(1 136 92) 100%)"
+            >
+            <q-card-section>
+              <div class="text-h1 text-center">{{ pwds.length }}</div>
+              <div class="text-subtitle2">PERSON WITH DISABILITIES TOTAL COUNT</div>
+            </q-card-section>
 
-          </div>
-      </div> 
+            <!-- <q-card-section class="q-pt-none">
+              {{ lorem }}
+            </q-card-section> -->
+            </q-card>
+        </div>
+      </div>
 
         
           <div class="q-pa-md" style="padding-top:20px">

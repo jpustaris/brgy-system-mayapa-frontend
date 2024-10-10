@@ -26,7 +26,70 @@
             </q-input>
           </div>  
       </div>  -->
+      <div class="q-pa-md row">
+        <div class="col-md-3 q-pa-md">
+          <q-card
+            class="my-card text-white"
+            style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)"
+            >
+            <q-card-section>
+              <div class="text-h1 text-center">{{ total_residents }}</div>
+              <div class="text-subtitle2">TOTAL RESIDENTS</div>
+            </q-card-section>
 
+            <!-- <q-card-section class="q-pt-none">
+              {{ lorem }}
+            </q-card-section> -->
+            </q-card>
+        </div>
+        <div class="col-md-3 q-pa-md">
+          <q-card
+            class="my-card text-white"
+            style="background: radial-gradient(circle, rgb(53 255 167) 0%, rgb(1 136 58) 100%)"
+            >
+            <q-card-section>
+              <div class="text-h1 text-center">{{ total_seniors }}</div>
+              <div class="text-subtitle2">TOTAL SENIORS</div>
+            </q-card-section>
+
+            <!-- <q-card-section class="q-pt-none">
+              {{ lorem }}
+            </q-card-section> -->
+            </q-card>
+        </div>
+        <div class="col-md-3 q-pa-md">
+          <q-card
+            class="my-card text-white"
+            style="background: radial-gradient(circle, rgb(219 53 255) 0%, rgb(97 1 136) 100%)"
+            >
+            <q-card-section>
+              <div class="text-h1 text-center">{{ total_HWs }}</div>
+              <div class="text-subtitle2">HEALTH WORKERS</div>
+            </q-card-section>
+
+            <!-- <q-card-section class="q-pt-none">
+              {{ lorem }}
+            </q-card-section> -->
+            </q-card>
+        </div>
+
+        <div class="col-md-3 q-pa-md">
+          <q-card
+            class="my-card text-white"
+            style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)"
+            >
+            <q-card-section>
+              <div class="text-h1 text-center">{{ total_PWD }}</div>
+              <div class="text-subtitle2">PERSONS WITH DISABILITY</div>
+            </q-card-section>
+
+            <!-- <q-card-section class="q-pt-none">
+              {{ lorem }}
+            </q-card-section> -->
+            </q-card>
+        </div>
+        
+      </div>
           
           <!-- <div class="q-pa-md" style="padding-top:20px">
               <q-table
@@ -84,6 +147,12 @@ var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 export default defineComponent({
   name: 'All Products',
   data: () => ({
+    lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    total_residents:356,
+    total_HWs:58,
+    total_PWD:28,
+    total_seniors:85,
+
       selected: ref([]),
        filter: ref(''),
       rows:[],
