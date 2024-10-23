@@ -2,7 +2,7 @@
 <template>
   <div style="overflow: auto; height: 86vh;">
       <div>
-        <img src="~assets/blotters-banner.jpg" width="100%">
+        <img src="~assets/certificates-banner.jpg" width="100%">
             <div class="q-pa-md row justify-end q-mx-md border-bottom" style="border-bottom: 2px solid #DEDEDE; ">
                   <div><b>Date: </b>{{this.todate}}</div>
             </div>
@@ -75,8 +75,8 @@
                     rounded  
                     color="green" 
                     icon-right="add" 
-                    label="File a Blotter" 
-                    @click="openAddBlotterForm()" />
+                    label="Create Permit" 
+                    @click="openAddCertificateForm()" />
                   </div>
                 </div>
             </div> 
@@ -88,8 +88,8 @@
             style="background: radial-gradient(circle, rgb(53 255 241) 0%, rgb(1 136 92) 100%)"
             >
             <q-card-section>
-              <div class="text-h1 text-center">{{ blotters.length }}</div>
-              <div class="text-subtitle2">TOTAL BLOTTERS FILED</div>
+              <div class="text-h1 text-center">{{ certificates.length }}</div>
+              <div class="text-subtitle2">TOTAL BUSINESS PERMIT FILED</div>
             </q-card-section>
             </q-card>
         </div>
@@ -100,7 +100,7 @@
           <div class="q-pa-md" style="padding-top:20px">
               <q-table
                 class="table"
-                title="Blotter Management"
+                title="Business Permit Management"
                 :rows="rows"
                 :columns="columns"
                 row-key="name"
@@ -109,21 +109,21 @@
               >
               <template v-slot:body-cell-active="props">
                   <q-td :props="props">
-                    <q-btn 
+                    <!-- <q-btn 
                     :disabled="loading"
                     :loading="loading" 
                     class="q-mx-sm bg-teal text-white" 
                     icon-right="edit" 
-                    label="Edit Blotter" 
-                    @click="openEditBlotterForm(props)" />
+                    label="Edit Certificate" 
+                    @click="openEditCertificateForm(props)" /> -->
 
                     <q-btn 
                     :disabled="loading"
                     :loading="loading" 
                     class="q-mx-sm bg-blue text-white" 
                     icon-right="fa-solid fa-eye" 
-                    label="View Blotter" 
-                    @click="openViewBlotterForm(props)" />
+                    label="View Business Permit" 
+                    @click="openViewCertificateForm(props)" />
 
                     <!-- <q-btn 
                     :disabled="loading"
@@ -131,8 +131,8 @@
                     class="q-mx-sm" 
                     color="red" 
                     icon-right="delete" 
-                    label="Disable Blotter" 
-                    @click="disableBlotterMethod(props)" /> -->
+                    label="Disable Certificate" 
+                    @click="disableCertificateMethod(props)" /> -->
                     <!-- <div>
                         <div v-if="props.value == 1">
                             <q-btn color="positive" icon="check" @click="clickToggle(props)" />
@@ -163,18 +163,18 @@
                 </q-dialog> -->
 
                 
-                <q-dialog v-model="addBlotterForm" transition-show="scale" transition-hide="scale">
+                <q-dialog v-model="addCertificateForm" transition-show="scale" transition-hide="scale">
                   <q-card  style="min-width: 600px">
                     <q-card-section class="bg-green text-white">
-                      <div class="text-h6">File a Blotter / Complaint Form</div>
+                      <div class="text-h6">Create Business Permit</div>
                     </q-card-section>
                     <q-separator />
                     <q-card-section class="q-pt-md q-ma-md q-pt-none">
                       <q-form
                         class="q-gutter-md"
                       >
-                      <h6>Please make sure that the details you encode is correct and without error. <i>Only the Complaint and the note is editable.</i></h6>
-                      <q-separator></q-separator>
+                      <!-- <h6>Please make sure that the details you encode is correct and without error. <i>Only the Complaint and the note is editable.</i></h6>
+                      <q-separator></q-separator> -->
                       <q-select 
                         class="select text-no-wrap" 
                         v-model="complainant" 
@@ -267,9 +267,9 @@
                           <q-btn
                           class="text-center bg-green text-white"
                           id="addSubmitBtn"
-                          label="File Blotter" 
+                          label="Create Certificate" 
                           type="submit"
-                          @click="addBlotter()"
+                          @click="addCertificate()"
                           />
                         </q-card-actions>
                       </q-form>
@@ -277,10 +277,10 @@
                   </q-card>
                 </q-dialog>
 
-                <q-dialog v-model="editBlotterForm">
+                <q-dialog v-model="editCertificateForm">
                 <q-card style="min-width: 600px">
                   <q-card-section class="bg-teal text-white text-h6">
-                    <div >Edit Blotter Details</div>
+                    <div >Edit Business Permit Details</div>
                   </q-card-section>
                   <q-separator />
 
@@ -288,7 +288,7 @@
                     <q-form
                       class="q-gutter-md"
                     >
-                    <p class="text-black">Edit blotter details for Brgy case number {{ edit_brgy_case_number }}</p>
+                    <p class="text-black">Edit Business Permit details for control number {{ edit_control_number }}</p>
                     <q-separator></q-separator>  
                     <q-input
                         color="black"
@@ -309,7 +309,7 @@
                       />
                       <div>
                         <q-btn 
-                        @click="editBlotterMethod"
+                        @click="editCertificateMethod"
                         id="editSubmitBtn" 
                         label="Submit" 
                         type="submit" 
@@ -329,10 +329,10 @@
           </div>
   </div>
 
-  <q-dialog v-model="viewBlotterDialog">
+  <q-dialog v-model="viewCertificateDialog">
     <q-card class="bg-blue text-white" style="min-width: 1080px">
       <q-card-section>
-        <div class="text-h6">Blotter Details</div>
+        <div class="text-h6">Certificate Details</div>
       </q-card-section>
       <q-separator />
       <q-card-section style="max-height: 82vh" class="scroll" >
@@ -369,7 +369,7 @@
                 reliefs be granted to us in accordance with the law and/or equity. <br>
                 {{ edit_complaint }}
               </p>
-              <p class="text-black q-pt-md" >Made this {{ blotter_created_at }} 
+              <p class="text-black q-pt-md" >Made this {{ certificate_created_at }} 
               </p>
 
               <p class="text-black q-pt-md" ><u> {{ complainant_name }} </u><br>Complainant  
@@ -430,7 +430,7 @@ import moment from 'moment'
   var today = new Date();
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 export default defineComponent({
-  name: 'Blotter Management',
+  name: 'Business Permit',
   data: () => ({
       // response_dialog:false,
       // dialog_title:'',
@@ -438,7 +438,7 @@ export default defineComponent({
       selected: ref([]),
       complainant_name:'', 
       filter: ref(''),
-      blotter_created_at:'',
+      certificate_created_at:'',
       edit_complainant:'',
       edit_defendant:'',
       edit_brgy_case_number:'',
@@ -451,13 +451,13 @@ export default defineComponent({
       complaint:'',
       note:'',
 
-      addBlotterForm:false,
-      editBlotterForm:false,
+      addCertificateForm:false,
+      editCertificateForm:false,
       rows:[],
       status:0,
       todate:date,
       prodFilter:ref(''),
-      viewBlotterDialog:false,
+      viewCertificateDialog:false,
       persistent: ref([false]),
       pagination: {
         page: 1,
@@ -488,7 +488,7 @@ export default defineComponent({
       }),
   computed: {
     ...mapGetters('Blotter', {
-      blotters: 'GET_ALL_BLOTTERS',
+      certificates: 'GET_ALL_BLOTTERS',
       loading: "GET_LOADING",
       api_response: "GET_API_RESPONSE",
     }),
@@ -521,7 +521,7 @@ export default defineComponent({
       }
     },
 
-    async disableBlotterMethod(prop){
+    async disableCertificateMethod(prop){
       console.log(prop);
       this.selected_id = prop.row.id;    
       await this.disableSingleBlotter({
@@ -534,11 +534,11 @@ export default defineComponent({
         })
     },
 
-    async openAddBlotterForm(){
-      this.addBlotterForm = true;
+    async openAddCertificateForm(){
+      this.addCertificateForm = true;
     },
 
-    async addBlotter() {
+    async addCertificate() {
       await this.addSingleBlotter({
         complainant: this.complainant,
         defendant: this.defendant,
@@ -554,7 +554,7 @@ export default defineComponent({
         this.refresh()
     },
 
-    async editBlotterMethod(){
+    async editCertificateMethod(){
       await this.editSingleBlotter({
         edit_complaint: this.edit_complaint,
         edit_note: this.edit_note,
@@ -572,21 +572,21 @@ export default defineComponent({
         var originalContents = await document.body.innerHTML;
         document.body.innerHTML = printContents;
         await window.print();
-        this.viewBlotterDialog = false
+        this.viewCertificateDialog = false
         document.body.innerHTML = originalContents;
     },
 
     async refresh(){
       await this.getBlotters;
       await this.getResidents;
-      this.rows = this.blotters;
-      this.addBlotterForm = false;
-      this.editBlotterForm = false;
+      this.rows = this.certificates;
+      this.addCertificateForm = false;
+      this.editCertificateForm = false;
     },
 
-    async openViewBlotterForm(prop){
+    async openViewCertificateForm(prop){
       await this.setSelected(prop);
-      this.viewBlotterDialog = true;
+      this.viewCertificateDialog = true;
     },
 
     async setSelected(prop){
@@ -597,14 +597,14 @@ export default defineComponent({
       this.edit_defendant = prop.row.defendant;
       this.edit_note = prop.row.note;
       var temp = moment(prop.row.created_at);
-      this.blotter_created_at =  temp.format('MMMM Do YYYY');
+      this.certificate_created_at =  temp.format('MMMM Do YYYY');
       this.complainant_name = prop.row.complainant.first_name +" "+ prop.row.complainant.last_name;
     },
 
-    async openEditBlotterForm(prop){
+    async openEditCertificateForm(prop){
       console.log(prop);
       await this.setSelected(prop);
-      this.editBlotterForm = true;
+      this.editCertificateForm = true;
     },
   },
   // watch: { 

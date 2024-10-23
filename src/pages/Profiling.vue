@@ -21,12 +21,13 @@
                     </q-card-section>
                     <q-separator />
                     <q-card-section class="q-pt-md q-ma-md q-pt-none">
-                      <q-form class="q-gutter-md">
+                      <q-form  class="q-gutter-md" >
                         <div class="row">
                           
                           
                           <div class="col-md-3 col-sm-6 q-pa-sm">
-                            <q-input
+                            <p class="text-black login-input padding-left: 20px;">First Name:</p>
+                              <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
                               outlined
@@ -41,6 +42,7 @@
                           </div>
                           
                           <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Middle Name:</p>
                             <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
@@ -56,6 +58,7 @@
                           </div>
                           
                           <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Last Name:</p>
                             <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
@@ -72,6 +75,7 @@
                           <div class="col-md-3 col-sm-6 q-pa-sm">
                             <div class="row ">
                               <div class="col-md-6 col-sm-12 q-pa-xs">
+                                <p class="text-black login-input padding-left: 20px;">Salutation:</p>
                                 <q-input
                                   input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                                   class="login-input"
@@ -86,6 +90,7 @@
                                 ></q-input>
                                 </div>
                               <div class="col-md-6 col-sm-12 q-pa-xs">
+                                <p class="text-black login-input padding-left: 20px;">Additional Name:</p>
                                 <q-input
                                   input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                                   class="login-input"
@@ -108,6 +113,7 @@
                         
                         <div class="row">
                           <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Nationality:</p>
                             <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
@@ -123,6 +129,7 @@
                           </div>
                           
                           <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Contact Number:</p>
                             <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
@@ -138,6 +145,7 @@
                           </div>
                           
                           <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Email Address:</p>
                             <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
@@ -153,6 +161,7 @@
                           </div>
                           
                           <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Age:</p>
                             <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
@@ -170,6 +179,7 @@
 
                         <div class="row">
                           <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Address Street:</p>
                             <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
@@ -185,6 +195,7 @@
                           </div>
                           
                           <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Address Building:</p>
                             <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
@@ -200,6 +211,7 @@
                           </div>
                           
                           <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Address House Number:</p>
                             <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
@@ -215,6 +227,7 @@
                           </div>
                           
                           <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Address Other Details:</p>
                             <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
@@ -230,6 +243,7 @@
                           </div>
 
                           <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Weight in KG:</p>
                             <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
@@ -245,6 +259,7 @@
                           </div>
 
                           <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Height in FT:</p>
                             <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
@@ -269,6 +284,7 @@
 
                         <div class="row">
                           <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Marital Status:</p>
                             <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
@@ -283,6 +299,7 @@
                             ></q-input>
                           </div>
                           <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Unique Identity:</p>
                             <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
@@ -381,6 +398,7 @@
                           </div>
 
                           <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Disability:</p>
                             <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
@@ -398,21 +416,38 @@
                           </div><div class="row">
                           <div class="col-md-3 col-sm-6 q-pa-sm">
                             <p class="text-black login-input padding-left: 20px;">Profile Img:</p>
-                            <q-input                              
+                            <input @change="onFileChange" type="file" accept="image/*" hint="1x1 Picture" />
+                            <!-- <q-input         
+                            id="profile_pic"                     
                                 @update:model-value="val => { profile_pic = val[0] }"
                                 filled
                                 type="file"
                                 accept="image/*"
-                              />
+                                hint="1x1 Picture"
+                              /> -->
                           </div>
+
+
+                          <!-- <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Right Thumb Mark Img:</p>
+                            <q-input                              
+                                @update:model-value="val => { thumb_pic = val[0] }"
+                                filled
+                                type="file"
+                                accept="image/*"
+                                hint="Thumb Mark Picture"
+                              />
+                          </div> -->
                           <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Note/Remarks:</p>
+                            
                             <q-input
                               input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                               class="login-input"
                               outlined
                               v-model="note"
                               type="text"
-                              placeholder="Note"
+                              placeholder="Enter Resident note / remarks"
                               lazy-rules
                               color="black"
                               bg-color="secondary"
@@ -424,10 +459,11 @@
                         <q-separator></q-separator>
                         <q-card-actions align="right" >
                           <q-btn
+                          type="submit"
                           :loading="loading"
                           class="text-center bg-green text-white"
                           label="Save Resident Profile"
-                          @click="saveProfile()"
+                         @click="uploadImage()"
                           />
                         </q-card-actions>
                       </q-form>
@@ -482,7 +518,7 @@
 </template>
 
 <script>
- 
+import axios from 'axios';
 import { mapActions, mapGetters } from 'vuex'
 import { defineComponent } from 'vue'
 import { ref } from 'vue'
@@ -492,6 +528,7 @@ var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 export default defineComponent({
   name: 'Profiling',
   data: () => ({
+
       todate:date,
       persistent: ref([false]),
       salutation:'',
@@ -504,17 +541,20 @@ export default defineComponent({
       email:'',
       age:'',
       profile_pic:'',
-      gender:'',
+      image:null,
+      imageUrl:null,
+      // thumb_pic:'',
+      gender:'Male',
       street:'',
       building:'',
       other_location:'',
       house_number:'',
       height_ft:'',
       weight_kg:'',
-      is_HW:'',
-      is_PWD:'',
-      is_deceased:'',
-      is_voter:'',
+      is_HW:0,
+      is_PWD:0,
+      is_deceased:0,
+      is_voter:0,
       disability:'',
       note:'',
       unique_identity:'',
@@ -551,41 +591,129 @@ export default defineComponent({
         'getProfile',
     ]),
 
-    saveProfile() {
-      this.added_by = this.user_profile_details.user_id;
-        this.saveResidentProfile({
-          salutation: this.salutation,
-          first_name: this.first_name,
-          middle_name: this.middle_name,
-          last_name: this.last_name,
-          additional_name:this.additional_name,
-          nationality: this.nationality,
-          contact_number: this.contact_number,
-          email: this.email,
-          age: this.age,
-          is_HW: this.is_HW,
-          is_PWD: this.is_PWD,
-          is_deceased: this.is_deceased,
-          is_voter: this.is_voter,
-          birthdate: this.birthdate,
-          street: this.street,
-          house_number: this.house_number,
-          building: this.building,
-          other_location: this.other_location,
-          height_ft: this.height_ft,
-          weight_kg: this.weight_kg,
-          gender: this.gender,
-          disability: this.disability,
-          note: this.note,
-          marital_status:this.marital_status,
-          unique_identity:this.unique_identity,
-          added_by:this.added_by,
-        });
-        this.refresh();
+    onFileChange(e) {
+      const file = e.target.files[0];
+      this.profile_pic = file;
+      // Preview the image
+      this.imageUrl = URL.createObjectURL(file);
     },
-  },
 
-  async refresh(){
+
+    async uploadImage() {
+      if (!this.profile_pic) {
+        alert("Please select an image.");
+        return;
+      }
+
+      // Create form data object
+      this.added_by = this.user_profile_details.user_id;
+      console.log("Debugging: ", this.added_by)
+      let data = new FormData();
+      data.append("profile_pic", this.profile_pic);
+      data.append('salutation',this.salutation);
+      data.append('first_name',this.first_name);
+      data.append('middle_name',this.middle_name);
+      data.append('last_name',this.last_name);
+      data.append('additional_name',this.additional_name);
+      data.append('nationality',this.nationality);
+      data.append('contact_number',this.contact_number);
+      data.append('email',this.email);
+      data.append('age',this.age);
+
+      data.append('is_HW',this.is_HW);
+      data.append('is_PWD',this.is_PWD);
+      data.append('is_deceased',this.is_deceased);
+      data.append('is_voter',this.is_voter);
+      data.append('birthdate',this.birthdate);
+      data.append('street',this.street);
+      data.append('house_number',this.house_number);
+      data.append('building',this.building);
+      data.append('other_location',this.other_location);
+      data.append('height_ft',this.height_ft);
+      data.append('weight_kg',this.weight_kg);
+      data.append('gender',this.gender);
+      data.append('note',this.note);
+      data.append('marital_status',this.marital_status);
+      data.append('unique_identity',this.unique_identity);
+      data.append('added_by',this.user_profile_details.user_id);
+      // data.append('profile_pic',this.profile_pic);
+
+      try {
+
+        await this.saveResidentProfile(data).then((response => {
+          console.log("Success!")
+          alert("Image uploaded successfully!");
+          this.refresh();
+        }));
+
+
+        // const token = localStorage.getItem('access_token');
+        // const response = await axios.post("/api/residents", data, {
+        //   headers: {
+        //     'Authorization': `Bearer ${token}`,
+        //     "Content-Type": "multipart/form-data",
+        //   },
+        // });
+        // alert("Image uploaded successfully!");
+
+        
+
+        // Optionally, save image to local storage
+        // const reader = new FileReader();
+        // reader.onload = (e) => {
+        //   localStorage.setItem("uploadedImage", e.target.result);
+        // };
+        // reader.readAsDataURL(this.image);
+
+      } catch (error) {
+        console.error("Error uploading image", error);
+      }
+    },
+
+    // saveProfile() {
+    //   this.added_by = this.user_profile_details.user_id;
+    //   console.log("Debugging: ", this.added_by)
+    //   let data = new FormData();
+    //   data.append('salutation',this.salutation);
+    //   data.append('first_name',this.first_name);
+    //   data.append('middle_name',this.middle_name);
+    //   data.append('last_name',this.last_name);
+    //   data.append('additional_name',this.additional_name);
+    //   data.append('nationality',this.nationality);
+    //   data.append('contact_number',this.contact_number);
+    //   data.append('email',this.email);
+    //   data.append('age',this.age);
+
+    //   data.append('is_HW',this.is_HW);
+    //   data.append('is_PWD',this.is_PWD);
+    //   data.append('is_deceased',this.is_deceased);
+    //   data.append('is_voter',this.is_voter);
+    //   data.append('birthdate',this.birthdate);
+    //   data.append('street',this.street);
+    //   data.append('house_number',this.house_number);
+    //   data.append('building',this.building);
+    //   data.append('other_location',this.other_location);
+    //   data.append('height_ft',this.height_ft);
+    //   data.append('weight_kg',this.weight_kg);
+    //   data.append('gender',this.gender);
+    //   data.append('note',this.note);
+    //   data.append('marital_status',this.marital_status);
+    //   data.append('unique_identity',this.unique_identity);
+    //   data.append('added_by',this.added_by);
+    //   data.append('profile_pic',this.profile_pic);
+      
+    //   // let temp = this.profile_pic;
+    //   // console.log("Debugging Here :",temp)
+    //   // if (temp) {
+    //   //   data.append('profile_pic',temp);
+    //   // }
+    //     this.saveResidentProfile(data).then((response => {
+    //     console.log("Success!")
+    //     this.refresh();
+    //   }));
+        
+    // },
+    async refresh(){
       this.salutation = '';
       this.first_name = '';
       this.last_name = '';
@@ -594,6 +722,7 @@ export default defineComponent({
       this.email = '';
       this.age = '';
       this.profile_pic = '';
+      // this.thumb_pic = '';
       this.gender = '';
       this.street = '';
       this.building = '';
@@ -612,6 +741,9 @@ export default defineComponent({
       this.birthdate = '';
       this.added_by = '';
   },
+  },
+
+  
   
   async beforeMount(){
     if(!this.user_profile_details){

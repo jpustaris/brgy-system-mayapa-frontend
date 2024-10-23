@@ -36,34 +36,41 @@ export default {
         },
 
         async saveResidentProfile(context, payload) {
-            console.log(payload.added_by)
+            console.log(payload.profile_pic)
             context.commit("SET_LOADING", true)
-            await this.$axios.post('/api/residents', {
-                salutation: payload.salutation,
-                first_name: payload.first_name,
-                middle_name: payload.middle_name,
-                last_name: payload.last_name,
-                additional_name: payload.additional_name,
-                nationality: payload.nationality,
-                contact_number: payload.contact_number,
-                email: payload.email,
-                age: payload.age,
-                is_voter: payload.is_voter,
-                is_HW: payload.is_HW,
-                is_PWD: payload.is_PWD,
-                is_deceased: payload.is_deceased,
-                birthdate: payload.birthdate,
-                gender: payload.gender,                
-                height_ft: payload.height_ft,
-                weight_kg: payload.weight_kg,
-                marital_status: payload.marital_status,
-                unique_identity: payload.unique_identity,
-                house_number: payload.house_number,
-                street: payload.street,
-                building: payload.building,
-                other_location: payload.other_location,
-                note: payload.note,
-                added_by:payload.added_by
+            let data = new FormData();
+            data.append('salutation',payload.salutation);
+            data.append('first_name',payload.first_name);
+            data.append('middle_name',payload.middle_name);
+            data.append('last_name',payload.last_name);
+            data.append('additional_name',payload.additional_name);
+            data.append('nationality',payload.nationality);
+            data.append('contact_number',payload.contact_number);
+            data.append('email',payload.email);
+            data.append('age',payload.age);
+            data.append('is_HW',payload.is_HW);
+            data.append('is_PWD',payload.is_PWD);
+            data.append('is_deceased',payload.is_deceased);
+            data.append('is_voter',payload.is_voter);
+            data.append('birthdate',payload.birthdate);
+            data.append('street',payload.street);
+            data.append('house_number',payload.house_number);
+            data.append('building',payload.building);
+            data.append('other_location',payload.other_location);
+            data.append('height_ft',payload.height_ft);
+            data.append('weight_kg',payload.weight_kg);
+            data.append('gender',payload.gender);
+            data.append('note',payload.note);
+            data.append('marital_status',payload.marital_status);
+            data.append('unique_identity',payload.unique_identity);
+            data.append('added_by',payload.added_by);
+            data.append('profile_pic', payload.profile_pic);
+            console.log("Debugging Here :",data)
+            // formData.append('file', payload.profile_pic);
+            await this.$axios.post('/api/residents',data, {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
               }).then(response => {
                 console.log(response)
               })

@@ -319,8 +319,12 @@ $text-shadow: none;
 
 .bottom-text,
 p {
-	color: $primary;
+	color: rgb(37, 33, 33);
 	font-size: 18px;
+}
+
+.para{
+	text-indent:50px;
 }
 
 .login-btn {
@@ -440,10 +444,12 @@ p {
   &.q-router-link--active {
     background-color: rgb(2, 110, 124);
     color: rgb(241, 241, 241);
+	font-size: larger;
 
     .text-expansion {
-      color: $dark;
+      color: rgb(241, 241, 241);
       font-weight: bolder;
+	  font-size: larger;
     }
   }
 }
@@ -609,4 +615,10 @@ p {
 
 .textbox-error .q-field__messages div{
   color: #BF0015 !important;
+}
+.sep_bar{
+	background-color: rgb(214, 153, 22);
+	 height: 2px; 
+	 border: 0; 
+	 margin: 20px 60px;
 }

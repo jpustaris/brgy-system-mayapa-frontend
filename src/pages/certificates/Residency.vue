@@ -2,7 +2,7 @@
 <template>
   <div style="overflow: auto; height: 86vh;">
       <div>
-        <img src="~assets/blotters-banner.jpg" width="100%">
+        <img src="~assets/certificates-banner.jpg" width="100%">
             <div class="q-pa-md row justify-end q-mx-md border-bottom" style="border-bottom: 2px solid #DEDEDE; ">
                   <div><b>Date: </b>{{this.todate}}</div>
             </div>
@@ -26,8 +26,7 @@
                 <div class="col-sm-6 col-xs-6 q-pa-sm">
                   <div>
                     <q-btn 
-                    :disabled="loading"
-                    :loading="loading" 
+                    
                     class="q-mx-sm q-pa-md" 
                     rounded  
                     color="green" 
@@ -69,14 +68,13 @@
                 <div class="col-sm-6 col-xs-6 q-pa-sm">
                   <div>
                     <q-btn 
-                    :disabled="loading"
-                    :loading="loading" 
+                   
                     class="q-mx-sm q-pa-md" 
                     rounded  
                     color="green" 
                     icon-right="add" 
-                    label="File a Blotter" 
-                    @click="openAddBlotterForm()" />
+                    label="Create Certificate" 
+                    @click="openAddCertificateForm()" />
                   </div>
                 </div>
             </div> 
@@ -88,8 +86,8 @@
             style="background: radial-gradient(circle, rgb(53 255 241) 0%, rgb(1 136 92) 100%)"
             >
             <q-card-section>
-              <div class="text-h1 text-center">{{ blotters.length }}</div>
-              <div class="text-subtitle2">TOTAL BLOTTERS FILED</div>
+              <div class="text-h1 text-center">{{ certificates.length }}</div>
+              <div class="text-subtitle2">TOTAL CERTIFICATE OF RESIDENCY FILED</div>
             </q-card-section>
             </q-card>
         </div>
@@ -98,9 +96,10 @@
 
         
           <div class="q-pa-md" style="padding-top:20px">
+            
               <q-table
                 class="table"
-                title="Blotter Management"
+                title="Certificate of Residency Management"
                 :rows="rows"
                 :columns="columns"
                 row-key="name"
@@ -109,30 +108,27 @@
               >
               <template v-slot:body-cell-active="props">
                   <q-td :props="props">
-                    <q-btn 
-                    :disabled="loading"
-                    :loading="loading" 
+                    <!-- <q-btn 
+                    
                     class="q-mx-sm bg-teal text-white" 
                     icon-right="edit" 
-                    label="Edit Blotter" 
-                    @click="openEditBlotterForm(props)" />
+                    label="Edit Certificate" 
+                    @click="openEditCertificateForm(props)" /> -->
 
                     <q-btn 
-                    :disabled="loading"
-                    :loading="loading" 
+                  
                     class="q-mx-sm bg-blue text-white" 
                     icon-right="fa-solid fa-eye" 
-                    label="View Blotter" 
-                    @click="openViewBlotterForm(props)" />
+                    label="View Certificate" 
+                    @click="openViewCertificateForm(props)" />
 
                     <!-- <q-btn 
-                    :disabled="loading"
-                    :loading="loading" 
+                   
                     class="q-mx-sm" 
                     color="red" 
                     icon-right="delete" 
-                    label="Disable Blotter" 
-                    @click="disableBlotterMethod(props)" /> -->
+                    label="Disable Certificate" 
+                    @click="disableCertificateMethod(props)" /> -->
                     <!-- <div>
                         <div v-if="props.value == 1">
                             <q-btn color="positive" icon="check" @click="clickToggle(props)" />
@@ -162,36 +158,110 @@
                   </q-card>
                 </q-dialog> -->
 
+                <div v-if="viewCertificateDialog">
+                  <q-card class="q-mt-xl" style="min-width: 1080px">
+                    <q-card-section>
+                      <div class="text-h6">Certificate Details</div>
+                    </q-card-section>
+                    <q-separator />
+                    <q-card-section>
+                      <div id="printableArea" class="q-pa-md bg-white">
+                        <table style="width:100%">
+                          <tr>
+                            <td style="width:10%">
+                              <div class="col-md-2"><img src="~assets/mayapa-logo.png" width="100%"></div>
+                        
+                            </td>
+                            <td style="width:80%">
+                              <div  class="text-center">
+                              <p>REPUBLIKA NG PILIPINAS <br>
+                                LALAWIGAN NG LAGUNA<br>
+                                <b>SANGGUNIANG BARANGAY NG MAYAPA</b><br>
+                                TEL Nos. (049) 543-0236<br><br>
+                                E-MAIL Address: <u>barangaymayapa2013@gmail.com</u>
+                              </p>
+                            </div>
+                            </td>
+                            <td style="width:10%" class=" text-center">
+                              <div class="col-md-2"><img src="~assets/mayapa-logo.png" width="100%"></div>
+                        
+                            </td>
+                          </tr>
+                        </table> 
+                      <div>
+                        
+                        <p class="text-h4 text-center q-my-xl q-pt-lg" style="border-top: 5px solid rgb(243 164 42);">
+                          <strong>PROOF OF RESIDENCY</strong>
+                        </p>
+                      </div>
+
+                      <div class="q-pa-md q-mt-xl">
+                        <p>
+                          <b>TO WHOM IT MAY CONCERN:</b>
+                        </p>
+
+                        <p class="para">
+                          This is to certify that <u> {{ edit_fullname }} </u> , <u> {{ edit_age }} </u> Years old
+                          , <u> {{ edit_gender }} </u>, a resident of <u> {{ edit_address }} </u>, Barangay Mayapa Calamba City, 
+                          is included in the Roster of Barangay since  <u> {{ edit_living_in_brgy_since }} </u> up to present.
+                        </p>
+                        <p class="para"> This certification is issued upon the request of the above mentioned name for  
+                          <u> {{ edit_purpose }} </u> .
+                        </p>
+                        <p class="para"> Issued this <u> {{ day_now }} </u> day of <u> {{ month_now }} </u>  2024 at Barangay Mayapa, Calamba City.
+                        </p>
+                      </div><br>
+                      <div class="q-mt-lg">
+                        <table style="width:100%">
+                          <tr>
+                            <td style="width:60%"></td>
+                            <td class=" text-center">
+                              <p class="q-pt-md"><strong>VICTORIA T. SUMBILLO</strong><br>PUNONG BARANGAY</p>
+                              <p><span class="text-red">Note</span>: This is invalid without official seal</p>
+                            </td>
+                          </tr>
+                        </table>  
+                      </div>
+                      </div>
+
+                    </q-card-section>
+                    <q-separator />
+                    <q-card-actions align="right">
+                      <!-- <q-btn flat label="Close" style="background-color: #006596" class="text-white" v-close-popup /> -->
+                      <q-btn 
+                      
+                        class="q-mx-sm bg-teal text-white" 
+                        icon-right="print" 
+                        label="Print" 
+                        @click="print('printableArea')" />
+                      <q-btn 
+                       
+                        class="q-mx-sm bg-pink text-white" 
+                        icon-right="close" 
+                        label="Close" 
+                        @click="viewCertificateDialog = false" />
+                      <!-- <q-btn flat label="Close" style="background-color: #006596" class="text-white" v-close-popup /> -->
+                    </q-card-actions>
+                  </q-card>
+                </div>
                 
-                <q-dialog v-model="addBlotterForm" transition-show="scale" transition-hide="scale">
+                <q-dialog v-model="addCertificateForm" transition-show="scale" transition-hide="scale">
                   <q-card  style="min-width: 600px">
                     <q-card-section class="bg-green text-white">
-                      <div class="text-h6">File a Blotter / Complaint Form</div>
+                      <div class="text-h6">Create Certificate of Residency</div>
                     </q-card-section>
                     <q-separator />
                     <q-card-section class="q-pt-md q-ma-md q-pt-none">
                       <q-form
                         class="q-gutter-md"
                       >
-                      <h6>Please make sure that the details you encode is correct and without error. <i>Only the Complaint and the note is editable.</i></h6>
-                      <q-separator></q-separator>
-                      <q-select 
-                        class="select text-no-wrap" 
-                        v-model="complainant" 
-                        :options="residents" 
-                        option-value="id" 
-                        option-label="display_name" 
-                        label="Complainant" 
-                        emit-value 
-                        map-options 
-                        borderless/>
-
+                          
                       <q-input
                           input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                           class="login-input"
                           outlined
-                          v-model="defendant"
-                          placeholder="Defendant"
+                          v-model="fullname"
+                          placeholder="Requestor's Full Name"
                           lazy-rules
                           color="black"
                           bg-color="secondary"
@@ -209,8 +279,9 @@
                           input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                           class="login-input"
                           outlined
-                          v-model="brgy_case_no"
-                          placeholder="Brgy Case Number"
+                          type="number"
+                          v-model="age"
+                          placeholder="Age"
                           lazy-rules
                           color="black"
                           bg-color="secondary"
@@ -219,37 +290,29 @@
                         >
                           <template v-slot:append>
                             <q-avatar>
-                              <q-icon color="dark" name="fa fa-file" />
+                              <q-icon color="dark" name="fa fa-user" />
                             </q-avatar>
                           </template>
                         </q-input>
-                        <q-input
-                          input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
-                          class="login-input"
-                          outlined
-                          type="text"
-                          v-model="complaint"
-                          placeholder="Complaint"
-                          lazy-rules
-                          color="dark"
-                          bg-color="secondary"
-                          label-color="primary"
-                          no-error-icon
-                          autogrow
-                        >
-                          <template v-slot:append>
-                            <q-avatar>
-                              <q-icon color="dark" name="fa-solid fa-edit" />
-                            </q-avatar>
-                          </template>
-                        </q-input>
+
+                        <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black padding-left: 20px;">Gender:</p>
+                              <q-option-group
+                                style="font-size: larger;padding-left: 20px;"
+                                color="teal"
+                                size="md"
+                                v-model="gender"
+                                :options="genders"
+                                type="radio"
+                              />
+                          </div>
 
                         <q-input
                           input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                           class="login-input"
                           outlined
-                          v-model="note"
-                          placeholder="Note"
+                          v-model="address"
+                          placeholder="Address"
                           lazy-rules
                           color="black"
                           bg-color="secondary"
@@ -258,18 +321,55 @@
                         >
                           <template v-slot:append>
                             <q-avatar>
-                              <q-icon color="dark" name="fa-solid fa-add" />
+                              <q-icon color="dark" name="fa-solid fa-user" />
                             </q-avatar>
                           </template>
+                        </q-input>
+                                        
+                        <q-input
+                          input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
+                          class="login-input"
+                          outlined
+                          v-model="purpose"
+                          placeholder="Purpose"
+                          lazy-rules
+                          color="black"
+                          bg-color="secondary"
+                          label-color="primary"
+                          no-error-icon
+                        >
+                          <template v-slot:append>
+                            <q-avatar>
+                              <q-icon color="dark" name="fa-solid fa-user" />
+                            </q-avatar>
+                          </template>
+                        </q-input>
+
+
+                        <q-separator></q-separator>
+                        <p style="padding-left: 20px;color:#474;">Living in Brgy Since:</p>
+                        <q-input
+                          input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
+                          class="login-input"
+                          outlined
+                          type="date"
+                          v-model="living_in_brgy_since"
+                          placeholder="Living in Brgy Since..."
+                          lazy-rules
+                          color="black"
+                          bg-color="secondary"
+                          label-color="primary"
+                          no-error-icon
+                        >
                         </q-input>
                         <q-separator></q-separator>
                         <q-card-actions align="right" >
                           <q-btn
                           class="text-center bg-green text-white"
                           id="addSubmitBtn"
-                          label="File Blotter" 
+                          label="Create Certificate"
                           type="submit"
-                          @click="addBlotter()"
+                          @click="addCertificate()"
                           />
                         </q-card-actions>
                       </q-form>
@@ -277,18 +377,15 @@
                   </q-card>
                 </q-dialog>
 
-                <q-dialog v-model="editBlotterForm">
+                <q-dialog v-model="editCertificateForm">
                 <q-card style="min-width: 600px">
                   <q-card-section class="bg-teal text-white text-h6">
-                    <div >Edit Blotter Details</div>
+                    <div >Edit Certificate of Residency Details</div>
                   </q-card-section>
                   <q-separator />
-
                   <q-card-section style="max-height: 50vh" class="scroll" >
-                    <q-form
-                      class="q-gutter-md"
-                    >
-                    <p class="text-black">Edit blotter details for Brgy case number {{ edit_brgy_case_number }}</p>
+                    <q-form class="q-gutter-md" >
+                    <p class="text-black">Edit certificate of residency details for control number {{ edit_control_number }}</p>
                     <q-separator></q-separator>  
                     <q-input
                         color="black"
@@ -298,7 +395,6 @@
                         v-model="edit_complaint"
                         label="Complaint"
                       />
-
                       <q-input
                         color="black"
                         bg-color="secondary"
@@ -309,7 +405,7 @@
                       />
                       <div>
                         <q-btn 
-                        @click="editBlotterMethod"
+                        @click="editCertificateMethod"
                         id="editSubmitBtn" 
                         label="Submit" 
                         type="submit" 
@@ -329,10 +425,10 @@
           </div>
   </div>
 
-  <q-dialog v-model="viewBlotterDialog">
+  <!-- <q-dialog v-model="viewCertificateDialog">
     <q-card class="bg-blue text-white" style="min-width: 1080px">
       <q-card-section>
-        <div class="text-h6">Blotter Details</div>
+        <div class="text-h6">Certificate Details</div>
       </q-card-section>
       <q-separator />
       <q-card-section style="max-height: 82vh" class="scroll" >
@@ -369,7 +465,7 @@
                 reliefs be granted to us in accordance with the law and/or equity. <br>
                 {{ edit_complaint }}
               </p>
-              <p class="text-black q-pt-md" >Made this {{ blotter_created_at }} 
+              <p class="text-black q-pt-md" >Made this {{ certificate_created_at }} 
               </p>
 
               <p class="text-black q-pt-md" ><u> {{ complainant_name }} </u><br>Complainant  
@@ -384,15 +480,6 @@
               <span style="float:right; font-size: 15px; text-align: right"><b>Date: </b>{{this.todate}}
               </span>
           </div>
-          <!-- <div id="non-printable">
-            <q-btn 
-                :disabled="loading"
-                :loading="loading" 
-                class="q-mx-sm bg-teal text-white" 
-                icon-right="edit" 
-                label="Print" 
-                @click="printDiv('printableArea')" />
-          </div> -->
         </div>
 
       </q-card-section>
@@ -401,7 +488,7 @@
         <q-btn flat label="Close" style="background-color: #006596" class="text-white" v-close-popup />
       </q-card-actions>
     </q-card>
-  </q-dialog>
+  </q-dialog> -->
 
   <!-- <q-dialog v-model="response_dialog" backdrop-filter="blur(4px) saturate(150%)">
       <q-card>
@@ -430,7 +517,7 @@ import moment from 'moment'
   var today = new Date();
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 export default defineComponent({
-  name: 'Blotter Management',
+  name: 'Certificate of Residency',
   data: () => ({
       // response_dialog:false,
       // dialog_title:'',
@@ -438,26 +525,45 @@ export default defineComponent({
       selected: ref([]),
       complainant_name:'', 
       filter: ref(''),
-      blotter_created_at:'',
-      edit_complainant:'',
-      edit_defendant:'',
-      edit_brgy_case_number:'',
-      edit_complaint:'',
-      edit_note:'',
+      certificate_created_at:'',
+      fullname:'',
+      age:'',
+      gender:'Male',
+      address:'',
+      living_in_brgy_since:'',
+      purpose:'',
+
+      day_now:'',
+      month_now:'',
+
+      edit_control_number:'',
+      edit_fullname:'',
+      edit_age:'',
+      edit_gender:'',
+      edit_address:'',
+      edit_living_in_brgy_since:'',
+      edit_purpose:'',
+
       brgy_captain:'Mr Barangay Mayapa',
       complainant:'',
       defendant:'',
       brgy_case_no:'',
       complaint:'',
       note:'',
+      genders: [
+        { label: 'Male', value: 'Male' },
+        { label: 'Female', value: 'Female'},
+      ],
 
-      addBlotterForm:false,
-      editBlotterForm:false,
+      
+
+      addCertificateForm:false,
+      editCertificateForm:false,
       rows:[],
       status:0,
       todate:date,
       prodFilter:ref(''),
-      viewBlotterDialog:false,
+      viewCertificateDialog:false,
       persistent: ref([false]),
       pagination: {
         page: 1,
@@ -465,16 +571,20 @@ export default defineComponent({
       },
       columns : [
           {
-            name: 'brgy_case_no',
+            name: 'control_number',
             required: true,
-            label: 'Barangay Case Number',
+            label: 'Control Number',
             align: 'left',
-            field: row => row.brgy_case_no,
+            field: row => row.control_number,
             format: val => `${val}`,
             sortable: true
           },
-          { name: 'complaint', label: 'Complainant',  field: row => row.complaint,align: 'left', sortable: true },
-          { name: 'defendant', label: 'Defendant',  field: row => row.defendant,align: 'center', sortable: true },
+          { name: 'fullname', label: 'Requestor',  field: row => row.fullname,align: 'left', sortable: true },
+          { name: 'age', label: 'Age',  field: row => row.age,align: 'center', sortable: true },
+          { name: 'gender', label: 'Gender',  field: row => row.gender,align: 'center', sortable: true },
+          { name: 'address', label: 'Address',  field: row => row.address,align: 'center', sortable: true },
+          { name: 'living_in_brgy_since', label: 'Living in Brgy Since',  field: row => row.living_in_brgy_since,align: 'center', sortable: true },
+          { name: 'purpose', label: 'Purpose',  field: row => row.purpose,align: 'center', sortable: true },
           {
             name: 'active',
             required: true,
@@ -487,29 +597,18 @@ export default defineComponent({
         ]
       }),
   computed: {
-    ...mapGetters('Blotter', {
-      blotters: 'GET_ALL_BLOTTERS',
+    ...mapGetters('Certificate', {
+      certificates: 'GET_ALL_CERTIFICATES',
       loading: "GET_LOADING",
-      api_response: "GET_API_RESPONSE",
     }),
-    ...mapGetters('UserManagement', {
-      users: 'GET_ALL_USERS',
-    }),
-    ...mapGetters('ResidentManagement', {
-      residents: 'GET_ALL_RESIDENTS',
-    }),
-    ...mapActions('Blotter',[
-      'getBlotters',
-      'addSingleBlotter',
-      'editSingleBlotter',
-      'disableSingleBlotter',
+
+    ...mapActions('Certificate',[
+      'getBRGYResidencies',
+      'addBRGYResidencyCertificate',
+      // 'editSingleBlotter',
+      // 'disableSingleBlotter',
     ]),
-    ...mapActions('UserManagement',[
-      'getUsers',
-    ]),
-    ...mapActions('ResidentManagement',[
-      'getResidents',
-    ])
+
   },
   methods: {
 
@@ -521,7 +620,7 @@ export default defineComponent({
       }
     },
 
-    async disableBlotterMethod(prop){
+    async disableCertificateMethod(prop){
       console.log(prop);
       this.selected_id = prop.row.id;    
       await this.disableSingleBlotter({
@@ -534,19 +633,21 @@ export default defineComponent({
         })
     },
 
-    async openAddBlotterForm(){
-      this.addBlotterForm = true;
+    async openAddCertificateForm(){
+      this.addCertificateForm = true;
     },
 
-    async addBlotter() {
-      await this.addSingleBlotter({
-        complainant: this.complainant,
-        defendant: this.defendant,
-        brgy_case_no: this.brgy_case_no,
-        complaint: this.complaint,
-        note: this.note
+    async addCertificate() {
+      await this.addBRGYResidencyCertificate({
+        fullname: this.fullname,
+        age: this.age,
+        gender: this.gender,
+        address: this.address,
+        living_in_brgy_since: this.living_in_brgy_since,
+        purpose: this.purpose,
       }).then(response => {
-          // console.log(response)
+          console.log(response)
+          this.refresh()
         })
         .catch((error) => {
           console.log(error)
@@ -554,10 +655,15 @@ export default defineComponent({
         this.refresh()
     },
 
-    async editBlotterMethod(){
+    async editCertificateMethod(){
       await this.editSingleBlotter({
-        edit_complaint: this.edit_complaint,
-        edit_note: this.edit_note,
+        edit_control_number: this.edit_control_number,
+        edit_fullname: this.edit_fullname,
+        edit_age: this.edit_age,
+        edit_gender: this.edit_gender,
+        edit_address: this.edit_address,
+        edit_living_in_brgy_since: this.edit_living_in_brgy_since,
+        edit_purpose: this.edit_purpose,
       }).then(response => {
           console.log(response)
         })
@@ -567,44 +673,55 @@ export default defineComponent({
       this.refresh()
     },
 
-    async printDiv(divId) {
+    async print(divId) {
         var printContents = await document.getElementById(divId).innerHTML;
         var originalContents = await document.body.innerHTML;
         document.body.innerHTML = printContents;
         await window.print();
-        this.viewBlotterDialog = false
+        this.viewCertificateDialog = false
         document.body.innerHTML = originalContents;
     },
 
     async refresh(){
-      await this.getBlotters;
-      await this.getResidents;
-      this.rows = this.blotters;
-      this.addBlotterForm = false;
-      this.editBlotterForm = false;
+      await this.getBRGYResidencies;
+      // await this.getResidents;
+      this.rows = this.certificates;
+      this.addCertificateForm = false;
+      this.editCertificateForm = false;
     },
 
-    async openViewBlotterForm(prop){
+    async openViewCertificateForm(prop){
       await this.setSelected(prop);
-      this.viewBlotterDialog = true;
+      this.viewCertificateDialog = true;
     },
 
     async setSelected(prop){
       console.log(prop);
       this.selected_id = prop.row.id;
-      this.edit_brgy_case_number = prop.row.brgy_case_no;
-      this.edit_complaint = prop.row.complaint;
-      this.edit_defendant = prop.row.defendant;
-      this.edit_note = prop.row.note;
-      var temp = moment(prop.row.created_at);
-      this.blotter_created_at =  temp.format('MMMM Do YYYY');
-      this.complainant_name = prop.row.complainant.first_name +" "+ prop.row.complainant.last_name;
+      this.edit_control_number = prop.row.control_number;
+      this.edit_fullname = prop.row.fullname;
+      this.edit_age = prop.row.age;
+      this.edit_gender = prop.row.gender;
+      this.edit_address = prop.row.address;
+      
+      this.edit_purpose = prop.row.purpose;
+
+      var temp1 = moment(prop.row.created_at);
+      var temp2 = moment(prop.row.living_in_brgy_since);
+      // this.edit_living_in_brgy_since = prop.row.living_in_brgy_since;
+      this.certificate_created_at =  temp1.format('MMMM Do YYYY');
+      this.edit_living_in_brgy_since =  temp2.format('Do of MMMM YYYY');
+
+      this.day_now =  moment(this.todate).format('Do');
+      this.month_now =  moment(this.todate).format('MMMM');
+
+      // this.complainant_name = prop.row.complainant.first_name +" "+ prop.row.complainant.last_name;
     },
 
-    async openEditBlotterForm(prop){
+    async openEditCertificateForm(prop){
       console.log(prop);
       await this.setSelected(prop);
-      this.editBlotterForm = true;
+      this.editCertificateForm = true;
     },
   },
   // watch: { 

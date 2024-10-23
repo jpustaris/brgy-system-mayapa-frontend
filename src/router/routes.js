@@ -13,7 +13,12 @@ const routes = [
       { path: '/settings/user-management', component: () => import('pages/settings/UserManagement.vue') },
       { path: '/settings/role-management', component: () => import('pages/settings/RoleManagement.vue') },
       { path: '/settings/change-password', component: () => import('pages/settings/ChangePassword.vue') },
+      { path: '/certificates/barangay-clearance', component: () => import('pages/certificates/Clearance.vue') },
+      { path: '/certificates/business-permit', component: () => import('pages/certificates/BusinessPermit.vue') },
     
+      { path: '/certificates/certificate-of-residency', component: () => import('pages/certificates/Residency.vue') },
+      { path: '/certificates/good-moral', component: () => import('pages/certificates/GoodMoral.vue') },
+      { path: '/certificates/certificate-of-indigency', component: () => import('pages/certificates/Indigency.vue') },
     ],
     beforeEnter(to, from, next) {
       if (localStorage.getItem('access_token')) {

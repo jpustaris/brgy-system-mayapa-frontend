@@ -142,7 +142,7 @@
                 </q-item-section>
               </q-item>
 
-              <q-item to="/certificates" clickable v-ripple exact  :class="{ 'selected-sidenav': $route.path === '/certificates' }">
+              <!-- <q-item to="/certificates" clickable v-ripple exact  :class="{ 'selected-sidenav': $route.path === '/certificates' }">
                 <q-item-section avatar>
                   <q-avatar>
                     <q-tooltip class="bg-dark text-subtitle2" anchor="center right" self="center start" v-if="miniState">
@@ -154,7 +154,63 @@
                 <q-item-section class="text-bold">
                   Certificates
                 </q-item-section>
-              </q-item>
+              </q-item> -->
+
+              <q-expansion-item
+                expand-separator
+                dense-toggle
+                @click.stop="miniState = false"
+                selected-color="dark"
+                header-class="text-bold"
+              >
+                <template v-slot:header>
+                  <q-item-section avatar>
+                    <q-avatar>
+                      <q-tooltip class="bg-dark text-subtitle2" anchor="center right" self="center start" v-if="miniState">
+                        Certificates / Forms
+                      </q-tooltip>
+                      <q-icon name="fa-solid fa-image" size="1.7rem"/>
+                    </q-avatar>
+                  </q-item-section>
+                  <q-item-section class="text-bold">
+                    Certificates / Forms
+                  </q-item-section>
+                </template>
+                <q-list>
+
+                  <q-item to="/certificates/barangay-clearance"  clickable v-ripple exact :class="{ 'selected-sidenav': $route.path === '/certificates/barangay-clearance' }">
+                    <q-item-section class="q-item-section">
+                      <span class="text-expansion">Barangay Clearance</span>
+                    </q-item-section>
+                  </q-item>
+
+                  <!-- <q-item to="/certificates/business-permit"  clickable v-ripple exact :class="{ 'selected-sidenav': $route.path === '/certificates/business-permit' }">
+                    <q-item-section class="q-item-section">
+                      <span class="text-expansion">Business Permit</span>
+                    </q-item-section>
+                  </q-item> -->
+
+                  <!-- <q-item to="/certificates/good-moral"  clickable v-ripple exact :class="{ 'selected-sidenav': $route.path === '/certificates/good-moral' }">
+                    <q-item-section class="q-item-section">
+                      <span class="text-expansion">Good Moral</span>
+                    </q-item-section>
+                  </q-item> -->
+
+                  <q-item to="/certificates/certificate-of-indigency"  clickable v-ripple exact :class="{ 'selected-sidenav': $route.path === '/certificates/certificate-of-indigency' }">
+                    <q-item-section class="q-item-section">
+                      <span class="text-expansion">Indigency</span>
+                    </q-item-section>
+                  </q-item>
+
+                  <q-item to="/certificates/certificate-of-residency"  clickable v-ripple exact :class="{ 'selected-sidenav': $route.path === '/certificates/certificate-of-residency' }">
+                    <q-item-section class="q-item-section">
+                      <span class="text-expansion">Residency</span>
+                    </q-item-section>
+                  </q-item>
+
+
+                </q-list>
+              </q-expansion-item>
 
               <q-item to="/profiling" clickable v-ripple exact  :class="{ 'selected-sidenav': $route.path === '/profiling' }">
                 <q-item-section avatar>

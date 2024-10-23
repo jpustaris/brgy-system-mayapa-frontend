@@ -20,7 +20,6 @@
             <q-form
               @autocomplete="false"
               @submit="onSubmit"
-              @reset="onReset"
               class="q-gutter-md"
             >
               <q-input
