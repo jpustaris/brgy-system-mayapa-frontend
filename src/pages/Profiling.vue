@@ -328,6 +328,39 @@
                               label-color="primary"
                             ></q-input>
                           </div>
+                          <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Birthplace:</p>
+                            <q-input
+                              input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
+                              class="login-input"
+                              outlined
+                              v-model="birthplace"
+                              type="text"
+                              placeholder="Birth place"
+                              lazy-rules
+                              color="black"
+                              bg-color="secondary"
+                              label-color="primary"
+                            ></q-input>
+                          </div>
+
+                          <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Period of Stay:</p>
+                            <q-input
+                              input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
+                              class="login-input"
+                              outlined
+                              v-model="period_of_stay"
+                              type="date"
+                              hint="In Mayapa Since..."
+                              lazy-rules
+                              color="black"
+                              bg-color="secondary"
+                              label-color="primary"
+                            ></q-input>
+                          </div>
+
+
                           </div>
                           <div class="row">
                           <div class="col-md-3 col-sm-6 q-pa-sm">
@@ -459,11 +492,10 @@
                         <q-separator></q-separator>
                         <q-card-actions align="right" >
                           <q-btn
-                          type="submit"
                           :loading="loading"
                           class="text-center bg-green text-white"
                           label="Save Resident Profile"
-                         @click="uploadImage()"
+                         @click="uploadProfile()"
                           />
                         </q-card-actions>
                       </q-form>
@@ -560,6 +592,9 @@ export default defineComponent({
       unique_identity:'',
       marital_status:'',
       birthdate:'',
+      birthplace:'',
+      period_of_stay:'',
+      
       response_dialog:false,
       dialog_title:'',
       dialog_message:'',
@@ -599,7 +634,7 @@ export default defineComponent({
     },
 
 
-    async uploadImage() {
+    async uploadProfile() {
       if (!this.profile_pic) {
         alert("Please select an image.");
         return;
@@ -625,6 +660,10 @@ export default defineComponent({
       data.append('is_deceased',this.is_deceased);
       data.append('is_voter',this.is_voter);
       data.append('birthdate',this.birthdate);
+      data.append('birthplace',this.birthplace);
+      
+      data.append('period_of_stay',this.period_of_stay);
+      
       data.append('street',this.street);
       data.append('house_number',this.house_number);
       data.append('building',this.building);
@@ -739,6 +778,8 @@ export default defineComponent({
       this.unique_identity = '';
       this.marital_status = '';
       this.birthdate = '';
+      this.birthplace = '';
+      this.period_of_stay = '';      
       this.added_by = '';
   },
   },

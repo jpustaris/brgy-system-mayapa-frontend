@@ -53,6 +53,8 @@ export default {
             data.append('is_deceased',payload.is_deceased);
             data.append('is_voter',payload.is_voter);
             data.append('birthdate',payload.birthdate);
+            data.append('birthplace',payload.birthplace);
+            data.append('period_of_stay',payload.period_of_stay);
             data.append('street',payload.street);
             data.append('house_number',payload.house_number);
             data.append('building',payload.building);

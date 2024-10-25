@@ -278,11 +278,13 @@
                                   <tr >
                                     <td style="text-align: center;">
                                       <p>PICTURE</p>
-                                      <img src="~assets/mayapa-logo.png" width="30%">
+                                      <img :src="picture_source" alt="Example" width="100px" height="100px"/>
+                                      <!-- <img src="~assets/mayapa-logo.png" width="30%"> -->
                                     </td>
                                       <td style="text-align: center;">
                                         <p>RIGHT THUMBMARK</p>
-                                        <img src="~assets/mayapa-logo.png" width="30%">
+                                        <img :src="picture_source_thumbmark" alt="Example" width="100px" height="100px"/>
+                                        <!-- <img src="~assets/mayapa-logo.png" width="30%"> -->
                                       </td>
                                   </tr>
                                 </table>
@@ -296,7 +298,7 @@
                                 <p> GENDER :  <u> {{ edit_gender == null ? "  " : edit_gender}} </u></p>
                                 <br>
                                 <p> PURPOSE :  <u> {{ edit_purpose == null ? "  " : edit_purpose}} </u></p>
-                                <p> REMARKS :  <u> {{ edit_remarks == null ? "  " : edit_remarks}} </u></p>
+                                <p> REMARKS :  </p>
                                 <br>
                                 <p class="para"> Signed this date <u> {{ day_now }} </u> day of <u> {{ month_now }} </u>  2024 at Barangay Mayapa, Calamba City.</p>
                                 <br>
@@ -349,70 +351,33 @@
                 <q-dialog v-model="addCertificateForm" transition-show="scale" transition-hide="scale">
                   <q-card  style="min-width: 600px">
                     <q-card-section class="bg-green text-white">
-                      <div class="text-h6">File a Blotter / Complaint Form</div>
+                      <div class="text-h6">Create Certificate of Clearance</div>
                     </q-card-section>
                     <q-separator />
                     <q-card-section class="q-pt-md q-ma-md q-pt-none">
                       <q-form
                         class="q-gutter-md"
                       >
-                      <h6>Please make sure that the details you encode is correct and without error. <i>Only the Complaint and the note is editable.</i></h6>
-                      <q-separator></q-separator>
+                     
                       <q-select 
                         class="select text-no-wrap" 
-                        v-model="complainant" 
+                        v-model="resident_id" 
                         :options="residents" 
                         option-value="id" 
                         option-label="display_name" 
-                        label="Complainant" 
+                        label="Resident" 
                         emit-value 
                         map-options 
                         borderless/>
 
-                      <q-input
-                          input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
-                          class="login-input"
-                          outlined
-                          v-model="defendant"
-                          placeholder="Defendant"
-                          lazy-rules
-                          color="black"
-                          bg-color="secondary"
-                          label-color="primary"
-                          no-error-icon
-                        >
-                          <template v-slot:append>
-                            <q-avatar>
-                              <q-icon color="dark" name="fa-solid fa-user" />
-                            </q-avatar>
-                          </template>
-                        </q-input>
-
-                        <q-input
-                          input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
-                          class="login-input"
-                          outlined
-                          v-model="brgy_case_no"
-                          placeholder="Brgy Case Number"
-                          lazy-rules
-                          color="black"
-                          bg-color="secondary"
-                          label-color="primary"
-                          no-error-icon
-                        >
-                          <template v-slot:append>
-                            <q-avatar>
-                              <q-icon color="dark" name="fa fa-file" />
-                            </q-avatar>
-                          </template>
-                        </q-input>
+                      
                         <q-input
                           input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                           class="login-input"
                           outlined
                           type="text"
-                          v-model="complaint"
-                          placeholder="Complaint"
+                          v-model="purpose"
+                          placeholder="Purpose"
                           lazy-rules
                           color="dark"
                           bg-color="secondary"
@@ -427,32 +392,14 @@
                           </template>
                         </q-input>
 
-                        <q-input
-                          input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
-                          class="login-input"
-                          outlined
-                          v-model="note"
-                          placeholder="Note"
-                          lazy-rules
-                          color="black"
-                          bg-color="secondary"
-                          label-color="primary"
-                          no-error-icon
-                        >
-                          <template v-slot:append>
-                            <q-avatar>
-                              <q-icon color="dark" name="fa-solid fa-add" />
-                            </q-avatar>
-                          </template>
-                        </q-input>
                         <q-separator></q-separator>
                         <q-card-actions align="right" >
                           <q-btn
                           class="text-center bg-green text-white"
                           id="addSubmitBtn"
-                          label="File Blotter" 
-                          type="submit"
-                          @click="addBlotter()"
+                          label="Create Certificate" 
+                         
+                          @click="addCertificate()"
                           />
                         </q-card-actions>
                       </q-form>
@@ -724,9 +671,8 @@ var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 export default defineComponent({
   name: 'Certificate of Clearance',
   data: () => ({
-      // response_dialog:false,
-      // dialog_title:'',
-      // dialog_message:'',
+      picture_source:'',
+      picture_source_thumbmark:"http://127.0.0.1:8000/storage/thumbmark.jpg",
       loading:false,
       selected: ref([]),
       complainant_name:'', 
@@ -736,21 +682,16 @@ export default defineComponent({
       age:'',
       gender:'Male',
       address:'',
-      // living_in_brgy_since:'',
       purpose:'',
-
+      resident_id:'',
       day_now:'',
       month_now:'',
-
       edit_control_number:'',
       edit_fullname:'',
       edit_age:'',
       edit_gender:'',
       edit_address:'',
-      // edit_living_in_brgy_since:'',
       edit_purpose:'',
-
-      brgy_captain:'Mr Barangay Mayapa',
       complainant:'',
       defendant:'',
       brgy_case_no:'',
@@ -760,9 +701,6 @@ export default defineComponent({
         { label: 'Male', value: 'Male' },
         { label: 'Female', value: 'Female'},
       ],
-
-      
-
       addCertificateForm:false,
       editCertificateForm:false,
       rows:[],
@@ -785,12 +723,18 @@ export default defineComponent({
             format: val => `${val}`,
             sortable: true
           },
-          { name: 'fullname', label: 'Requestor',  field: row => row.fullname,align: 'left', sortable: true },
-          { name: 'age', label: 'Age',  field: row => row.age,align: 'center', sortable: true },
-          { name: 'gender', label: 'Gender',  field: row => row.gender,align: 'center', sortable: true },
-          { name: 'address', label: 'Address',  field: row => row.address,align: 'center', sortable: true },
+          { name: 'fullname', 
+          label: 'Requestor',  
+          field: row => row.resident_details.first_name + ' ' +  row.resident_details.middle_name + ' ' +  row.resident_details.last_name,
+          align: 'left', 
+          sortable: true },
+          { name: 'age', label: 'Age',  field: row => row.resident_details.age,align: 'center', sortable: true },
+          { name: 'gender', label: 'Gender',  field: row => row.resident_details.gender,align: 'left', sortable: true },
+          { name: 'address', label: 'Address',  
+          field: row => row.resident_details.house_number + ', ' + row.resident_details.building + ', ' + row.resident_details.street,
+          align: 'left', sortable: true },
           // { name: 'living_in_brgy_since', label: 'Living in Brgy Since',  field: row => row.living_in_brgy_since,align: 'center', sortable: true },
-          { name: 'purpose', label: 'Purpose',  field: row => row.purpose,align: 'center', sortable: true },
+          { name: 'purpose', label: 'Purpose',  field: row => row.purpose,align: 'left', sortable: true },
           {
             name: 'active',
             required: true,
@@ -868,14 +812,9 @@ export default defineComponent({
     // },
 
     async addCertificate() {
-      
       this.loading = true;
-
       this.addBRGYClearanceCertificate({
-        fullname: this.fullname,
-        age: this.age,
-        gender: this.gender,
-        address: this.address,
+        resident_id: this.resident_id,
         purpose: this.purpose,
       }).then(response => {
           alert(response)
@@ -964,12 +903,19 @@ export default defineComponent({
 
     async setSelected(prop){
       console.log(prop);
+      this.picture_source = "http://127.0.0.1:8000/storage/"+prop.row.resident_details.profile_pic;
       this.selected_id = prop.row.id;
       this.edit_control_number = prop.row.control_number;
-      this.edit_fullname = prop.row.fullname;
-      this.edit_age = prop.row.age;
-      this.edit_gender = prop.row.gender;
-      this.edit_address = prop.row.address;
+      this.edit_fullname = prop.row.resident_details.first_name + ' ' + prop.row.resident_details.middle_name + ' ' + prop.row.resident_details.last_name;
+      this.edit_period_stay = prop.row.resident_details.period_of_stay;
+      this.edit_age = prop.row.resident_details.age;
+      this.edit_civil_status = prop.row.resident_details.marital_status;
+      this.edit_birthdate = prop.row.resident_details.birthdate;
+      this.edit_birthplace = prop.row.resident_details.birthplace;
+      alert(prop.row.resident_details.profile_pic);
+
+      this.edit_gender = prop.row.resident_details.gender;
+      this.edit_address = prop.row.resident_details.house_number + ', ' + prop.row.resident_details.building + ', ' + prop.row.resident_details.street;
       
       this.edit_purpose = prop.row.purpose;
 
@@ -995,10 +941,7 @@ export default defineComponent({
 
   // },
   async beforeMount(){
-      // await this.getAllUsers;
-        this.refresh()
-        // console.log(this.users)
-      
+        this.refresh();
   },
 
 })

@@ -33,7 +33,7 @@
             style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)"
             >
             <q-card-section>
-              <div class="text-h1 text-center">{{ total_residents }}</div>
+              <div class="text-h1 text-center">{{ dashboard_data.residents }}</div>
               <div class="text-subtitle2">TOTAL RESIDENTS</div>
             </q-card-section>
 
@@ -48,7 +48,7 @@
             style="background: radial-gradient(circle, rgb(53 255 167) 0%, rgb(1 136 58) 100%)"
             >
             <q-card-section>
-              <div class="text-h1 text-center">{{ total_seniors }}</div>
+              <div class="text-h1 text-center">{{ dashboard_data.seniors }}</div>
               <div class="text-subtitle2">TOTAL SENIORS</div>
             </q-card-section>
 
@@ -63,7 +63,7 @@
             style="background: radial-gradient(circle, rgb(219 53 255) 0%, rgb(97 1 136) 100%)"
             >
             <q-card-section>
-              <div class="text-h1 text-center">{{ total_HWs }}</div>
+              <div class="text-h1 text-center">{{ dashboard_data.healthworkers }}</div>
               <div class="text-subtitle2">HEALTH WORKERS</div>
             </q-card-section>
 
@@ -79,7 +79,7 @@
             style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)"
             >
             <q-card-section>
-              <div class="text-h1 text-center">{{ total_PWD }}</div>
+              <div class="text-h1 text-center">{{ dashboard_data.pwds }}</div>
               <div class="text-subtitle2">PERSONS WITH DISABILITY</div>
             </q-card-section>
 
@@ -189,17 +189,15 @@ export default defineComponent({
         ]
       }),
   computed: {
-    // ...mapGetters('Auth', {
-    //   user: 'GET_PROFILE'
-    // }),
+    ...mapGetters('Dashboard', {
+      dashboard_data: 'GET_DASHBOARD_DATA'
+    }),
 
   },
   methods: {
-    //  ...mapActions('ProductAvailability', [
-    //   'getStoreItems',
-    //   'updateProductStatus',
-    //   'getStoreItemsWithStatus'
-    // ]),
+     ...mapActions('Dashboard', [
+      'getData',
+    ]),
     async clickToggle(prop){
       if(prop.row.is_active==1){
         this.status=0;
@@ -258,12 +256,7 @@ export default defineComponent({
     }
   },
   async beforeMount(){
-      // await this.getStoreItems({
-      //   store_id: this.user.store_id
-      // }).then(() => {
-      //   this.rows = this.storeProducts
-      //   console.log(this.storeProducts)
-      // })
+      await this.getData();
      
   },
 })

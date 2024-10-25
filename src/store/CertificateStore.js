@@ -114,73 +114,27 @@ export default {
 
 
         async addBRGYIndigencyCertificate(context, payload) {
-            context.commit('SET_LOADING', true);
-            return new Promise(async (resolve, reject) => {
-                try {
-                  const response = await this.$axios.post('/api/certificates/indigencies', {
-                    certificate_type_id: 4,
-                    fullname: payload.fullname,
-                    age: payload.age,
-                    gender: payload.gender,
-                    address: payload.address,
-                    purpose: payload.purpose,
-                  });
-                  context.commit("SET_LOADING", false);
-                  resolve(response); // Resolve the promise with the response
-                } catch (error) {
-                  console.log(error);
-                  context.commit("SET_LOADING", false);
-                  reject(error); // Reject the promise with the error
-                }
-              });
+            context.commit("SET_LOADING", true)
+            console.log("Step2: ", payload.created_by_user_id)
+            await this.$axios.post('/api/certificates/indigencies', {
+                certificate_type_id: 4,
+                resident_id: payload.resident_id,
+                purpose: payload.purpose,
+              }).then(response => {
+                console.log(response)
+                context.commit("SET_LOADING", false)
+              })
+              .catch((error) => {
+                console.log(error)
+              })
 
-            // try {
-            //   const response = await this.$axios.post('/api/certificates/indigencies', {
-            //     certificate_type_id: 4,
-            //     fullname: payload.fullname,
-            //     age: payload.age,
-            //     gender: payload.gender,
-            //     address: payload.address,
-            //     purpose: payload.purpose,
-            //   });
-            //   context.commit('SET_LOADING', false);
-            //   return response;
-            // } catch (error) {
-            //   context.commit('SET_LOADING', false);
-            //   throw error;
-            // }
         },
-
-        // async addBRGYIndigencyCertificate(context, payload) {
-        //     context.commit("SET_LOADING", true)
-        //     await this.$axios.post('/api/certificates/indigencies', {
-        //         certificate_type_id: 4,
-        //         fullname: payload.fullname,
-        //         age: payload.age,
-        //         gender: payload.gender,
-        //         address: payload.address,
-        //         purpose: payload.purpose,
-        //       }).then(response => {
-        //         console.log(response)
-        //         context.commit("SET_LOADING", false)
-        //         return response;
-        //       })
-        //       .catch((error) => {
-        //         context.commit('SET_LOADING', false);
-        //         throw error;
-        //       })
-            
-        // },
 
         async addBRGYResidencyCertificate(context, payload) {
             context.commit("SET_LOADING", true)
             await this.$axios.post('/api/certificates/residencies', {
                 certificate_type_id: 5,
-                fullname: payload.fullname,
-                age: payload.age,
-                gender: payload.gender,
-                address: payload.address,
-                living_in_brgy_since: payload.living_in_brgy_since,
+                resident_id: payload.resident_id,
                 purpose: payload.purpose,
               }).then(response => {
                 console.log(response)
@@ -190,6 +144,21 @@ export default {
                 console.log(error)
               })
             
+        },
+
+        async addBRGYClearanceCertificate(context, payload) {
+            context.commit("SET_LOADING", true)
+            await this.$axios.post('/api/certificates/brgy-clearances', {
+                certificate_type_id: 2,
+                resident_id: payload.resident_id,
+                purpose: payload.purpose,
+              }).then(response => {
+                console.log(response)
+                context.commit("SET_LOADING", false)
+              })
+              .catch((error) => {
+                console.log(error)
+              })
         },
 
         // async editSingleCertificate(context, payload) {

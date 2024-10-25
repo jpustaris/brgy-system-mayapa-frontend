@@ -255,76 +255,16 @@
                       <q-form
                         class="q-gutter-md"
                       >
-                          
-                      <q-input
-                          input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
-                          class="login-input"
-                          outlined
-                          v-model="fullname"
-                          placeholder="Requestor's Full Name"
-                          lazy-rules
-                          color="black"
-                          bg-color="secondary"
-                          label-color="primary"
-                          no-error-icon
-                        >
-                          <template v-slot:append>
-                            <q-avatar>
-                              <q-icon color="dark" name="fa-solid fa-user" />
-                            </q-avatar>
-                          </template>
-                        </q-input>
-
-                        <q-input
-                          input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
-                          class="login-input"
-                          outlined
-                          type="number"
-                          v-model="age"
-                          placeholder="Age"
-                          lazy-rules
-                          color="black"
-                          bg-color="secondary"
-                          label-color="primary"
-                          no-error-icon
-                        >
-                          <template v-slot:append>
-                            <q-avatar>
-                              <q-icon color="dark" name="fa fa-user" />
-                            </q-avatar>
-                          </template>
-                        </q-input>
-
-                        <div class="col-md-3 col-sm-6 q-pa-sm">
-                            <p class="text-black padding-left: 20px;">Gender:</p>
-                              <q-option-group
-                                style="font-size: larger;padding-left: 20px;"
-                                color="teal"
-                                size="md"
-                                v-model="gender"
-                                :options="genders"
-                                type="radio"
-                              />
-                          </div>
-
-                        <q-input
-                          input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
-                          class="login-input"
-                          outlined
-                          v-model="address"
-                          placeholder="Address"
-                          lazy-rules
-                          color="black"
-                          bg-color="secondary"
-                          label-color="primary"
-                          no-error-icon
-                        >
-                          <template v-slot:append>
-                            <q-avatar>
-                              <q-icon color="dark" name="fa-solid fa-user" />
-                            </q-avatar>
-                          </template>
-                        </q-input>
+                      <q-select 
+                        class="select text-no-wrap" 
+                        v-model="resident_id" 
+                        :options="residents" 
+                        option-value="id" 
+                        option-label="display_name" 
+                        label="Resident" 
+                        emit-value 
+                        map-options 
+                        borderless/>
                                         
                         <q-input
                           input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
@@ -346,22 +286,7 @@
                         </q-input>
 
 
-                        <q-separator></q-separator>
-                        <p style="padding-left: 20px;color:#474;">Living in Brgy Since:</p>
-                        <q-input
-                          input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
-                          class="login-input"
-                          outlined
-                          type="date"
-                          v-model="living_in_brgy_since"
-                          placeholder="Living in Brgy Since..."
-                          lazy-rules
-                          color="black"
-                          bg-color="secondary"
-                          label-color="primary"
-                          no-error-icon
-                        >
-                        </q-input>
+                       
                         <q-separator></q-separator>
                         <q-card-actions align="right" >
                           <q-btn
@@ -526,11 +451,9 @@ export default defineComponent({
       complainant_name:'', 
       filter: ref(''),
       certificate_created_at:'',
-      fullname:'',
-      age:'',
-      gender:'Male',
-      address:'',
-      living_in_brgy_since:'',
+
+      resident_id:'',
+
       purpose:'',
 
       day_now:'',
@@ -579,11 +502,11 @@ export default defineComponent({
             format: val => `${val}`,
             sortable: true
           },
-          { name: 'fullname', label: 'Requestor',  field: row => row.fullname,align: 'left', sortable: true },
-          { name: 'age', label: 'Age',  field: row => row.age,align: 'center', sortable: true },
-          { name: 'gender', label: 'Gender',  field: row => row.gender,align: 'center', sortable: true },
-          { name: 'address', label: 'Address',  field: row => row.address,align: 'center', sortable: true },
-          { name: 'living_in_brgy_since', label: 'Living in Brgy Since',  field: row => row.living_in_brgy_since,align: 'center', sortable: true },
+          { name: 'fullname', label: 'Requestor',  field: row => row.resident_details.first_name+' '+ row.resident_details.middle_name +' '+row.resident_details.last_name ,align: 'left', sortable: true },
+          { name: 'age', label: 'Age',  field: row => row.resident_details.age,align: 'center', sortable: true },
+          { name: 'gender', label: 'Gender',  field: row => row.resident_details.gender,align: 'center', sortable: true },
+          { name: 'address', label: 'Address',  field: row => row.resident_details.house_number+ ' ' + row.resident_details.street ,align: 'center', sortable: true },
+          { name: 'living_in_brgy_since', label: 'Living in Brgy Since',  field: row => row.resident_details.period_of_stay,align: 'center', sortable: true },
           { name: 'purpose', label: 'Purpose',  field: row => row.purpose,align: 'center', sortable: true },
           {
             name: 'active',
@@ -601,7 +524,12 @@ export default defineComponent({
       certificates: 'GET_ALL_CERTIFICATES',
       loading: "GET_LOADING",
     }),
-
+    ...mapGetters('ResidentManagement', {
+      residents: 'GET_ALL_RESIDENTS',
+    }),
+    ...mapActions('ResidentManagement',[
+      'getResidents',
+    ]),
     ...mapActions('Certificate',[
       'getBRGYResidencies',
       'addBRGYResidencyCertificate',
@@ -639,11 +567,7 @@ export default defineComponent({
 
     async addCertificate() {
       await this.addBRGYResidencyCertificate({
-        fullname: this.fullname,
-        age: this.age,
-        gender: this.gender,
-        address: this.address,
-        living_in_brgy_since: this.living_in_brgy_since,
+        resident_id: this.resident_id,
         purpose: this.purpose,
       }).then(response => {
           console.log(response)
@@ -684,7 +608,7 @@ export default defineComponent({
 
     async refresh(){
       await this.getBRGYResidencies;
-      // await this.getResidents;
+      await this.getResidents;
       this.rows = this.certificates;
       this.addCertificateForm = false;
       this.editCertificateForm = false;
@@ -699,10 +623,11 @@ export default defineComponent({
       console.log(prop);
       this.selected_id = prop.row.id;
       this.edit_control_number = prop.row.control_number;
-      this.edit_fullname = prop.row.fullname;
-      this.edit_age = prop.row.age;
-      this.edit_gender = prop.row.gender;
-      this.edit_address = prop.row.address;
+      this.edit_fullname = prop.row.resident_details.first_name;
+      this.edit_age = prop.row.resident_details.age;
+      this.edit_gender = prop.row.resident_details.gender;
+      this.edit_address = prop.row.resident_details.house_number + ', ' + prop.row.resident_details.building + ', ' + prop.row.resident_details.street;
+      
       
       this.edit_purpose = prop.row.purpose;
 
@@ -728,10 +653,8 @@ export default defineComponent({
 
   // },
   async beforeMount(){
-      // await this.getAllUsers;
         this.refresh()
-        // console.log(this.users)
-      
+
   },
 
 })
