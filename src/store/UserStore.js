@@ -59,6 +59,8 @@ export default {
                 last_name: payload.edit_last_name,
                 email: payload.edit_email,
                 role_id: payload.edit_role,
+                is_active: payload.edit_active,
+                
             }).then(response => {
                     console.log(response.data)
                     context.commit("SET_ALL_USERS", response.data.data)

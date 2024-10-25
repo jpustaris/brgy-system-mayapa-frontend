@@ -80,13 +80,13 @@
                     label="Edit User" 
                     @click="openEditUserForm(props)" />
 
-                    <q-btn 
+                    <!-- <q-btn 
                     :disabled="loading"
                     :loading="loading" 
                     class="q-mx-sm bg-blue text-white" 
                     icon-right="fa-solid fa-eye" 
                     label="View User" 
-                    @click="openViewUserForm(props)" />
+                    @click="openViewUserForm(props)" /> -->
 
                     <!-- <q-btn 
                     :disabled="loading"
@@ -301,6 +301,14 @@
                         emit-value 
                         map-options 
                         borderless/>
+                        <q-checkbox
+                          v-model="edit_active"
+                          label="Is Still Active?"
+                          checked-icon="task_alt"
+                          unchecked-icon="highlight_off"
+                          color="green"
+                          keep-color
+                        />
                       <div>
                         <q-btn 
                         :loading="loading"
@@ -308,9 +316,10 @@
                         @click="editUserMethod"
                         id="editSubmitBtn" 
                         label="Submit" 
-                        type="submit" 
+                        type="submit"
                         class="bg-teal text-white full-width"
                         />
+
                         </div>
                     </q-form>
                   </q-card-section>
@@ -409,6 +418,7 @@ export default defineComponent({
       edit_last_name:'',
       edit_email:'',
       edit_role:'',
+      edit_active:ref(false),
 
       user_created_at:'',
       user_role_name:'',   
@@ -522,6 +532,8 @@ export default defineComponent({
         edit_last_name: this.edit_last_name,
         edit_email: this.edit_middle_name,
         edit_role: this.edit_role,
+        edit_active: this.edit_active,
+        
       }).then(response => {
           console.log(response)
         })
@@ -560,16 +572,18 @@ export default defineComponent({
       this.edit_middle_name = prop.row.middle_name;
       this.edit_last_name = prop.row.last_name;
       this.edit_email = prop.row.email;
-      this.edit_role = prop.row.user_role;
+      this.edit_active = ref(prop.row.is_active);
+      this.edit_role = prop.row.user_role.id;
       var temp = moment(prop.row.created_at);
       this.user_created_at =  temp.format('MMMM Do YYYY');
       this.user_role_name = prop.row.user_role.role_name;
+      this.editUserForm = true;
     },
 
     async openEditUserForm(prop){
       console.log(prop);
       await this.setSelected(prop);
-      this.editUserForm = true;
+      
     },
   },
   // watch: { 
