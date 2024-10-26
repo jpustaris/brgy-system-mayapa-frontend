@@ -34,6 +34,7 @@ export default function (/* { ssrContext } */) {
       UserManagement: require('./UserStore').default,
       RoleManagement: require('./RoleStore').default,
       ResidentManagement: require('./ResidentStore').default,
+      SMSBlastManagement: require('./SMSBlast').default,
     },
 
     // enable strict mode (adds overhead!)

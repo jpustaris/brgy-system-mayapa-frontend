@@ -74,7 +74,7 @@
                     <q-tooltip class="bg-dark text-subtitle2" anchor="center right" self="center start" v-if="miniState">
                       Dashboard
                     </q-tooltip>
-                    <q-icon name="fa-solid fa-area-chart" size="1.7rem"/>
+                    <q-icon name="fa-solid fa-chart-line" size="1.7rem"/>
                   </q-avatar>
                 </q-item-section>
 
@@ -134,7 +134,7 @@
                     <q-tooltip class="bg-dark text-subtitle2" anchor="center right" self="center start" v-if="miniState">
                       Blotters
                     </q-tooltip>
-                    <q-icon name="fa-solid fa-file" size="1.7rem"/>
+                    <q-icon name="fa-solid fa-building-shield" size="1.7rem"/>
                   </q-avatar>
                 </q-item-section>
                 <q-item-section class="text-bold">
@@ -169,7 +169,7 @@
                       <q-tooltip class="bg-dark text-subtitle2" anchor="center right" self="center start" v-if="miniState">
                         Certificates / Forms
                       </q-tooltip>
-                      <q-icon name="fa-solid fa-image" size="1.7rem"/>
+                      <q-icon name="fa-solid fa-file-circle-plus" size="1.7rem"/>
                     </q-avatar>
                   </q-item-section>
                   <q-item-section class="text-bold">
@@ -218,7 +218,7 @@
                     <q-tooltip class="bg-dark text-subtitle2" anchor="center right" self="center start" v-if="miniState">
                       Profiling
                     </q-tooltip>
-                    <q-icon name="fa-solid fa-user" size="1.7rem"/>
+                    <q-icon name="fa-solid fa-person-circle-plus" size="1.7rem"/>
                   </q-avatar>
                 </q-item-section>
                 <q-item-section class="text-bold">
@@ -232,7 +232,7 @@
                     <q-tooltip class="bg-dark text-subtitle2" anchor="center right" self="center start" v-if="miniState">
                       Health Workers
                     </q-tooltip>
-                    <q-icon name="fa-solid fa-user" size="1.7rem"/>
+                    <q-icon name="fa-solid fa-user-doctor" size="1.7rem"/>
                   </q-avatar>
                 </q-item-section>
                 <q-item-section class="text-bold">
@@ -246,7 +246,7 @@
                     <q-tooltip class="bg-dark text-subtitle2" anchor="center right" self="center start" v-if="miniState">
                       Person With Disablities
                     </q-tooltip>
-                    <q-icon name="fa-solid fa-user" size="1.7rem"/>
+                    <q-icon name="fa-solid fa-wheelchair-move" size="1.7rem"/>
                   </q-avatar>
                 </q-item-section>
                 <q-item-section class="text-bold">
@@ -260,11 +260,25 @@
                     <q-tooltip class="bg-dark text-subtitle2" anchor="center right" self="center start" v-if="miniState">
                       Senior People
                     </q-tooltip>
-                    <q-icon name="fa-solid fa-user" size="1.7rem"/>
+                    <q-icon name="fa-solid fa-person-cane" size="1.7rem"/>
                   </q-avatar>
                 </q-item-section>
                 <q-item-section class="text-bold">
                   Senior People
+                </q-item-section>
+              </q-item>
+
+              <q-item to="/sms-blast" clickable v-ripple exact  :class="{ 'selected-sidenav': $route.path === '/sms-blast' }">
+                <q-item-section avatar>
+                  <q-avatar>
+                    <q-tooltip class="bg-dark text-subtitle2" anchor="center right" self="center start" v-if="miniState">
+                      SMS Blast
+                    </q-tooltip>
+                    <q-icon name="fa-solid fa-bullhorn" size="1.7rem"/>
+                  </q-avatar>
+                </q-item-section>
+                <q-item-section class="text-bold">
+                  SMS Blast
                 </q-item-section>
               </q-item>
 

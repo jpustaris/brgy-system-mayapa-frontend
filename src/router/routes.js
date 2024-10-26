@@ -15,7 +15,8 @@ const routes = [
       { path: '/settings/change-password', component: () => import('pages/settings/ChangePassword.vue') },
       { path: '/certificates/barangay-clearance', component: () => import('pages/certificates/Clearance.vue') },
       { path: '/certificates/business-permit', component: () => import('pages/certificates/BusinessPermit.vue') },
-    
+      { path: '/sms-blast', component: () => import('pages/SMSBlast.vue') },
+      
       { path: '/certificates/certificate-of-residency', component: () => import('pages/certificates/Residency.vue') },
       { path: '/certificates/good-moral', component: () => import('pages/certificates/GoodMoral.vue') },
       { path: '/certificates/certificate-of-indigency', component: () => import('pages/certificates/Indigency.vue') },
