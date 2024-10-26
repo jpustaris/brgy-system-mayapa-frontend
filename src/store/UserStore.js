@@ -5,7 +5,8 @@ export default {
     namespaced: true,
     state: {
         users:[],
-        loading: false
+        loading: false,
+        changepass:null,
     },
     getters: {
         GET_ALL_USERS (state) {
@@ -13,8 +14,8 @@ export default {
         },
         GET_LOADING(state) {
             return state.loading;
-        }
-    },
+        },
+     },
     mutations: {
         SET_ALL_USERS (state, users) {
             state.users = users
@@ -53,7 +54,7 @@ export default {
         },
 
         async editSingleUser(context, payload) {
-            await this.$axios.put('/api/brgy-users/'+ payload.selected_id , {
+            await this.$axios.put('/api/users/'+ payload.selected_id , {
                 first_name: payload.edit_first_name,
                 middle_name: payload.edit_middle_name,
                 last_name: payload.edit_last_name,
@@ -85,6 +86,7 @@ export default {
                 new_password: payload.new_password,
               }).then(response => {
                 console.log(response)
+                localStorage.removeItem("access_token");
               })
               .catch((error) => {
                 console.log(error)

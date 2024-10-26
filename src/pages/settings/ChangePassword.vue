@@ -17,7 +17,7 @@
           <div class="col-sm-4 col-xs-6 q-pa-sm">
             <q-card  style="min-width: 400px">
                     <q-card-section class="bg-green text-white">
-                      <div class="text-h6">Change Password</div>
+                      <div class="text-h6">Change Password </div>
                     </q-card-section>
                     <q-separator />
                     <q-card-section class="q-pt-md q-ma-md q-pt-none">
@@ -29,6 +29,7 @@
                           class="login-input"
                           outlined
                           v-model="current_password"
+                          id="current_password"
                           type="password" hint="Current Password" 
                           placeholder="Current Password"
                           lazy-rules
@@ -48,6 +49,7 @@
                           class="login-input"
                           outlined
                           v-model="new_password"
+                          id="new_password"
                           type="password" hint="New Password" 
                           placeholder="New Password"
                           lazy-rules
@@ -69,6 +71,7 @@
                           class="login-input"
                           outlined
                           v-model="confirm_password"
+                          id="confirm_password"
                           type="password" hint="Confirm Password" 
                           placeholder="Confirm Password"
                           lazy-rules
@@ -91,7 +94,7 @@
                           class="text-center bg-green text-white"
                           id="addSubmitBtn"
                           label="Change Password" 
-                          type="submit"
+                        
                           @click="changePassword()"
                           />
                         </q-card-actions>
@@ -171,6 +174,13 @@ export default defineComponent({
     ...mapActions('UserManagement',[
       'changeUserPassword',
     ]),
+    ...mapActions('Auth', [
+      'logout',
+      'getProfile',
+    ]),
+    ...mapGetters('Auth', {
+      user_profile_details: 'GET_PROFILE',
+    }),
   },
   methods: {
     async changePassword() {
@@ -178,24 +188,38 @@ export default defineComponent({
         await this.changeUserPassword({
           current_password: this.current_password,
           new_password: this.new_password,
-        }).then(response => {
-            // console.log(response)
+        }).then((response)=>{
+          this.logout({
+            user_id: this.user_profile_details.user_id,
           })
+        })
           .catch((error) => {
-            console.log(error)
+            this.dialog_title = "Error!";
+            this.dialog_message = error;
+            this.response_dialog = true;
+            this.current_password="";
+            this.new_password = "";
+            this.confirm_password = "";
           })
-       } else {
+ 
+        } else {
         console.log("New Password and Confirm Password not the same!")
         this.dialog_title = "Error!";
         this.dialog_message = "New Password and Confirm Password not the same!";
         this.response_dialog = true;
+        this.new_password = "";
+        this.confirm_password = "";
       }
-    },
-
-
-  },
-  async beforeMount(){
       
+    },
+  },
+
+
+  async beforeMount(){
+    if(!this.user_profile_details){
+      // alert("Error retrieving profile details")
+      await this.getProfile()
+    }
   },
 
 })
