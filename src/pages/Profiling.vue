@@ -13,8 +13,30 @@
             </div>
       </div>
       
-      <div class="items-start q-pa-md row">
-          <div class="col-sm-12 col-xs-12 q-pa-sm">
+
+      <div class="q-pa-md">
+    <div class="q-gutter-y-md">
+      <q-card>
+        <q-tabs
+          v-model="tab"
+          class="text-black"
+          active-color="white"
+          indicator-color="teal"
+          active-bg-color="teal"
+          align="justify"
+          narrow-indicator
+        >
+          <q-tab icon="edit"  name="profiling_form" label="Form" />
+          <q-tab icon="list"  name="profiling_list" label="List" />
+        </q-tabs>
+
+        <q-separator />
+
+        <q-tab-panels v-model="tab" animated>
+          <q-tab-panel name="profiling_form">
+            <!-- <div class="text-h6">Mails</div> -->
+            <div class="items-start q-pa-md row">
+            <div class="col-sm-12 col-xs-12 q-pa-sm">
             <q-card  style="min-width: 400px">
                     <q-card-section class="bg-green text-white">
                       <div class="text-h6">Profiling Form</div>
@@ -23,8 +45,6 @@
                     <q-card-section class="q-pt-md q-ma-md q-pt-none">
                       <q-form  class="q-gutter-md" >
                         <div class="row">
-                          
-                          
                           <div class="col-md-3 col-sm-6 q-pa-sm">
                             <p class="text-black login-input padding-left: 20px;">First Name:</p>
                               <q-input
@@ -87,6 +107,7 @@
                                   color="black"
                                   bg-color="secondary"
                                   label-color="primary"
+                                  hint="Example: Mr. Ms. Mrs. Dr."
                                 ></q-input>
                                 </div>
                               <div class="col-md-6 col-sm-12 q-pa-xs">
@@ -102,6 +123,7 @@
                                   color="black"
                                   bg-color="secondary"
                                   label-color="primary"
+                                  hint="Example: Jr. Sr. II III"
                                 ></q-input>
 
                               </div>
@@ -110,7 +132,6 @@
                           </div>
 
                         </div>
-                        
                         <div class="row">
                           <div class="col-md-3 col-sm-6 q-pa-sm">
                             <p class="text-black login-input padding-left: 20px;">Nationality:</p>
@@ -176,7 +197,6 @@
                             ></q-input>
                           </div>
                         </div>
-
                         <div class="row">
                           <div class="col-md-3 col-sm-6 q-pa-sm">
                             <p class="text-black login-input padding-left: 20px;">Address Street:</p>
@@ -280,8 +300,6 @@
 
 
                         </div>
-
-
                         <div class="row">
                           <div class="col-md-3 col-sm-6 q-pa-sm">
                             <p class="text-black login-input padding-left: 20px;">Marital Status:</p>
@@ -361,8 +379,8 @@
                           </div>
 
 
-                          </div>
-                          <div class="row">
+                        </div>
+                        <div class="row">
                           <div class="col-md-3 col-sm-6 q-pa-sm">
                             <p class="text-black login-input padding-left: 20px;">Gender:</p>
                               <q-option-group
@@ -414,8 +432,6 @@
                           
                         
                         </div>
-
-
                         <div class="row">
                           
                           <div class="col-md-3 col-sm-6 q-pa-sm">
@@ -446,7 +462,8 @@
                               hint="Example: Blind, Crippled, Amputated"
                             ></q-input>
                           </div>
-                          </div><div class="row">
+                        </div>
+                        <div class="row">
                           <div class="col-md-3 col-sm-6 q-pa-sm">
                             <p class="text-black login-input padding-left: 20px;">Profile Img:</p>
                             <input @change="onFileChange" type="file" accept="image/*" hint="1x1 Picture" />
@@ -488,7 +505,6 @@
                             ></q-input>
                           </div>
                         </div>
-
                         <q-separator></q-separator>
                         <q-card-actions align="right" >
                           <q-btn
@@ -503,31 +519,82 @@
                   </q-card>
           </div>
       </div> 
+          </q-tab-panel>
+
+          <q-tab-panel name="profiling_list">
+              <div class="items-start q-pa-md row">
+                <div class="col-sm-12 col-xs-12 q-pa-sm">
+                <q-card  style="min-width: 400px">
+                        <!-- <q-card-section class="bg-green text-white">
+                          <div class="text-h6">Profiling List</div>
+                        </q-card-section> -->
+                        <!-- <div> {{ this.rows }} </div> -->
+                        <q-separator />
+                        <q-card-section class="q-ma-md q-pt-none">
+                          <q-table
+                            class="table"
+                            title="Resident Profile List"
+                            :rows="rows"
+                            :columns="columns"
+                            row-key="name"
+                            :pagination="pagination"
+                            :filter="filter"
+                          >
+                          <template v-slot:body-cell-active="props">
+                              <q-td :props="props">
+                                <!-- <q-btn 
+                                :disabled="loading"
+                                :loading="loading" 
+                                class="q-mx-sm bg-teal text-white" 
+                                icon-right="edit" 
+                                label="Edit Certificate" 
+                                @click="openEditCertificateForm(props)" /> -->
+
+                                <!-- <q-btn 
+                                :disabled="loading"
+                                :loading="loading" 
+                                class="q-mx-sm bg-blue text-white" 
+                                icon-right="fa-solid fa-eye" 
+                                label="View Certificate" 
+                                @click="openViewCertificateForm(props)" /> -->
+
+                                <!-- <q-btn 
+                                :disabled="loading"
+                                :loading="loading" 
+                                class="q-mx-sm" 
+                                color="red" 
+                                icon-right="delete" 
+                                label="Disable Certificate" 
+                                @click="disableCertificateMethod(props)" /> -->
+                                <!-- <div>
+                                    <div v-if="props.value == 1">
+                                        <q-btn color="positive" icon="check" @click="clickToggle(props)" />
+                                    </div>
+                                    <div v-else>
+                                        <q-btn color="secondary" icon="close" @click="clickToggle(props)" />
+                                    </div>
+                                </div> -->
+                              </q-td>
+                            </template>
+                          </q-table>
+
+                        </q-card-section>
+
+                </q-card>
+                </div>
+              </div>
+              
+          </q-tab-panel>
+
+        </q-tab-panels>
+      </q-card>
+
+    </div>
+  </div>
 
       
-        
-          <div class="q-pa-md" style="padding-top:20px">
-             
-           
 
-              <!-- <q-dialog v-model="persistent" persistent transition-show="scale" transition-hide="scale">
-                  <q-card class="bg-green text-white" style="width: 300px">
-                    <q-card-section>
-                      <div class="text-h6">Success</div>
-                    </q-card-section>
-
-                    <q-card-section class="q-pt-none">
-                        Updated Succesfully
-                    </q-card-section>
-
-                    <q-card-actions align="right" class="bg-white text-black">
-                      <q-btn flat label="OK" v-close-popup />
-                    </q-card-actions>
-                  </q-card>
-                </q-dialog> -->
-
-
-          </div>
+   
   </div>
 
 
@@ -560,9 +627,8 @@ var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 export default defineComponent({
   name: 'Profiling',
   data: () => ({
-
+      tab:'profiling_list',
       todate:date,
-      persistent: ref([false]),
       salutation:'',
       first_name:'',
       middle_name:'',
@@ -594,7 +660,7 @@ export default defineComponent({
       birthdate:'',
       birthplace:'',
       period_of_stay:'',
-      
+      filter:'',
       response_dialog:false,
       dialog_title:'',
       dialog_message:'',
@@ -607,7 +673,98 @@ export default defineComponent({
       yes_no: [
         { label: 'Yes', value: 1 },
         { label: 'No', value: 0},
-      ]
+      ],
+
+      rows:[],
+      status:0,
+      pagination: {
+        page: 1,
+        rowsPerPage: 25
+      },
+      columns : [
+          { name: 'salutation', label: 'Salutation',  
+          field: row => row.salutation,
+          align: 'left', 
+          sortable: true },
+
+          { name: 'fullname', label: 'Full Name',  
+          field: row => row.first_name + ' ' +row.middle_name+ ' ' +row.last_name,
+          align: 'left', 
+          sortable: true },
+
+          { name: 'email', label: 'Email',  
+          field: row => row.email,
+          align: 'left', 
+          sortable: true },
+
+          { name: 'contact_number', label: 'Contact Number',  
+          field: row => row.contact_number,
+          align: 'left', 
+          sortable: true },
+
+          { name: 'age', label: 'Age',  
+          field: row => row.age,
+          align: 'left', 
+          sortable: true },
+
+          { name: 'birthdate', label: 'Birthdate',  
+          field: row => row.birthdate,
+          align: 'left', 
+          sortable: true },
+
+          { name: 'gender', label: 'Gender',  
+          field: row => row.gender,
+          align: 'left', 
+          sortable: true },
+
+          { name: 'marital_status', label: 'Marital Status',  
+          field: row => row.marital_status,
+          align: 'left', 
+          sortable: true },
+          
+          { name: 'marital_status', label: 'Address',  
+          field: row => row.house_number + ' ' + row.building + ' ' + row.street,
+          align: 'left', 
+          sortable: true },
+
+          { name: 'nationality', label: 'Nationality',  
+          field: row => row.nationality,
+          align: 'left', 
+          sortable: true },
+
+          { name: 'is_voter', label: 'Is a voter?',  
+          field: row => row.is_voter == 1 ? "Yes" : "No",
+          align: 'left', 
+          sortable: true },
+
+          { name: 'is_HW', label: 'Is a Health Worker?',  
+          field: row => row.is_HW == 1 ? "Yes" : "No",
+          align: 'left', 
+          sortable: true },
+
+          { name: 'is_PWD', label: 'Is a PWD?',  
+          field: row => row.is_PWD == 1 ? "Yes" : "No",
+          align: 'left', 
+          sortable: true },
+
+          { name: 'is_deceased', label: 'Is alive?',  
+          field: row => row.is_deceased == 1 ? "Yes" : "No",
+          align: 'left', 
+          sortable: true },
+
+
+          // {
+          //   name: 'active',
+          //   required: true,
+          //   label: 'ACTION',
+          //   align: 'center',
+          //   field: row => row.id,
+          //   format: val => `${val}`,
+          //   sortable: true
+          // },
+
+        ]
+
       
       }),
   computed: {   
@@ -617,6 +774,12 @@ export default defineComponent({
     ...mapGetters('Auth', {
       user_profile_details: 'GET_PROFILE',
     }),
+    ...mapGetters('ResidentManagement', {
+      residents: 'GET_ALL_RESIDENTS',
+    }),
+    ...mapActions('ResidentManagement',[
+      'getResidents',
+    ]),
     ...mapGetters('ResidentManagement', {
       loading: 'GET_LOADING',
     }),
@@ -685,73 +848,11 @@ export default defineComponent({
           this.refresh();
         }));
 
-
-        // const token = localStorage.getItem('access_token');
-        // const response = await axios.post("/api/residents", data, {
-        //   headers: {
-        //     'Authorization': `Bearer ${token}`,
-        //     "Content-Type": "multipart/form-data",
-        //   },
-        // });
-        // alert("Image uploaded successfully!");
-
-        
-
-        // Optionally, save image to local storage
-        // const reader = new FileReader();
-        // reader.onload = (e) => {
-        //   localStorage.setItem("uploadedImage", e.target.result);
-        // };
-        // reader.readAsDataURL(this.image);
-
       } catch (error) {
         console.error("Error uploading image", error);
       }
     },
 
-    // saveProfile() {
-    //   this.added_by = this.user_profile_details.user_id;
-    //   console.log("Debugging: ", this.added_by)
-    //   let data = new FormData();
-    //   data.append('salutation',this.salutation);
-    //   data.append('first_name',this.first_name);
-    //   data.append('middle_name',this.middle_name);
-    //   data.append('last_name',this.last_name);
-    //   data.append('additional_name',this.additional_name);
-    //   data.append('nationality',this.nationality);
-    //   data.append('contact_number',this.contact_number);
-    //   data.append('email',this.email);
-    //   data.append('age',this.age);
-
-    //   data.append('is_HW',this.is_HW);
-    //   data.append('is_PWD',this.is_PWD);
-    //   data.append('is_deceased',this.is_deceased);
-    //   data.append('is_voter',this.is_voter);
-    //   data.append('birthdate',this.birthdate);
-    //   data.append('street',this.street);
-    //   data.append('house_number',this.house_number);
-    //   data.append('building',this.building);
-    //   data.append('other_location',this.other_location);
-    //   data.append('height_ft',this.height_ft);
-    //   data.append('weight_kg',this.weight_kg);
-    //   data.append('gender',this.gender);
-    //   data.append('note',this.note);
-    //   data.append('marital_status',this.marital_status);
-    //   data.append('unique_identity',this.unique_identity);
-    //   data.append('added_by',this.added_by);
-    //   data.append('profile_pic',this.profile_pic);
-      
-    //   // let temp = this.profile_pic;
-    //   // console.log("Debugging Here :",temp)
-    //   // if (temp) {
-    //   //   data.append('profile_pic',temp);
-    //   // }
-    //     this.saveResidentProfile(data).then((response => {
-    //     console.log("Success!")
-    //     this.refresh();
-    //   }));
-        
-    // },
     async refresh(){
       this.salutation = '';
       this.first_name = '';
@@ -781,12 +882,15 @@ export default defineComponent({
       this.birthplace = '';
       this.period_of_stay = '';      
       this.added_by = '';
+      
   },
   },
 
   
   
   async beforeMount(){
+    await this.getResidents;
+    this.rows = this.residents;
     if(!this.user_profile_details){
       alert("Error retrieving profile details")
       await this.getProfile()

@@ -585,23 +585,6 @@ export default defineComponent({
       this.addCertificateForm = true;
     },
 
-    // async addCertificate() {
-    //   await this.addBRGYIndigencyCertificate({
-    //     fullname: this.fullname,
-    //     age: this.age,
-    //     gender: this.gender,
-    //     address: this.address,
-    //     // living_in_brgy_since: this.living_in_brgy_since,
-    //     purpose: this.purpose,
-    //   }).then(response => {
-    //       console.log(response)
-    //       this.refresh()
-    //     })
-    //     .catch((error) => {
-    //       console.log(error)
-    //     })
-    // },
-
     async addCertificate() {
       this.loading = true;
       this.addBRGYIndigencyCertificate({
@@ -613,43 +596,7 @@ export default defineComponent({
       .catch(err => {
           alert(err)
       })
-      
-
-      // try {
-
-
-      //   const response = await this.addBRGYIndigencyCertificate({
-      //     fullname: this.fullname,
-      //     age: this.age,
-      //     gender: this.gender,
-      //     address: this.address,
-      //     purpose: this.purpose,
-      //   });
-      //   console.log(response);
-      //   this.refresh();
-      // } catch (error) {
-      //   console.log(error);
-      // } finally {
-      //   this.loading = false;
-      // }
     },
-
-    // async addCertificate() {
-    //   try {
-    //     // Call the mapped action directly
-    //     const response = await this.addBRGYIndigencyCertificate({
-    //       fullname: this.fullname,
-    //       age: this.age,
-    //       gender: this.gender,
-    //       address: this.address,
-    //       purpose: this.purpose,
-    //     });
-    //     console.log(response);
-    //     this.refresh();
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // },
 
     async editCertificateMethod(){
       await this.editSingleBlotter({
@@ -687,12 +634,13 @@ export default defineComponent({
     },
 
     async openViewCertificateForm(prop){
-      // await this.setSelected(prop);
+      await this.setSelected(prop);
       this.viewCertificateDialog = true;
     },
 
     async setSelected(prop){
-      console.log(prop);
+      // console.log(prop);
+      
       this.selected_id = prop.row.id;
       this.edit_control_number = prop.row.control_number;
       this.edit_fullname = prop.row.resident_details.first_name + ' ' + prop.row.resident_details.middle_name + ' ' + prop.row.resident_details.last_name;
@@ -701,19 +649,15 @@ export default defineComponent({
       this.edit_address = prop.row.resident_details.house_number + ', ' +prop.row.resident_details.building + ', ' +prop.row.resident_details.street;
       this.edit_purpose = prop.row.purpose;
       var temp1 = moment(prop.row.created_at);
-      // var temp2 = moment(prop.row.living_in_brgy_since);
-      // this.edit_living_in_brgy_since = prop.row.living_in_brgy_since;
       this.certificate_created_at =  temp1.format('MMMM Do YYYY');
-      // this.edit_living_in_brgy_since =  temp2.format('Do of MMMM YYYY');
 
       this.day_now =  moment(this.todate).format('Do');
       this.month_now =  moment(this.todate).format('MMMM');
-
-      // this.complainant_name = prop.row.complainant.first_name +" "+ prop.row.complainant.last_name;
+      console.log(this.edit_fullname);
     },
 
     async openEditCertificateForm(prop){
-      console.log(prop);
+      // console.log(prop);
       await this.setSelected(prop);
       this.editCertificateForm = true;
     },

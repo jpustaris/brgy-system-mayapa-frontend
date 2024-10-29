@@ -817,10 +817,10 @@ export default defineComponent({
         resident_id: this.resident_id,
         purpose: this.purpose,
       }).then(response => {
-          alert(response)
+          // alert(response)
       })
       .catch(err => {
-          alert(err)
+          // alert(err)
       })
       
 
@@ -912,7 +912,7 @@ export default defineComponent({
       this.edit_civil_status = prop.row.resident_details.marital_status;
       this.edit_birthdate = prop.row.resident_details.birthdate;
       this.edit_birthplace = prop.row.resident_details.birthplace;
-      alert(prop.row.resident_details.profile_pic);
+      // alert(prop.row.resident_details.profile_pic);
 
       this.edit_gender = prop.row.resident_details.gender;
       this.edit_address = prop.row.resident_details.house_number + ', ' + prop.row.resident_details.building + ', ' + prop.row.resident_details.street;
