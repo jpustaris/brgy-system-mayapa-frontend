@@ -99,6 +99,7 @@
         
           <div class="q-pa-md" style="padding-top:20px">
               <q-table
+              style="border-top:rgb(2, 110, 124) 8px solid; border-bottom:rgb(2, 110, 124) 4px solid"
                 class="table"
                 title="Certificate of Good Moral Management"
                 :rows="rows"

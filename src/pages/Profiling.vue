@@ -523,12 +523,50 @@
 
           <q-tab-panel name="profiling_list">
               <div class="items-start q-pa-md row">
+                <div class=" q-ma-sm" style="font-size: 15px">
+                  <b>Filters:</b>
+                </div>
+                <div class="items-start q-pa-md row">
+                    <div class="col-sm-6 col-xs-6 q-pa-sm">
+                      <q-input class="textbox" rounded outlined v-model="filter" placeholder="Search" >
+                        <template v-slot:append>
+                          <q-avatar>
+                              <q-icon name="search" />
+                          </q-avatar>
+                        </template>
+                      </q-input>
+                    </div>
+                    <div class="col-sm-6 col-xs-6 q-pa-sm">
+                      <div>
+                        <div class="col-md-3 col-sm-6 q-pa-sm">
+                            <p class="text-black login-input padding-left: 20px;">Filter Options: </p>
+                              <q-option-group
+                                style="font-size: larger"
+                                class="login-input padding-left: 20px;"
+                                size="md"
+                                v-model="is_PWD"
+                                :options="search_options"
+                                type="radio"
+                              />
+                          </div>
+                        <q-btn
+                        class="q-mx-sm q-pa-md" 
+                        color="green" 
+                        label="Search" 
+                        @click="searchFilter()" />
+                      </div>
+                    </div>
+                </div> 
+
+
                 <div class="col-sm-12 col-xs-12 q-pa-sm">
                 <q-card  style="min-width: 400px">
                         <!-- <q-card-section class="bg-green text-white">
                           <div class="text-h6">Profiling List</div>
                         </q-card-section> -->
                         <!-- <div> {{ this.rows }} </div> -->
+                        
+
                         <q-separator />
                         <q-card-section class="q-ma-md q-pt-none">
                           <q-table
@@ -673,6 +711,13 @@ export default defineComponent({
       yes_no: [
         { label: 'Yes', value: 1 },
         { label: 'No', value: 0},
+      ],
+
+      search_options:[
+      { label: 'Alive', value: "Alive"},
+      { label: 'PWD', value: "PWD"},
+      { label: 'Health Worker', value: "HW"},
+      { label: 'Voter', value: "Voter"},
       ],
 
       rows:[],

@@ -98,6 +98,7 @@
           <div class="q-pa-md" style="padding-top:20px">
             
               <q-table
+                style="border-top:rgb(2, 110, 124) 8px solid; border-bottom:rgb(2, 110, 124) 4px solid"
                 class="table"
                 title="Certificate of Clearance Management"
                 :rows="rows"
@@ -197,6 +198,12 @@
                                 <p class="text-center q-pt-lg">
                                   <strong class="text-h5 ">BARANGAY MAYAPA<br>
                                   <i style="font-size: small;">Sangguniang Barangay Members</i></strong>
+                                </p>
+                              </div>
+                              <div class="q-mt-md">
+                                <p class="text-center q-pt-md">
+                                  <strong >{{ brgy_officials.punong_barangay }}<br>
+                                  <i style="font-size: small;">PUNONG BARANGAY</i></strong>
                                 </p>
                               </div>
                               <div class="q-mt-md">

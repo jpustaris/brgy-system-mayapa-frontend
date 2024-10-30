@@ -27,65 +27,181 @@
           </div>  
       </div>  -->
       <div class="q-pa-md row">
-        <div class="col-md-3 q-pa-md">
+        <div class="col-md-3 q-pa-md" style="min-width:400px">
           <q-card
             class="my-card text-white"
-            style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)"
+            style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle,  rgb(5 52 92) 0%, rgb(4 136 183) 100%)"
             >
             <q-card-section>
-              <div class="text-h1 text-center">{{ dashboard_data.residents }}</div>
-              <div class="text-subtitle2">TOTAL RESIDENTS</div>
+              <div class="text-subtitle1">TOTAL RESIDENTS</div>
+              <div class="text-h1 text-center q-pa-lg">{{ dashboard_data.residents }}</div>
+              
             </q-card-section>
 
-            <!-- <q-card-section class="q-pt-none">
-              {{ lorem }}
-            </q-card-section> -->
+            <q-card-section class="q-pt-none column">
+                <q-btn 
+                    to="/profiling" clickable v-ripple exact
+                    class="q-mx-sm bg-teal text-white col self-end" 
+                    label="View Residents" 
+                    />
+            </q-card-section>
             </q-card>
         </div>
-        <div class="col-md-3 q-pa-md">
+        <div class="col-md-3 q-pa-md" style="min-width:400px">
           <q-card
             class="my-card text-white"
-            style="background: radial-gradient(circle, rgb(53 255 167) 0%, rgb(1 136 58) 100%)"
+            style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle,  rgb(6 98 58) 0%, rgb(49 185 114) 100%)"
             >
             <q-card-section>
-              <div class="text-h1 text-center">{{ dashboard_data.seniors }}</div>
-              <div class="text-subtitle2">TOTAL SENIORS</div>
+              <div class="text-subtitle1">TOTAL SENIORS</div>
+              <div class="text-h1 text-center q-pa-lg">{{ dashboard_data.seniors }}</div>
             </q-card-section>
 
-            <!-- <q-card-section class="q-pt-none">
-              {{ lorem }}
-            </q-card-section> -->
+            <q-card-section class="q-pt-none column">
+                <q-btn 
+                    to="/seniors" clickable v-ripple exact
+                    class="q-mx-sm bg-teal text-white col self-end" 
+                    label="View Seniors" 
+                    />
+            </q-card-section>
             </q-card>
         </div>
-        <div class="col-md-3 q-pa-md">
+        <div class="col-md-3 q-pa-md" style="min-width:400px">
           <q-card
             class="my-card text-white"
-            style="background: radial-gradient(circle, rgb(219 53 255) 0%, rgb(97 1 136) 100%)"
+            style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle, rgb(97 1 136) 0%, rgb(219 53 255) 100%)"
             >
             <q-card-section>
-              <div class="text-h1 text-center">{{ dashboard_data.healthworkers }}</div>
-              <div class="text-subtitle2">HEALTH WORKERS</div>
+              <div class="text-subtitle1">HEALTH WORKERS</div>
+              <div class="text-h1 text-center q-pa-lg">{{ dashboard_data.healthworkers }}</div>
+              
             </q-card-section>
 
-            <!-- <q-card-section class="q-pt-none">
-              {{ lorem }}
-            </q-card-section> -->
+            <q-card-section class="q-pt-none column">
+                <q-btn 
+                    to="/health-workers" clickable v-ripple exact
+                    class="q-mx-sm bg-teal text-white col self-end" 
+                    label="View Health Workers" 
+                    />
+            </q-card-section>
             </q-card>
         </div>
 
-        <div class="col-md-3 q-pa-md">
+        <div class="col-md-3 q-pa-md" style="min-width:400px">
           <q-card
             class="my-card text-white"
-            style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)"
+            style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle, rgb(136 45 1) 0%,  rgb(255 132 53)100%);"
             >
+            <!-- style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)" -->
             <q-card-section>
-              <div class="text-h1 text-center">{{ dashboard_data.pwds }}</div>
-              <div class="text-subtitle2">PERSONS WITH DISABILITY</div>
+              <div class="text-subtitle1">PERSONS WITH DISABILITY</div>
+              <div class="text-h1 text-center q-pa-lg">{{ dashboard_data.pwds }}</div>
+              
             </q-card-section>
 
-            <!-- <q-card-section class="q-pt-none">
-              {{ lorem }}
-            </q-card-section> -->
+            <q-card-section class="q-pt-none column">
+                <q-btn 
+                    to="/person-with-disabilities" clickable v-ripple exact
+                    class="q-mx-sm bg-teal text-white col self-end" 
+                    label="View Person With Disability" 
+                    />
+            </q-card-section>
+            </q-card>
+        </div>
+
+        <div class="col-md-3 q-pa-md" style="min-width:400px">
+          <q-card
+            class="my-card text-white"
+            style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle,  rgb(5 26 92) 0%, rgb(4 45 183) 100%)"
+            >
+            <!-- style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)" -->
+            <q-card-section>
+              <div class="text-subtitle1">TOTAL MALE RESIDENTS</div>
+              <div class="text-h1 text-center q-pa-lg">{{ dashboard_data.males }}</div>
+              
+            </q-card-section>
+
+            <q-card-section class="q-pt-none column">
+                <q-btn 
+                    to="/person-with-disabilities" clickable v-ripple exact
+                    class="q-mx-sm bg-teal text-white col self-end" 
+                    label="View Person With Disability" 
+                    />
+            </q-card-section>
+            </q-card>
+        </div>
+
+        <div class="col-md-3 q-pa-md" style="min-width:400px">
+          <q-card
+            class="my-card text-white"
+            style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle,  rgb(92 5 5) 0%, rgb(183 4 4) 100%)"
+            >
+            <!-- style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)" -->
+            <q-card-section>
+              <div class="text-subtitle1">TOTAL FEMALE RESIDENTS</div>
+              <div class="text-h1 text-center q-pa-lg">{{ dashboard_data.females }}</div>
+              
+            </q-card-section>
+
+            <q-card-section class="q-pt-none column">
+                <q-btn 
+                    to="/person-with-disabilities" clickable v-ripple exact
+                    class="q-mx-sm bg-teal text-white col self-end" 
+                    label="View Person With Disability" 
+                    />
+            </q-card-section>
+            </q-card>
+        </div>
+
+        <div class="col-md-3 q-pa-md" style="min-width:400px">
+          <q-card
+            class="my-card text-white"
+            style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle, rgb(136 1 110) 0%, rgb(255 53 185) 100%)"
+            >
+            <!-- style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)" -->
+            <q-card-section>
+              <div class="text-subtitle1">TOTAL VOTERS</div>
+              <div class="text-h1 text-center q-pa-lg">{{ dashboard_data.voters }}</div>
+              
+            </q-card-section>
+
+            <q-card-section class="q-pt-none column">
+                <q-btn 
+                    to="/person-with-disabilities" clickable v-ripple exact
+                    class="q-mx-sm bg-teal text-white col self-end" 
+                    label="View Person With Disability" 
+                    />
+            </q-card-section>
+            </q-card>
+        </div>
+
+        <div class="col-md-3 q-pa-md" style="min-width:400px">
+          <q-card
+            class="my-card text-white"
+            style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle, rgb(137 102 13) 0%, rgb(255 199 53) 100%);"
+            >
+            <!-- style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)" -->
+            <q-card-section>
+              <div class="text-subtitle1">TOTAL NON-VOTERS</div>
+              <div class="text-h1 text-center q-pa-lg">{{ dashboard_data.non_voters }}</div>
+              
+            </q-card-section>
+
+            <q-card-section class="q-pt-none column">
+                <q-btn 
+                    to="/person-with-disabilities" clickable v-ripple exact
+                    class="q-mx-sm bg-teal text-white col self-end" 
+                    label="View Person With Disability" 
+                    />
+            </q-card-section>
             </q-card>
         </div>
         

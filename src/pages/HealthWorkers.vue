@@ -69,6 +69,7 @@
         
           <div class="q-pa-md" style="padding-top:20px">
               <q-table
+                style="border-top:rgb(2, 110, 124) 8px solid; border-bottom:rgb(2, 110, 124) 4px solid"
                 class="table"
                 title="Health Workers Details"
                 :rows="rows"
@@ -327,15 +328,15 @@ export default defineComponent({
           { name: 'gender', label: 'Gender',  field: row => row.gender,align: 'center', sortable: true },
           { name: 'street', label: 'Location Street',  field: row => row.street,align: 'center', sortable: true },
           { name: 'building', label: 'Location Building',  field: row => row.building,align: 'center', sortable: true },
-          {
-            name: 'active',
-            required: true,
-            label: 'ACTION',
-            align: 'center',
-            field: row => row.id,
-            format: val => `${val}`,
-            sortable: true
-          },
+          // {
+          //   name: 'active',
+          //   required: true,
+          //   label: 'ACTION',
+          //   align: 'center',
+          //   field: row => row.id,
+          //   format: val => `${val}`,
+          //   sortable: true
+          // },
         ]
       }),
   computed: {

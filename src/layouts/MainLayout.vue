@@ -60,9 +60,9 @@
               </q-item-section>
             </q-item> 
 
-            <q-item class="temp-login-img q-mb-sm text-grey-7" v-if="!miniState">
+            <!-- <q-item class="temp-login-img q-mb-sm text-grey-7" v-if="!miniState">
               <q-icon name="account_circle" size="7rem"/>
-            </q-item>
+            </q-item> -->
             <q-item class="temp-login-username" v-if="!miniState">
               <p class="text-grey-9">{{user_profile_details.email}}</p>
             </q-item>
@@ -268,7 +268,7 @@
                 </q-item-section>
               </q-item>
 
-              <q-item to="/sms-blast" clickable v-ripple exact  :class="{ 'selected-sidenav': $route.path === '/sms-blast' }">
+              <!-- <q-item to="/sms-blast" clickable v-ripple exact  :class="{ 'selected-sidenav': $route.path === '/sms-blast' }">
                 <q-item-section avatar>
                   <q-avatar>
                     <q-tooltip class="bg-dark text-subtitle2" anchor="center right" self="center start" v-if="miniState">
@@ -280,7 +280,7 @@
                 <q-item-section class="text-bold">
                   SMS Blast
                 </q-item-section>
-              </q-item>
+              </q-item> -->
 
 
               <q-expansion-item

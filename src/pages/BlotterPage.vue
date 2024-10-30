@@ -75,7 +75,7 @@
                     rounded  
                     color="green" 
                     icon-right="add" 
-                    label="File a Blotter" 
+                    label="Add Complaint" 
                     @click="openAddBlotterForm()" />
                   </div>
                 </div>
@@ -97,8 +97,9 @@
       
 
         
-          <div class="q-pa-md" style="padding-top:20px">
+          <div class="q-pa-md" style="padding-top:20px;">
               <q-table
+                style="border-top:#006596 8px solid; border-bottom:#006596 4px solid"
                 class="table"
                 title="Blotter Management"
                 :rows="rows"
@@ -117,13 +118,13 @@
                     label="Edit Blotter" 
                     @click="openEditBlotterForm(props)" />
 
-                    <q-btn 
+                    <!-- <q-btn 
                     :disabled="loading"
                     :loading="loading" 
                     class="q-mx-sm bg-blue text-white" 
                     icon-right="fa-solid fa-eye" 
                     label="View Blotter" 
-                    @click="openViewBlotterForm(props)" />
+                    @click="openViewBlotterForm(props)" /> -->
 
                     <!-- <q-btn 
                     :disabled="loading"
@@ -166,7 +167,7 @@
                 <q-dialog v-model="addBlotterForm" transition-show="scale" transition-hide="scale">
                   <q-card  style="min-width: 600px">
                     <q-card-section class="bg-green text-white">
-                      <div class="text-h6">File a Blotter / Complaint Form</div>
+                      <div class="text-h6">Complaint Form</div>
                     </q-card-section>
                     <q-separator />
                     <q-card-section class="q-pt-md q-ma-md q-pt-none">
@@ -244,7 +245,7 @@
                           </template>
                         </q-input>
 
-                        <q-input
+                        <!-- <q-input
                           input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                           class="login-input"
                           outlined
@@ -261,7 +262,7 @@
                               <q-icon color="dark" name="fa-solid fa-add" />
                             </q-avatar>
                           </template>
-                        </q-input>
+                        </q-input> -->
                         <q-separator></q-separator>
                         <q-card-actions align="right" >
                           <q-btn
@@ -299,14 +300,14 @@
                         label="Complaint"
                       />
 
-                      <q-input
+                      <!-- <q-input
                         color="black"
                         bg-color="secondary"
                         outlined
                         class="login-input"
                         v-model="edit_note"
                         label="Note"
-                      />
+                      /> -->
                       <div>
                         <q-btn 
                         @click="editBlotterMethod"
@@ -473,17 +474,18 @@ export default defineComponent({
             format: val => `${val}`,
             sortable: true
           },
-          { name: 'complaint', label: 'Complainant',  field: row => row.complaint,align: 'left', sortable: true },
-          { name: 'defendant', label: 'Defendant',  field: row => row.defendant,align: 'center', sortable: true },
-          {
-            name: 'active',
-            required: true,
-            label: 'ACTION',
-            align: 'center',
-            field: row => row.id,
-            format: val => `${val}`,
-            sortable: true
-          },
+          { name: 'complaint', label: 'Complainant',  field: row => row.complainant.first_name + " " + row.complainant.middle_name+ " " + row.complainant.last_name,align: 'left', sortable: true },
+          { name: 'complaint', label: 'Case',  field: row => row.complaint,align: 'left', sortable: true },
+          { name: 'defendant', label: 'Defendant',  field: row => row.defendant,align: 'left', sortable: true },
+          // {
+          //   name: 'active',
+          //   required: true,
+          //   label: 'ACTION',
+          //   align: 'center',
+          //   field: row => row.id,
+          //   format: val => `${val}`,
+          //   sortable: true
+          // },
         ]
       }),
   computed: {
