@@ -13,7 +13,7 @@
         <div class="right-section col-md-6 col-sm-12">
           <div class="field-container">
             <div class="q-mb-lg  q-pb-lg">
-                <p class="q-pb-lg text-center text-black">Login to access your
+                <p class="text-h4 q-pb-lg text-center text-black">Login to access your
                   <br><span class="text-title-login">Barangay System</span>
                 </p>
               </div>  
