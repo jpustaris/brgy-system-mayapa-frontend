@@ -58,6 +58,7 @@
                               color="black"
                               bg-color="secondary"
                               label-color="primary"
+                              :rules="[val => !!val || 'Field is required']"
                             ></q-input>
                           </div>
                           
@@ -74,6 +75,7 @@
                               color="black"
                               bg-color="secondary"
                               label-color="primary"
+                              :rules="[val => !!val || 'Field is required']"
                             ></q-input>
                           </div>
                           
@@ -90,6 +92,7 @@
                               color="black"
                               bg-color="secondary"
                               label-color="primary"
+                              :rules="[val => !!val || 'Field is required']"
                             ></q-input>
                           </div>
                           <div class="col-md-3 col-sm-6 q-pa-sm">
@@ -108,6 +111,7 @@
                                   bg-color="secondary"
                                   label-color="primary"
                                   hint="Example: Mr. Ms. Mrs. Dr."
+                                  :rules="[val => !!val || 'Field is required']"
                                 ></q-input>
                                 </div>
                               <div class="col-md-6 col-sm-12 q-pa-xs">
@@ -124,6 +128,7 @@
                                   bg-color="secondary"
                                   label-color="primary"
                                   hint="Example: Jr. Sr. II III"
+                                  
                                 ></q-input>
 
                               </div>
@@ -146,6 +151,7 @@
                               color="black"
                               bg-color="secondary"
                               label-color="primary"
+                              :rules="[val => !!val || 'Field is required']"
                             ></q-input>
                           </div>
                           
@@ -162,6 +168,7 @@
                               color="black"
                               bg-color="secondary"
                               label-color="primary"
+                              :rules="[val => !!val || 'Field is required']"
                             ></q-input>
                           </div>
                           
@@ -178,6 +185,7 @@
                               color="black"
                               bg-color="secondary"
                               label-color="primary"
+                              :rules="[val => !!val || 'Field is required']"
                             ></q-input>
                           </div>
                           
@@ -194,6 +202,7 @@
                               color="black"
                               bg-color="secondary"
                               label-color="primary"
+                              :rules="[val => !!val || 'Field is required']"
                             ></q-input>
                           </div>
                         </div>
@@ -211,6 +220,7 @@
                               color="black"
                               bg-color="secondary"
                               label-color="primary"
+                              :rules="[val => !!val || 'Field is required']"
                             ></q-input>
                           </div>
                           
@@ -314,6 +324,7 @@
                               color="black"
                               bg-color="secondary"
                               label-color="primary"
+                              :rules="[val => !!val || 'Field is required']"
                             ></q-input>
                           </div>
                           <div class="col-md-3 col-sm-6 q-pa-sm">
@@ -344,6 +355,7 @@
                               color="black"
                               bg-color="secondary"
                               label-color="primary"
+                              :rules="[val => !!val || 'Field is required']"
                             ></q-input>
                           </div>
                           <div class="col-md-3 col-sm-6 q-pa-sm">
@@ -359,6 +371,7 @@
                               color="black"
                               bg-color="secondary"
                               label-color="primary"
+                              :rules="[val => !!val || 'Field is required']"
                             ></q-input>
                           </div>
 
@@ -375,6 +388,7 @@
                               color="black"
                               bg-color="secondary"
                               label-color="primary"
+                              :rules="[val => !!val || 'Field is required']"
                             ></q-input>
                           </div>
 
@@ -466,7 +480,12 @@
                         <div class="row">
                           <div class="col-md-3 col-sm-6 q-pa-sm">
                             <p class="text-black login-input padding-left: 20px;">Profile Img:</p>
-                            <input @change="onFileChange" type="file" accept="image/*" hint="1x1 Picture" />
+                            <input @change="onFileChange" 
+                            type="file" 
+                            accept="image/*" 
+                            hint="1x1 Picture" 
+                            required
+                            />
                             <!-- <q-input         
                             id="profile_pic"                     
                                 @update:model-value="val => { profile_pic = val[0] }"
@@ -509,6 +528,7 @@
                         <q-card-actions align="right" >
                           <q-btn
                           :loading="loading"
+                          type="submit"
                           class="text-center bg-green text-white"
                           label="Save Resident Profile"
                          @click="uploadProfile()"
