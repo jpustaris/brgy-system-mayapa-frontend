@@ -44,11 +44,10 @@ export default {
                 complaint: payload.complaint,
                 note: payload.note,
               }).then(response => {
-                console.log(response.data)
-                context.commit("SET_API_RESPONSE", response.data.status)
+                // console.log(response.data)
               })
               .catch((error) => {
-                console.log(error)
+                // console.log(error)
               })
             context.commit("SET_LOADING", false)
         },
@@ -58,7 +57,7 @@ export default {
                 complaint: payload.edit_complaint,
                 note: payload.edit_note,
             }).then(response => {
-                    console.log(response.data)
+                    // console.log(response.data)
                     context.commit("SET_ALL_BLOTTERS", response.data.data)
             }).catch((error) => {
                     console.log(error)
@@ -67,7 +66,7 @@ export default {
 
         async disableSingleBlotter(context, payload) {
             await this.$axios.delete('/api/blotters/'+ payload.selected_id).then(response => {
-                    console.log(response.data)
+                    // console.log(response.data)
                     context.commit("SET_ALL_BLOTTERS", response.data.data)
             }).catch((error) => {
                     console.log(error)

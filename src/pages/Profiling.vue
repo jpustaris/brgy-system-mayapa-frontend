@@ -39,7 +39,7 @@
             <div class="col-sm-12 col-xs-12 q-pa-sm">
             <q-card  style="min-width: 400px">
                     <q-card-section class="bg-green text-white">
-                      <div class="text-h6">Profiling Form</div>
+                      <div class="text-h6">Add Resident Form</div>
                     </q-card-section>
                     <q-separator />
                     <q-card-section class="q-pt-md q-ma-md q-pt-none">
@@ -645,16 +645,22 @@
                           >
                           <template v-slot:top-right>
                             <q-input class="textbox" 
-                                  rounded outlined v-model="filter"
-                                  label="Filter"
-                                  >
-                                  <template v-slot:append>
-                                    <q-avatar>
-                                        <q-icon name="search" />
-                                    </q-avatar>
-                                  </template>
-                                </q-input>
-                            </template>
+                                rounded outlined v-model="filter"
+                                label="Filter"
+                                >
+                                <template v-slot:append>
+                                  <q-avatar>
+                                      <q-icon name="search" />
+                                  </q-avatar>
+                                </template>
+                              </q-input>
+                              <q-btn 
+                                outlined
+                                class="q-ml-md bg-teal text-white" 
+                                icon-right="add" 
+                                label="Add Dead Form" 
+                                @click="openDeathForm()" />
+                          </template>
                           <template v-slot:body-cell-active="props">
                               <q-td :props="props">
                                 <!-- <q-btn 
@@ -706,11 +712,85 @@
 
     </div>
   </div>
-
-      
-
-   
+  
   </div>
+
+  <q-dialog v-model="deathDeclarationForm" transition-show="scale" transition-hide="scale">
+    <q-card  style="min-width: 600px">
+      <q-card-section class="bg-green text-white">
+        <div class="text-h6">Deatch Declaration Form</div>
+      </q-card-section>
+      <q-separator />
+      <q-card-section class="q-pt-md q-ma-md q-pt-none">
+        <q-form
+          class="q-gutter-md"
+          @submit="addDeathDeclaration"
+        >
+        <p class="text-black login-input padding-left: 20px;">Resident:</p>
+        <q-select 
+          class="select text-no-wrap" 
+          v-model="dead_id" 
+          :options="residents" 
+          option-value="id" 
+          option-label="display_name" 
+          label="Resident" 
+          emit-value 
+          map-options 
+          borderless
+          :rules="[val => !!val || 'Field is required']"
+          />
+
+          <p class="text-black login-input padding-left: 20px;">Reason of Death:</p>
+          <q-input
+            input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
+            class="login-input"
+            outlined
+            type="text"
+            v-model="death_reason"
+            placeholder="Reason of Death"
+            lazy-rules
+            color="dark"
+            bg-color="secondary"
+            label-color="primary"
+            no-error-icon
+            autogrow
+          >
+        </q-input>
+
+        <p class="text-black login-input padding-left: 20px;">Birthdate:</p>
+        <q-input
+          input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
+          class="login-input"
+          outlined
+          v-model="date_of_death"
+          type="date"
+          placeholder="Date of Death"
+          lazy-rules
+          color="black"
+          bg-color="secondary"
+          label-color="primary"
+          :rules="[val => !!val || 'Field is required']"
+        ></q-input>
+ 
+            
+          
+
+
+          <q-separator></q-separator>
+          <q-card-actions align="right" >
+            <q-btn
+            :disabled="loading"
+            :loading="loading"
+            class="text-center bg-green text-white"
+            id="addSubmitBtn"
+            type="submit"
+            label="Create Certificate"
+            />
+          </q-card-actions>
+        </q-form>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
 
 
   <q-dialog v-model="response_dialog" backdrop-filter="blur(4px) saturate(150%)">
@@ -785,7 +865,10 @@ export default defineComponent({
       list_PWD:'All',
       list_voter:'All',
       list_HW:'All',
-
+      deathDeclarationForm:false,
+      dead_id:'',
+      death_reason:'',
+      date_of_death:'',
       list_genders: [
         { label: 'All', value: 'All' },
         { label: 'Male', value: 'Male' },
@@ -938,6 +1021,7 @@ export default defineComponent({
     ...mapActions('ResidentManagement',[
       'getResidents',
       'searchResident',
+      'declareDead',
     ]),
     ...mapGetters('ResidentManagement', {
       loading: 'GET_LOADING',
@@ -956,6 +1040,18 @@ export default defineComponent({
       // Preview the image
       this.imageUrl = URL.createObjectURL(file);
     },
+
+
+    async addDeathDeclaration(){
+      let death_data = new FormData();
+      death_data.append("dead_id", this.dead_id);
+      death_data.append("death_reason", this.death_reason);
+      death_data.append("date_of_death", this.date_of_death);
+      this.declareDead(death_data).then((response => {
+          console.log("Success!")
+        }));
+    },
+
     async searchFilter(){
       let search_data = new FormData();
       search_data.append("list_HW", this.list_HW);
@@ -1024,6 +1120,11 @@ export default defineComponent({
       } catch (error) {
         console.error("Error uploading image", error);
       }
+    },
+
+    async openDeathForm(){
+      console.log("Open Death Declaration Form");
+      this.deathDeclarationForm = true;
     },
 
     async refresh(){

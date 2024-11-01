@@ -112,7 +112,25 @@ export default {
             context.commit("SET_LOADING", false)
         },
 
-        async searchResident(context) {
+        async declareDead(context,payload){
+
+            let death_data = new FormData();
+            death_data.append("id", payload.dead_id);
+            death_data.append("death_reason", payload.death_reason);
+            death_data.append("date_of_death", payload.date_of_death);
+            death_data.append("is_deceased", 1);
+            await this.$axios.post('/api/declare-dead-resident',death_data)
+            .then(response => {
+                console.log(response)
+              })
+              .catch((error) => {
+                console.log(error)
+              })
+        },
+
+
+
+        async searchResident(context,payload) {
             context.commit("SET_LOADING", true)
             let search_data = new FormData();
             search_data.append("list_HW", this.list_HW);
