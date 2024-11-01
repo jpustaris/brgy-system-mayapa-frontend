@@ -25,6 +25,8 @@ const routes = [
       { path: '/dashboard/male-residents', component: () => import('pages/dashboard/Males.vue') },
       { path: '/dashboard/voter-residents', component: () => import('pages/dashboard/Voters.vue') },
       { path: '/dashboard/non-voter-residents', component: () => import('pages/dashboard/Non-voters.vue') },
+      { path: '/dashboard/alive-residents', component: () => import('pages/dashboard/Alive.vue') },
+      { path: '/dashboard/deceased-residents', component: () => import('pages/dashboard/Deceased.vue') },
     
     
     ],

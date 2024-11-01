@@ -40,7 +40,7 @@
             </q-card-section>
 
             <q-card-section class="q-pt-none column">
-                <q-btn 
+              <q-btn 
                     to="/profiling" clickable v-ripple exact
                     class="q-mx-sm bg-teal text-white col self-end" 
                     label="View Residents" 
@@ -199,6 +199,50 @@
                     to="/dashboard/non-voter-residents" clickable v-ripple exact
                     class="q-mx-sm bg-teal text-white col self-end" 
                     label="View Non-Voter Residents" 
+                    />
+            </q-card-section>
+            </q-card>
+        </div>
+
+        <div class="col-md-3 q-pa-md" style="min-width:400px">
+          <q-card
+            class="my-card text-white"
+            style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle, rgb(13 25 137) 0%, rgb(53 115 255) 100%);"
+            >
+            <!-- style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)" -->
+            <q-card-section>
+              <div class="text-subtitle1">ALIVE RESIDENTS</div>
+              <div class="text-h1 text-center q-pa-lg">{{ dashboard_data.non_voters }}</div>
+            </q-card-section>
+
+            <q-card-section class="q-pt-none column">
+                <q-btn 
+                    to="/dashboard/alive-residents" clickable v-ripple exact
+                    class="q-mx-sm bg-teal text-white col self-end" 
+                    label="View Alive Residents" 
+                    />
+            </q-card-section>
+            </q-card>
+        </div>
+
+        <div class="col-md-3 q-pa-md" style="min-width:400px">
+          <q-card
+            class="my-card text-white"
+            style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle, rgb(137 67 13) 0%, rgb(255 100 53) 100%);"
+            >
+            <!-- style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)" -->
+            <q-card-section>
+              <div class="text-subtitle1">DECEASED RESIDENTS</div>
+              <div class="text-h1 text-center q-pa-lg">{{ dashboard_data.non_voters }}</div>
+            </q-card-section>
+
+            <q-card-section class="q-pt-none column">
+                <q-btn 
+                    to="/dashboard/deceased-residents" clickable v-ripple exact
+                    class="q-mx-sm bg-teal text-white col self-end" 
+                    label="View Deceased Residents" 
                     />
             </q-card-section>
             </q-card>

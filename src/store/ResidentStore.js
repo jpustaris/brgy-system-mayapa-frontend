@@ -9,31 +9,35 @@ export default {
         females:[],
         voters:[],
         non_voters:[],
+        alives:[],
+        deads:[],
         loading: false,
     },
     getters: {
         GET_ALL_RESIDENTS (state) {
             return state.residents
         },
-
         GET_MALES (state) {
             return state.males
         },
-
         GET_FEMALES (state) {
             return state.females
         },
-
         GET_VOTERS (state) {
             return state.voters
         },
-
         GET_NON_VOTERS (state) {
             return state.non_voters
         },
 
         GET_LOADING(state) {
             return state.loading;
+        },
+        GET_ALIVE_RESIDENTS (state) {
+            return state.alives
+        },
+        GET_DECEASED_RESIDENTS(state) {
+            return state.deads;
         }
     },
     mutations: {
@@ -54,7 +58,13 @@ export default {
         },
         SET_LOADING(state, loading) {
             state.loading = loading;
-        }
+        },
+        SET_ALIVE_RESIDENTS(state,alives ) {
+            state.alives = alives;
+        },
+        SET_DECEASED_RESIDENTS(state, deads) {
+            state.deads = deads;
+        },
     },
     actions:{
         async getResidents(context) {
@@ -106,6 +116,28 @@ export default {
             await this.$axios.get('/api/get-resident-non-voters')
                 .then(response => {
                     context.commit("SET_NON_VOTERS", response.data.data)
+                })
+                .catch(error => {
+                })
+            context.commit("SET_LOADING", false)
+        },
+
+        async getAliveResidents(context) {
+            context.commit("SET_LOADING", true)
+            await this.$axios.get('/api/get-alive-residents')
+                .then(response => {
+                    context.commit("SET_ALIVE_RESIDENTS", response.data.data)
+                })
+                .catch(error => {
+                })
+            context.commit("SET_LOADING", false)
+        },
+
+        async getDeceasedResidents(context) {
+            context.commit("SET_LOADING", true)
+            await this.$axios.get('/api/get-deceased-residents')
+                .then(response => {
+                    context.commit("SET_DECEASED_RESIDENTS", response.data.data)
                 })
                 .catch(error => {
                 })
