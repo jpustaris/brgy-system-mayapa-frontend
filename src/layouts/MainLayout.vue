@@ -82,9 +82,6 @@
                   Dashboard
                 </q-item-section>
               </q-item>
-
-
-
               <q-separator />
 
               <!-- <q-expansion-item
@@ -226,7 +223,7 @@
                 </q-item-section>
               </q-item>
 
-              <q-item to="/health-workers" clickable v-ripple exact  :class="{ 'selected-sidenav': $route.path === '/health-workers' }">
+              <!-- <q-item to="/health-workers" clickable v-ripple exact  :class="{ 'selected-sidenav': $route.path === '/health-workers' }">
                 <q-item-section avatar>
                   <q-avatar>
                     <q-tooltip class="bg-dark text-subtitle2" anchor="center right" self="center start" v-if="miniState">
@@ -266,7 +263,7 @@
                 <q-item-section class="text-bold">
                   Senior People
                 </q-item-section>
-              </q-item>
+              </q-item> -->
 
               <!-- <q-item to="/sms-blast" clickable v-ripple exact  :class="{ 'selected-sidenav': $route.path === '/sms-blast' }">
                 <q-item-section avatar>

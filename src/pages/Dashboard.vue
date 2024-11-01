@@ -128,9 +128,9 @@
 
             <q-card-section class="q-pt-none column">
                 <q-btn 
-                    to="/person-with-disabilities" clickable v-ripple exact
+                    to="/dashboard/male-residents" clickable v-ripple exact
                     class="q-mx-sm bg-teal text-white col self-end" 
-                    label="View Person With Disability" 
+                    label="View Male Residents" 
                     />
             </q-card-section>
             </q-card>
@@ -151,9 +151,9 @@
 
             <q-card-section class="q-pt-none column">
                 <q-btn 
-                    to="/person-with-disabilities" clickable v-ripple exact
+                    to="/dashboard/female-residents" clickable v-ripple exact
                     class="q-mx-sm bg-teal text-white col self-end" 
-                    label="View Person With Disability" 
+                    label="View Female Residents" 
                     />
             </q-card-section>
             </q-card>
@@ -174,9 +174,9 @@
 
             <q-card-section class="q-pt-none column">
                 <q-btn 
-                    to="/person-with-disabilities" clickable v-ripple exact
+                    to="/dashboard/voter-residents" clickable v-ripple exact
                     class="q-mx-sm bg-teal text-white col self-end" 
-                    label="View Person With Disability" 
+                    label="View Voter Residents" 
                     />
             </q-card-section>
             </q-card>
@@ -192,14 +192,13 @@
             <q-card-section>
               <div class="text-subtitle1">TOTAL NON-VOTERS</div>
               <div class="text-h1 text-center q-pa-lg">{{ dashboard_data.non_voters }}</div>
-              
             </q-card-section>
 
             <q-card-section class="q-pt-none column">
                 <q-btn 
-                    to="/person-with-disabilities" clickable v-ripple exact
+                    to="/dashboard/non-voter-residents" clickable v-ripple exact
                     class="q-mx-sm bg-teal text-white col self-end" 
-                    label="View Person With Disability" 
+                    label="View Non-Voter Residents" 
                     />
             </q-card-section>
             </q-card>

@@ -5,12 +5,33 @@ export default {
     namespaced: true,
     state: {
         residents:[],
-        loading: false
+        males:[],
+        females:[],
+        voters:[],
+        non_voters:[],
+        loading: false,
     },
     getters: {
         GET_ALL_RESIDENTS (state) {
             return state.residents
         },
+
+        GET_MALES (state) {
+            return state.males
+        },
+
+        GET_FEMALES (state) {
+            return state.females
+        },
+
+        GET_VOTERS (state) {
+            return state.voters
+        },
+
+        GET_NON_VOTERS (state) {
+            return state.non_voters
+        },
+
         GET_LOADING(state) {
             return state.loading;
         }
@@ -18,6 +39,18 @@ export default {
     mutations: {
         SET_ALL_RESIDENTS (state, residents) {
             state.residents = residents
+        },
+        SET_MALES (state, males) {
+            state.males = males
+        },
+        SET_FEMALES (state, females) {
+            state.females = females
+        },
+        SET_VOTERS (state, voters) {
+            state.voters = voters
+        },
+        SET_NON_VOTERS (state, non_voters) {
+            state.non_voters = non_voters
         },
         SET_LOADING(state, loading) {
             state.loading = loading;
@@ -29,6 +62,50 @@ export default {
             await this.$axios.get('/api/residents')
                 .then(response => {
                     context.commit("SET_ALL_RESIDENTS", response.data.data)
+                })
+                .catch(error => {
+                })
+            context.commit("SET_LOADING", false)
+        },
+
+        async getMales(context) {
+            context.commit("SET_LOADING", true)
+            await this.$axios.get('/api/get-resident-males')
+                .then(response => {
+                    context.commit("SET_MALES", response.data.data)
+                })
+                .catch(error => {
+                })
+            context.commit("SET_LOADING", false)
+        },
+
+        async getFemales(context) {
+            context.commit("SET_LOADING", true)
+            await this.$axios.get('/api/get-resident-females')
+                .then(response => {
+                    context.commit("SET_FEMALES", response.data.data)
+                })
+                .catch(error => {
+                })
+            context.commit("SET_LOADING", false)
+        },
+
+        async getVoters(context) {
+            context.commit("SET_LOADING", true)
+            await this.$axios.get('/api/get-resident-voters')
+                .then(response => {
+                    context.commit("SET_VOTERS", response.data.data)
+                })
+                .catch(error => {
+                })
+            context.commit("SET_LOADING", false)
+        },
+
+        async getNonVoters(context) {
+            context.commit("SET_LOADING", true)
+            await this.$axios.get('/api/get-resident-non-voters')
+                .then(response => {
+                    context.commit("SET_NON_VOTERS", response.data.data)
                 })
                 .catch(error => {
                 })

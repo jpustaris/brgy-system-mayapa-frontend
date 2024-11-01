@@ -20,6 +20,13 @@ const routes = [
       { path: '/certificates/certificate-of-residency', component: () => import('pages/certificates/Residency.vue') },
       { path: '/certificates/good-moral', component: () => import('pages/certificates/GoodMoral.vue') },
       { path: '/certificates/certificate-of-indigency', component: () => import('pages/certificates/Indigency.vue') },
+      
+      { path: '/dashboard/female-residents', component: () => import('pages/dashboard/Females.vue') },
+      { path: '/dashboard/male-residents', component: () => import('pages/dashboard/Males.vue') },
+      { path: '/dashboard/voter-residents', component: () => import('pages/dashboard/Voters.vue') },
+      { path: '/dashboard/non-voter-residents', component: () => import('pages/dashboard/Non-voters.vue') },
+    
+    
     ],
     beforeEnter(to, from, next) {
       if (localStorage.getItem('access_token')) {
