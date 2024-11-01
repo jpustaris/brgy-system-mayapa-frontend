@@ -542,45 +542,89 @@
           </q-tab-panel>
 
           <q-tab-panel name="profiling_list">
-              <div class="items-start q-pa-md row">
-                <div class=" q-ma-sm" style="font-size: 15px">
-                  <b>Filters:</b>
+            <div class="row q-pa-md ">
+               <div class="col">
+                <!-- <q-card class="q-ma-md q-pa-xl">
+                <q-form  class="q-gutter-md" >
+                <div class="row">
+                  <div class="col"> 
+                      <p class="text-black login-input padding-left: 20px;">Gender: </p>
+                      <q-option-group
+                        style="font-size: larger"
+                        class="login-input padding-left: 20px;"
+                        size="md"
+                        v-model="list_gender"
+                        :options="list_genders"
+                        type="radio"
+                      />
+                  </div>
+                  <div class="col"> 
+                      <p class="text-black login-input padding-left: 20px;">Is Alive: </p>
+                      <q-option-group
+                        style="font-size: larger"
+                        class="login-input padding-left: 20px;"
+                        size="md"
+                        v-model="list_alive"
+                        :options="list_alives"
+                        type="radio"
+                      />
+                  </div>
+                  <div class="col"> 
+                      <p class="text-black login-input padding-left: 20px;">PWD: </p>
+                      <q-option-group
+                        style="font-size: larger"
+                        class="login-input padding-left: 20px;"
+                        size="md"
+                        v-model="list_PWD"
+                        :options="list_PWDs"
+                        type="radio"
+                      />
+                  </div>
+                  <div class="col"> 
+                      <p class="text-black login-input padding-left: 20px;">Voter: </p>
+                      <q-option-group
+                        style="font-size: larger"
+                        class="login-input padding-left: 20px;"
+                        size="md"
+                        v-model="list_voter"
+                        :options="list_voters"
+                        type="radio"
+                      />
+                  </div>
+
+                  <div class="col"> 
+                      <p class="text-black login-input padding-left: 20px;">Health Workers: </p>
+                      <q-option-group
+                        style="font-size: larger"
+                        class="login-input padding-left: 20px;"
+                        size="md"
+                        v-model="list_HW"
+                        :options="list_HWs"
+                        type="radio"
+                      />
+                  </div>
+                  
+                    
                 </div>
-                <div class="items-start q-pa-md row">
-                    <div class="col-sm-6 col-xs-6 q-pa-sm">
-                      <q-input class="textbox" rounded outlined v-model="filter" placeholder="Search" >
-                        <template v-slot:append>
-                          <q-avatar>
-                              <q-icon name="search" />
-                          </q-avatar>
-                        </template>
-                      </q-input>
+                <div class="row">
+                  <div class="col-md-12">
+                  <q-btn
+                      class="q-mx-sm q-pa-md fullWidth" 
+                      color="green" 
+                      label="Search" 
+                      @click="searchFilter()" />
                     </div>
-                    <div class="col-sm-6 col-xs-6 q-pa-sm">
-                      <div>
-                        <div class="col-md-3 col-sm-6 q-pa-sm">
-                            <p class="text-black login-input padding-left: 20px;">Filter Options: </p>
-                              <q-option-group
-                                style="font-size: larger"
-                                class="login-input padding-left: 20px;"
-                                size="md"
-                                v-model="is_PWD"
-                                :options="search_options"
-                                type="radio"
-                              />
-                          </div>
-                        <q-btn
-                        class="q-mx-sm q-pa-md" 
-                        color="green" 
-                        label="Search" 
-                        @click="searchFilter()" />
-                      </div>
-                    </div>
-                </div> 
-
-
-                <div class="col-sm-12 col-xs-12 q-pa-sm">
-                <q-card  style="min-width: 400px">
+                </div>
+                </q-form>
+              </q-card> -->
+              </div>
+            </div>
+            
+              <div class="items-start q-pa-md row">
+              <div class="col-sm-12 col-xs-12 q-pa-sm">
+                <q-card  
+                style="min-width: 400px;border-top:#006596 8px solid; border-bottom:#006596 4px solid"
+                >
                         <!-- <q-card-section class="bg-green text-white">
                           <div class="text-h6">Profiling List</div>
                         </q-card-section> -->
@@ -590,6 +634,7 @@
                         <q-separator />
                         <q-card-section class="q-ma-md q-pt-none">
                           <q-table
+                          
                             class="table"
                             title="Resident Profile List"
                             :rows="rows"
@@ -598,6 +643,18 @@
                             :pagination="pagination"
                             :filter="filter"
                           >
+                          <template v-slot:top-right>
+                            <q-input class="textbox" 
+                                  rounded outlined v-model="filter"
+                                  label="Filter"
+                                  >
+                                  <template v-slot:append>
+                                    <q-avatar>
+                                        <q-icon name="search" />
+                                    </q-avatar>
+                                  </template>
+                                </q-input>
+                            </template>
                           <template v-slot:body-cell-active="props">
                               <q-td :props="props">
                                 <!-- <q-btn 
@@ -723,6 +780,42 @@ export default defineComponent({
       dialog_title:'',
       dialog_message:'',
       added_by:'',
+      list_gender:'All',
+      list_alive:'All',
+      list_PWD:'All',
+      list_voter:'All',
+      list_HW:'All',
+
+      list_genders: [
+        { label: 'All', value: 'All' },
+        { label: 'Male', value: 'Male' },
+        { label: 'Female', value: 'Female'},
+      ],
+
+      list_HWs: [
+        { label: 'All', value: 'All' },
+        { label: 'HWs', value: 'HWs' },
+        { label: 'Non-HWs', value: 'Non_HWs'},
+      ],
+
+      list_PWDs: [
+        { label: 'All', value: 'All' },
+        { label: 'PWDs', value: 'PWDs' },
+        { label: 'Non-PWDs', value: 'Non_PWDs'},
+      ],
+
+      list_voters: [
+        { label: 'All', value: 'All' },
+        { label: 'Voters', value: 'Voters' },
+        { label: 'Non-voters', value: 'Non_voters'},
+      ],
+
+      list_alives: [
+        { label: 'All', value: 'All' },
+        { label: 'Alive', value: 'Alive' },
+        { label: 'Dead', value: 'Dead'},
+      ],
+
       genders: [
         { label: 'Male', value: 'Male' },
         { label: 'Female', value: 'Female'},
@@ -798,22 +891,22 @@ export default defineComponent({
           sortable: true },
 
           { name: 'is_voter', label: 'Is a voter?',  
-          field: row => row.is_voter == 1 ? "Yes" : "No",
+          field: row => row.is_voter == 1 ? "Registered" : "Non-Voter",
           align: 'left', 
           sortable: true },
 
-          { name: 'is_HW', label: 'Is a Health Worker?',  
-          field: row => row.is_HW == 1 ? "Yes" : "No",
+          { name: 'is_HW', label: 'Is a Healthworker?',  
+          field: row => row.is_HW == 1 ? "Healthworker" : "Non-HW",
           align: 'left', 
           sortable: true },
 
           { name: 'is_PWD', label: 'Is a PWD?',  
-          field: row => row.is_PWD == 1 ? "Yes" : "No",
+          field: row => row.is_PWD == 1 ? "Person with Disability" : "Non-PWD",
           align: 'left', 
           sortable: true },
 
           { name: 'is_deceased', label: 'Is alive?',  
-          field: row => row.is_deceased == 1 ? "Yes" : "No",
+          field: row => row.is_deceased == 1 ? "Alive" : "Deceased",
           align: 'left', 
           sortable: true },
 
@@ -844,6 +937,7 @@ export default defineComponent({
     }),
     ...mapActions('ResidentManagement',[
       'getResidents',
+      'searchResident',
     ]),
     ...mapGetters('ResidentManagement', {
       loading: 'GET_LOADING',
@@ -854,13 +948,27 @@ export default defineComponent({
         'getProfile',
     ]),
 
+    
+
     onFileChange(e) {
       const file = e.target.files[0];
       this.profile_pic = file;
       // Preview the image
       this.imageUrl = URL.createObjectURL(file);
     },
+    async searchFilter(){
+      let search_data = new FormData();
+      search_data.append("list_HW", this.list_HW);
+      search_data.append("list_PWD", this.list_PWD);
+      search_data.append("list_alive", this.list_alive);
+      search_data.append("list_voter", this.list_voter);
+      search_data.append("list_gender", this.list_gender);
+      console.log(search_data);
 
+      this.searchResident(search_data).then((response => {
+          console.log("Success!")
+        }));
+    },
 
     async uploadProfile() {
       if (!this.profile_pic) {
@@ -908,8 +1016,8 @@ export default defineComponent({
       try {
 
         await this.saveResidentProfile(data).then((response => {
-          console.log("Success!")
-          alert("Image uploaded successfully!");
+          // console.log("Success!")
+          // alert("Image uploaded successfully!");
           this.refresh();
         }));
 

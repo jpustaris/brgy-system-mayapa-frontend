@@ -75,7 +75,7 @@
                     rounded  
                     color="green" 
                     icon-right="add" 
-                    label="Add Complaint" 
+                    label="Add Record" 
                     @click="openAddBlotterForm()" />
                   </div>
                 </div>
@@ -167,15 +167,15 @@
                 <q-dialog v-model="addBlotterForm" transition-show="scale" transition-hide="scale">
                   <q-card  style="min-width: 600px">
                     <q-card-section class="bg-green text-white">
-                      <div class="text-h6">Complaint Form</div>
+                      <div class="text-h6">Add Record Form</div>
                     </q-card-section>
                     <q-separator />
                     <q-card-section class="q-pt-md q-ma-md q-pt-none">
                       <q-form
                         class="q-gutter-md"
                       >
-                      <h6>Please make sure that the details you encode is correct and without error. <i>Only the Complaint and the note is editable.</i></h6>
-                      <q-separator></q-separator>
+                      <!-- <h6>Please make sure that the details you encode is correct and without error. <i>Only the Complaint and the note is editable.</i></h6>
+                      <q-separator></q-separator> -->
                       <q-select 
                         class="select text-no-wrap" 
                         v-model="complainant" 
@@ -268,7 +268,7 @@
                           <q-btn
                           class="text-center bg-green text-white"
                           id="addSubmitBtn"
-                          label="File Blotter" 
+                          label="Add Record" 
                           type="submit"
                           @click="addBlotter()"
                           />

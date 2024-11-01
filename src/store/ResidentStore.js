@@ -35,6 +35,26 @@ export default {
             context.commit("SET_LOADING", false)
         },
 
+        async searchResident(context) {
+            context.commit("SET_LOADING", true)
+            let search_data = new FormData();
+            search_data.append("list_HW", this.list_HW);
+            search_data.append("list_PWD", this.list_PWD);
+            search_data.append("list_alive", this.list_alive);
+            search_data.append("list_voter", this.list_voter);
+            search_data.append("list_gender", this.list_gender);
+
+            await this.$axios.post('/api/search-residents',search_data)
+                .then(response => {
+                    context.commit("SET_ALL_RESIDENTS", response.data.data)
+                })
+                .catch(error => {
+                })
+            context.commit("SET_LOADING", false)
+        },
+
+        
+
         async saveResidentProfile(context, payload) {
             console.log(payload.profile_pic)
             context.commit("SET_LOADING", true)
