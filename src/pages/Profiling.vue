@@ -718,7 +718,7 @@
   <q-dialog v-model="deathDeclarationForm" transition-show="scale" transition-hide="scale">
     <q-card  style="min-width: 600px">
       <q-card-section class="bg-green text-white">
-        <div class="text-h6">Deatch Declaration Form</div>
+        <div class="text-h6">Death Declaration Form</div>
       </q-card-section>
       <q-separator />
       <q-card-section class="q-pt-md q-ma-md q-pt-none">
