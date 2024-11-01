@@ -2,7 +2,7 @@
 <template>
   <div style="overflow: auto; height: 86vh;">
       <div>
-        <img src="~assets/pwd-banner.jpg" width="100%">
+        <!-- <img src="~assets/pwd-banner.jpg" width="100%"> -->
             <div class="q-pa-md row" style="margin-left: 15px; margin-right: 15px; padding-left: 0px; border-bottom: 2px solid #DEDEDE; ">
                 <div class="col-6">
                     <!-- <div style="font-size: 20px"><b> Mayapa > Brgy System > PWDs Page</b></div> -->

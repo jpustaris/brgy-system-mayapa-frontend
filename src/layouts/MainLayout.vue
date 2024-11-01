@@ -1,12 +1,12 @@
 <template>
   <div>
     <q-layout view="hHh Lpr lff" class="shadow-2 rounded-borders bg-positive text-test">
-      <q-header elevated class="bg-white" >
+      <q-header elevated class="" style="background-color: #026e7a;">
         <q-toolbar class="q-my-sm">
           <!-- <q-btn dense flat round icon="menu" class="row q-pa-md desktop-hide" @click="this.drawerState()" style="color:black"/> -->
-          <q-btn color="primary" flat @click="drawer = !drawer" round dense>
+          <q-btn color="primary" flat @click="drawer = !drawer" round dense style="mix-blend-mode: multiply;">
             <q-avatar size="50px" square>
-              <img src="~assets/mayapa-logo.png">
+              <img src="~assets/mayapa-logo.png" >
             </q-avatar>
           </q-btn>
           <q-space />

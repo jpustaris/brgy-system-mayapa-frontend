@@ -2,7 +2,7 @@
 <template>
   <div style="overflow: auto; height: 86vh;">
       <div>
-        <img src="~assets/sms-banner.jpg" width="100%">
+        <!-- <img src="~assets/sms-banner.jpg" width="100%"> -->
             <div class="q-pa-md row justify-end q-mx-md border-bottom" style="border-bottom: 2px solid #DEDEDE; ">
                   <div><b>Date: </b>{{this.todate}}</div>
             </div>
