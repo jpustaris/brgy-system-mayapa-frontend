@@ -315,7 +315,7 @@ export default defineComponent({
       }),
   computed: {
     ...mapGetters('ResidentManagement', {
-      data: 'GET_FEMALES',
+      data: 'GET_VOTERS',
       loading: "GET_LOADING",
     }),
     ...mapActions('ResidentManagement',[

@@ -2,15 +2,15 @@
 <template>
   <div style="overflow: auto; height: 86vh;">
       <div>
-        <!-- <img src="~assets/dashboard-banner.jpg" width="100%"> -->
-            <div class="q-pa-md row" style="margin-left: 15px; margin-right: 15px; padding-left: 0px; border-bottom: 2px solid #DEDEDE; ">
+        <img src="~assets/img/dashboard-banner.jpg" width="100%">
+            <!-- <div class="q-pa-md row" style="margin-left: 15px; margin-right: 15px; padding-left: 0px; border-bottom: 2px solid #DEDEDE; ">
                 <div class="col-6">
                     <div style="font-size: 20px"><b> Mayapa > Brgy System > Dashboard</b></div>
                 </div>
                 <div class="col-6">
                     <div style="font-size: 15px; text-align: right"><b>Date: </b>{{this.todate}}</div>
                 </div>
-            </div>
+            </div> -->
       </div>
 
       <div class="q-pa-md row">
@@ -18,7 +18,7 @@
           <q-card
             class="my-card text-white"
             style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle,  rgb(5 52 92) 0%, rgb(4 136 183) 100%)"
+            background: blue"
             >
             <q-card-section>
               <div class="text-subtitle1">TOTAL RESIDENTS</div>
@@ -39,7 +39,7 @@
           <q-card
             class="my-card text-white"
             style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle,  rgb(6 98 58) 0%, rgb(49 185 114) 100%)"
+            background: blue"
             >
             <q-card-section>
               <div class="text-subtitle1">TOTAL SENIORS</div>
@@ -59,7 +59,7 @@
           <q-card
             class="my-card text-white"
             style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle, rgb(97 1 136) 0%, rgb(219 53 255) 100%)"
+            background: blue"
             >
             <q-card-section>
               <div class="text-subtitle1">HEALTH WORKERS</div>
@@ -81,7 +81,7 @@
           <q-card
             class="my-card text-white"
             style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle, rgb(136 45 1) 0%,  rgb(255 132 53)100%);"
+            background: blue;"
             >
             <!-- style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)" -->
             <q-card-section>
@@ -104,7 +104,7 @@
           <q-card
             class="my-card text-white"
             style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle,  rgb(5 26 92) 0%, rgb(4 45 183) 100%)"
+            background: blue"
             >
             <!-- style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)" -->
             <q-card-section>
@@ -127,7 +127,7 @@
           <q-card
             class="my-card text-white"
             style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle,  rgb(92 5 5) 0%, rgb(183 4 4) 100%)"
+            background: blue"
             >
             <!-- style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)" -->
             <q-card-section>
@@ -150,7 +150,7 @@
           <q-card
             class="my-card text-white"
             style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle, rgb(136 1 110) 0%, rgb(255 53 185) 100%)"
+            background: blue"
             >
             <!-- style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)" -->
             <q-card-section>
@@ -173,7 +173,7 @@
           <q-card
             class="my-card text-white"
             style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle, rgb(137 102 13) 0%, rgb(255 199 53) 100%);"
+            background: blue;"
             >
             <!-- style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)" -->
             <q-card-section>
@@ -195,7 +195,7 @@
           <q-card
             class="my-card text-white"
             style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle, rgb(13 25 137) 0%, rgb(53 115 255) 100%);"
+            background: blue;"
             >
             <!-- style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)" -->
             <q-card-section>
@@ -217,7 +217,7 @@
           <q-card
             class="my-card text-white"
             style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle, rgb(137 67 13) 0%, rgb(255 100 53) 100%);"
+            background: blue;"
             >
             <!-- style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)" -->
             <q-card-section>
