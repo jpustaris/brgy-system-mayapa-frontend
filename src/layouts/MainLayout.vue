@@ -4,9 +4,9 @@
       <q-header elevated class="" style="background-color: #026e7a;">
         <q-toolbar class="q-my-sm">
           <!-- <q-btn dense flat round icon="menu" class="row q-pa-md desktop-hide" @click="this.drawerState()" style="color:black"/> -->
-          <q-btn color="primary" flat @click="drawer = !drawer" round dense style="mix-blend-mode: multiply;">
+          <q-btn color="primary" flat @click="drawer = !drawer" round dense>
             <q-avatar size="50px" square>
-              <img src="~assets/mayapa-logo.png" >
+              <img src="~assets/img/image2.png" >
             </q-avatar>
           </q-btn>
           <q-space />
