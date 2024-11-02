@@ -200,7 +200,7 @@
             <!-- style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)" -->
             <q-card-section>
               <div class="text-subtitle1">ALIVE RESIDENTS</div>
-              <div class="text-h1 text-center q-pa-lg">{{ dashboard_data.non_voters }}</div>
+              <div class="text-h1 text-center q-pa-lg">{{ dashboard_data.alives }}</div>
             </q-card-section>
 
             <q-card-section class="q-pt-none column">
@@ -222,7 +222,7 @@
             <!-- style="background: radial-gradient(circle, rgb(255 132 53) 0%, rgb(136 45 1) 100%)" -->
             <q-card-section>
               <div class="text-subtitle1">DECEASED RESIDENTS</div>
-              <div class="text-h1 text-center q-pa-lg">{{ dashboard_data.non_voters }}</div>
+              <div class="text-h1 text-center q-pa-lg">{{ dashboard_data.deads }}</div>
             </q-card-section>
 
             <q-card-section class="q-pt-none column">
