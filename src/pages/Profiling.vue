@@ -439,7 +439,7 @@
                                 class="login-input padding-left: 20px;"
                                 size="md"
                                 v-model="is_deceased"
-                                :options="yes_no"
+                                :options="is_deceased_yes_no"
                                 type="radio"
                               />
                           </div>
@@ -528,7 +528,7 @@
                         <q-card-actions align="right" >
                           <q-btn
                           :loading="loading"
-                          type="submit"
+                       
                           class="text-center bg-green text-white"
                           label="Save Resident Profile"
                          @click="uploadProfile()"
@@ -909,6 +909,11 @@ export default defineComponent({
         { label: 'No', value: 0},
       ],
 
+      is_deceased_yes_no: [
+        { label: 'Yes', value: 0 },
+        { label: 'No', value: 1},
+      ],
+
       search_options:[
       { label: 'Alive', value: "Alive"},
       { label: 'PWD', value: "PWD"},
@@ -989,7 +994,7 @@ export default defineComponent({
           sortable: true },
 
           { name: 'is_deceased', label: 'Is alive?',  
-          field: row => row.is_deceased == 1 ? "Alive" : "Deceased",
+          field: row => row.is_deceased == 1 ? "Deceased" : "Alive",
           align: 'left', 
           sortable: true },
 
