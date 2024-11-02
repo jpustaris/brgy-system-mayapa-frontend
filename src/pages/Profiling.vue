@@ -528,7 +528,7 @@
                         <q-card-actions align="right" >
                           <q-btn
                           :loading="loading"
-                       
+                          type="submit"
                           class="text-center bg-green text-white"
                           label="Save Resident Profile"
                          @click="uploadProfile()"
