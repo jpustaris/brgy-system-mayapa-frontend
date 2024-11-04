@@ -5,10 +5,10 @@
         <!-- <img src="~assets/change-password-banner.jpg" width="100%"> -->
             <div class="q-pa-md row" style="margin-left: 15px; margin-right: 15px; padding-left: 0px; border-bottom: 2px solid #DEDEDE; ">
                 <div class="col-6">
-                    <div style="font-size: 20px"><b> Mayapa > Brgy System > Settings > Change Password Page</b></div>
+                    <div style="font-size: 60px"><b>  CHANGE PASSWORD</b></div>
                 </div>
                 <div class="col-6">
-                    <div style="font-size: 15px; text-align: right"><b>Date: </b>{{this.todate}}</div>
+                    <div style="font-size: 35px; text-align: right; margin-top: 20px"><b></b>{{this.todate}}</div>
                 </div>
             </div>
       </div>
@@ -16,7 +16,7 @@
       <div class="items-start q-pa-md row">
           <div class="col-sm-4 col-xs-6 q-pa-sm">
             <q-card  style="min-width: 400px">
-                    <q-card-section class="bg-green text-white">
+                    <q-card-section class="bg-blue text-white">
                       <div class="text-h6">Change Password </div>
                     </q-card-section>
                     <q-separator />
@@ -91,7 +91,7 @@
                         <q-separator></q-separator>
                         <q-card-actions align="right" >
                           <q-btn
-                          class="text-center bg-green text-white"
+                          class="text-center bg-blue text-white"
                           id="addSubmitBtn"
                           label="Change Password" 
                         

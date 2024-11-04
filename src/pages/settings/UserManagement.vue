@@ -5,10 +5,10 @@
         <!-- <img src="~assets/user-management-banner.jpg" width="100%"> -->
             <div class="q-pa-md row" style="margin-left: 15px; margin-right: 15px; padding-left: 0px; border-bottom: 2px solid #DEDEDE; ">
                 <div class="col-6">
-                    <div style="font-size: 20px"><b> Mayapa > Brgy System > Settings > User Management Page</b></div>
+                    <div style="font-size: 60px"><b> USER MANAGEMENT</b></div>
                 </div>
                 <div class="col-6">
-                    <div style="font-size: 15px; text-align: right"><b>Date: </b>{{this.todate}}</div>
+                    <div style="font-size: 35px; text-align: right; margin-top: 20px;"><b>Date: </b>{{this.todate}}</div>
                 </div>
             </div>
       </div>
@@ -34,7 +34,7 @@
                       :loading="loading" 
                       class="q-mx-sm q-pa-md" 
                       rounded  
-                      color="green" 
+                      color="blue" 
                       icon-right="add" 
                       label="Add a User" 
                       @click="openAddUserForm()" />
@@ -47,7 +47,7 @@
         <div class="col-md-3">
           <q-card
             class="my-card text-white"
-            style="background: radial-gradient(circle, rgb(53 255 241) 0%, rgb(1 136 92) 100%)"
+            style="background: blue"
             >
             <q-card-section>
               <div class="text-h1 text-center">{{ users.length }}</div>
@@ -76,7 +76,7 @@
                     <q-btn 
                     :disabled="loading"
                     :loading="loading" 
-                    class="q-mx-sm bg-teal text-white" 
+                    class="q-mx-sm bg-blue text-white" 
                     icon-right="edit" 
                     label="Edit User" 
                     @click="openEditUserForm(props)" />
@@ -129,7 +129,7 @@
                 
                 <q-dialog v-model="addUserForm" transition-show="scale" transition-hide="scale">
                   <q-card  style="min-width: 600px">
-                    <q-card-section class="bg-green text-white">
+                    <q-card-section class="bg-blue text-white">
                       <div class="text-h6">Add a User</div>
                     </q-card-section>
                     <q-separator />
@@ -231,7 +231,7 @@
                         <q-separator></q-separator>
                         <q-card-actions align="right" >
                           <q-btn
-                          class="text-center bg-green text-white"
+                          class="text-center bg-blue text-white"
                           id="addSubmitBtn"
                           label="Create a New User" 
                           type="submit"

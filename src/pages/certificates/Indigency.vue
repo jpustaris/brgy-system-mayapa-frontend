@@ -6,15 +6,15 @@
             <!-- <div class="q-pa-md row justify-end q-mx-md border-bottom" style="border-bottom: 2px solid #DEDEDE; ">
                   <div><b>Date: </b>{{this.todate}}</div>
             </div> -->
-            <img src="~assets/img/certs-banner.jpg" width="100%">
-            <!-- <div class="q-pa-md row" style="margin-left: 15px; margin-right: 15px; padding-left: 0px; border-bottom: 2px solid #DEDEDE; ">
+            <!--img src="~assets/img/certs-banner.jpg" width="100%"> -->
+             <div class="q-pa-md row" style="margin-left: 15px; margin-right: 15px; padding-left: 0px; border-bottom: 2px solid #DEDEDE; ">
                 <div class="col-6">
-                    <div style="font-size: 20px"><b> Mayapa > Brgy System > Certificates > Barangay Indigency</b></div>
+                    <div style="font-size: 60px"><b>  BARANGAY INDIGENCY</b></div>
                 </div>
                 <div class="col-6">
-                    <div style="font-size: 15px; text-align: right"><b>Date: </b>{{this.todate}}</div>
+                    <div style="font-size: 35px; text-align: right; margin-top: 20px;"><b> </b>{{this.todate}}</div>
                 </div>
-            </div> -->
+            </div> 
       </div>
 
       <!-- <div class="row justify-between">
@@ -80,7 +80,7 @@
                    
                     class="q-mx-sm q-pa-md" 
                     rounded  
-                    color="green" 
+                    color="blue" 
                     icon-right="add" 
                     label="Create Certificate" 
                     @click="openAddCertificateForm()" />
@@ -92,11 +92,11 @@
         <div class="col-md-3">
           <q-card
             class="my-card text-white"
-            style="background: radial-gradient(circle, rgb(53 255 241) 0%, rgb(1 136 92) 100%)"
+            style="background: blue"
             >
             <q-card-section>
               <div class="text-h1 text-center">{{ certificates.length }}</div>
-              <div class="text-subtitle2">TOTAL CERTIFICATE OF INDIGENCY FILED</div>
+              <div class="text-subtitle2">TOTAL BARANGAY INDIGENCY FILED</div>
             </q-card-section>
             </q-card>
         </div>
@@ -109,7 +109,7 @@
               <q-table
               style="border-top:rgb(2, 110, 124) 8px solid; border-bottom:rgb(2, 110, 124) 4px solid"
                 class="table"
-                title="Certificate of Indigency Management"
+                title=" BARANGAY INDIGENCY"
                 :rows="rows"
                 :columns="columns"
                 row-key="name"
@@ -257,7 +257,7 @@
                 
                 <q-dialog v-model="addCertificateForm" transition-show="scale" transition-hide="scale">
                   <q-card  style="min-width: 600px">
-                    <q-card-section class="bg-green text-white">
+                    <q-card-section class="bg-blue text-white">
                       <div class="text-h6">Create Certificate of Indigency</div>
                     </q-card-section>
                     <q-separator />
@@ -306,7 +306,7 @@
                           <q-btn
                           :disabled="loading"
                           :loading="loading"
-                          class="text-center bg-green text-white"
+                          class="text-center bg-blue text-white"
                           id="addSubmitBtn"
                           type="submit"
                           label="Create Certificate"

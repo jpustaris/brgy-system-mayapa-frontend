@@ -3,12 +3,12 @@
   <div style="overflow: auto; height: 86vh;">
       <div>
         <!-- <img src="~assets/dashboard-banner.jpg" width="100%"> -->
-            <div class="q-pa-md row" style="margin-left: 15px; margin-right: 15px; padding-left: 0px; border-bottom: 2px solid #DEDEDE; ">
+            <div class="q-pa-md row" style="margin-left: 1px; margin-right: 10px; padding-left: 0px; border-bottom: 2px solid #DEDEDE;  ">
                 <div class="col-6">
-                    <div style="font-size: 20px"><b> Mayapa > Brgy System > Dashboard > Male Residents Page</b></div>
+                    <div style="font-size: 60px"><b>  TOTAL MALES</b></div> 
                 </div>
                 <div class="col-6">
-                    <div style="font-size: 15px; text-align: right"><b>Date: </b>{{this.todate}}</div>
+                    <div style="font-size: 35px; text-align: right; margin-top: 20px;"><b></b>{{this.todate}}</div>
                 </div>
             </div>
       </div>
@@ -33,11 +33,11 @@
         <div class="col-md-3">
           <q-card
             class="my-card text-white"
-            style="background: radial-gradient(circle, rgb(53 255 241) 0%, rgb(1 136 92) 100%)"
+            style="background: blue"
             >
             <q-card-section>
               <div class="text-h1 text-center">{{ data.length }}</div>
-              <div class="text-subtitle2">MALE TOTAL COUNT</div>
+              <div class="text-subtitle2">TOTAL MALE</div>
             </q-card-section>
 
             <!-- <q-card-section class="q-pt-none">
@@ -52,7 +52,7 @@
               <q-table
                 style="border-top:rgb(2, 110, 124) 8px solid; border-bottom:rgb(2, 110, 124) 4px solid"
                 class="table"
-                title="Male Residents Table"
+                title="TOTAL MALE RESIDENTS"
                 :rows="rows"
                 :columns="columns"
                 row-key="name"
