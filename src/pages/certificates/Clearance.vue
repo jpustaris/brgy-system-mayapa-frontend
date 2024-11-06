@@ -739,15 +739,25 @@ export default defineComponent({
             format: val => `${val}`,
             sortable: true
           },
+
           { name: 'fullname', 
           label: 'Requestor',  
-          field: row => row.resident_details.first_name + ' ' +  row.resident_details.middle_name + ' ' +  row.resident_details.last_name,
+          field: row => row.resident_details == null ? "  " : 
+          row.resident_details.first_name + ' ' +  row.resident_details.middle_name + ' ' +  row.resident_details.last_name,
           align: 'left', 
           sortable: true },
-          { name: 'age', label: 'Age',  field: row => row.resident_details.age,align: 'center', sortable: true },
-          { name: 'gender', label: 'Gender',  field: row => row.resident_details.gender,align: 'left', sortable: true },
+
+          { name: 'age', label: 'Age',  
+          field: row =>  row.resident_details == null ? "  " : 
+          row.resident_details.age,align: 'center', sortable: true },
+
+          { name: 'gender', label: 'Gender',  
+          field: row => row.resident_details == null ? "  " : 
+          row.resident_details.gender,align: 'left', sortable: true },
+
           { name: 'address', label: 'Address',  
-          field: row => row.resident_details.house_number + ', ' + row.resident_details.building + ', ' + row.resident_details.street,
+          field: row => row.resident_details == null ? "  " : 
+          row.resident_details.house_number + ', ' + row.resident_details.building + ', ' + row.resident_details.street,
           align: 'left', sortable: true },
           // { name: 'living_in_brgy_since', label: 'Living in Brgy Since',  field: row => row.living_in_brgy_since,align: 'center', sortable: true },
           { name: 'purpose', label: 'Purpose',  field: row => row.purpose,align: 'left', sortable: true },
@@ -839,6 +849,7 @@ export default defineComponent({
           // alert(err)
       })
       
+      location.reload();
 
       // try {
 

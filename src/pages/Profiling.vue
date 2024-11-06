@@ -527,8 +527,7 @@
                         <q-separator></q-separator>
                         <q-card-actions align="right" >
                           <q-btn
-                          :loading="loading"
-                          type="submit"
+                       
                           class="text-center bg-green text-white"
                           label="Save Resident Profile"
                          @click="uploadProfile()"
@@ -1022,6 +1021,7 @@ export default defineComponent({
     }),
     ...mapGetters('ResidentManagement', {
       residents: 'GET_ALL_RESIDENTS',
+      new_resident: 'GET_NEW_RESIDENTS',
     }),
     ...mapActions('ResidentManagement',[
       'getResidents',
@@ -1064,10 +1064,10 @@ export default defineComponent({
       search_data.append("list_alive", this.list_alive);
       search_data.append("list_voter", this.list_voter);
       search_data.append("list_gender", this.list_gender);
-      console.log(search_data);
+      // console.log(search_data);
 
       this.searchResident(search_data).then((response => {
-          console.log("Success!")
+          // console.log("Success!")
         }));
     },
 
@@ -1077,58 +1077,61 @@ export default defineComponent({
         return;
       }
 
-      // Create form data object
-      this.added_by = this.user_profile_details.user_id;
-      console.log("Debugging: ", this.added_by)
-      let data = new FormData();
-      data.append("profile_pic", this.profile_pic);
-      data.append('salutation',this.salutation);
-      data.append('first_name',this.first_name);
-      data.append('middle_name',this.middle_name);
-      data.append('last_name',this.last_name);
-      data.append('additional_name',this.additional_name);
-      data.append('nationality',this.nationality);
-      data.append('contact_number',this.contact_number);
-      data.append('email',this.email);
-      data.append('age',this.age);
-
-      data.append('is_HW',this.is_HW);
-      data.append('is_PWD',this.is_PWD);
-      data.append('is_deceased',this.is_deceased);
-      data.append('is_voter',this.is_voter);
-      data.append('birthdate',this.birthdate);
-      data.append('birthplace',this.birthplace);
-      
-      data.append('period_of_stay',this.period_of_stay);
-      
-      data.append('street',this.street);
-      data.append('house_number',this.house_number);
-      data.append('building',this.building);
-      data.append('other_location',this.other_location);
-      data.append('height_ft',this.height_ft);
-      data.append('weight_kg',this.weight_kg);
-      data.append('gender',this.gender);
-      data.append('note',this.note);
-      data.append('marital_status',this.marital_status);
-      data.append('unique_identity',this.unique_identity);
-      data.append('added_by',this.user_profile_details.user_id);
       // data.append('profile_pic',this.profile_pic);
 
       try {
+        
+        // Create form data object
+        this.added_by = this.user_profile_details.user_id;
+        // console.log("Debugging: ", this.added_by)
+        let data = new FormData();
+        data.append("profile_pic", this.profile_pic);
+        data.append('salutation',this.salutation);
+        data.append('first_name',this.first_name);
+        data.append('middle_name',this.middle_name);
+        data.append('last_name',this.last_name);
+        data.append('additional_name',this.additional_name);
+        data.append('nationality',this.nationality);
+        data.append('contact_number',this.contact_number);
+        data.append('email',this.email);
+        data.append('age',this.age);
 
-        await this.saveResidentProfile(data).then((response => {
-          // console.log("Success!")
-          // alert("Image uploaded successfully!");
-          this.refresh();
-        }));
+        data.append('is_HW',this.is_HW);
+        data.append('is_PWD',this.is_PWD);
+        data.append('is_deceased',this.is_deceased);
+        data.append('is_voter',this.is_voter);
+        data.append('birthdate',this.birthdate);
+        data.append('birthplace',this.birthplace);
+        
+        data.append('period_of_stay',this.period_of_stay);
+        
+        data.append('street',this.street);
+        data.append('house_number',this.house_number);
+        data.append('building',this.building);
+        data.append('other_location',this.other_location);
+        data.append('height_ft',this.height_ft);
+        data.append('weight_kg',this.weight_kg);
+        data.append('gender',this.gender);
+        data.append('note',this.note);
+        data.append('marital_status',this.marital_status);
+        data.append('unique_identity',this.unique_identity);
+        data.append('added_by',this.user_profile_details.user_id);
+        await this.saveResidentProfile(data);
 
       } catch (error) {
-        console.error("Error uploading image", error);
+        // console.error("Error uploading", error);
+      }
+      if (this.new_resident != []) {
+        let tempx = this.new_resident.first_name + " " + this.new_resident.last_name
+        alert("Uploaded: ",tempx)
+        console.log("Uploaded new resident")
+        this.refresh();
+        location.reload();
       }
     },
 
     async openDeathForm(){
-      console.log("Open Death Declaration Form");
+      // console.log("Open Death Declaration Form");
       this.deathDeclarationForm = true;
     },
 
@@ -1161,8 +1164,10 @@ export default defineComponent({
       this.birthplace = '';
       this.period_of_stay = '';      
       this.added_by = '';
-      
-  },
+      this.nationality = '';
+      this.middle_name = '';
+      this.tab='profiling_list';
+    },
   },
 
   
