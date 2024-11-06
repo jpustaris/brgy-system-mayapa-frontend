@@ -15,7 +15,7 @@ export default {
         new_resident : [],
     },
     getters: {
-        GET_NEW_RESIDENTS (state) {
+        GET_NEW_RESIDENT (state) {
             return state.new_resident
         },
         GET_ALL_RESIDENTS (state) {
@@ -45,7 +45,7 @@ export default {
         }
     },
     mutations: {
-        SET_NEW_RESIDENTS  (state, new_resident) {
+        SET_NEW_RESIDENT  (state, new_resident) {
             state.new_resident = new_resident
         },
         SET_ALL_RESIDENTS (state, residents) {
@@ -228,8 +228,8 @@ export default {
                   "Content-Type": "multipart/form-data",
                 },
               }).then(response => {
-                context.commit("SET_NEW_RESIDENTS", response.data)
-                console.log(response)
+                context.commit("SET_NEW_RESIDENT", response.data.data)
+                console.log(response.data.data)
               })
               .catch((error) => {
                 console.log(error)

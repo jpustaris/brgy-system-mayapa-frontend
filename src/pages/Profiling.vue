@@ -816,6 +816,7 @@ import { mapActions, mapGetters } from 'vuex'
 import { defineComponent } from 'vue'
 import { ref } from 'vue'
 import moment from 'moment'
+
   var today = new Date();
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 export default defineComponent({
@@ -1021,7 +1022,7 @@ export default defineComponent({
     }),
     ...mapGetters('ResidentManagement', {
       residents: 'GET_ALL_RESIDENTS',
-      new_resident: 'GET_NEW_RESIDENTS',
+      new_resident: 'GET_NEW_RESIDENT',
     }),
     ...mapActions('ResidentManagement',[
       'getResidents',
@@ -1123,10 +1124,10 @@ export default defineComponent({
       }
       if (this.new_resident != []) {
         let tempx = this.new_resident.first_name + " " + this.new_resident.last_name
-        alert("Uploaded: ",tempx)
-        console.log("Uploaded new resident")
-        this.refresh();
-        location.reload();
+        alert("Resident Profile Uploaded: ", tempx);
+        console.log("Uploaded new resident", this.new_resident)
+        await this.refresh();
+        // location.reload();
       }
     },
 
@@ -1167,9 +1168,11 @@ export default defineComponent({
       this.nationality = '';
       this.middle_name = '';
       this.tab='profiling_list';
+      
     },
   },
 
+  
   
   
   async beforeMount(){
