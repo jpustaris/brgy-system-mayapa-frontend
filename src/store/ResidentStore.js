@@ -12,8 +12,12 @@ export default {
         alives:[],
         deads:[],
         loading: false,
+        new_resident : [],
     },
     getters: {
+        GET_NEW_RESIDENT (state) {
+            return state.new_resident
+        },
         GET_ALL_RESIDENTS (state) {
             return state.residents
         },
@@ -41,6 +45,9 @@ export default {
         }
     },
     mutations: {
+        SET_NEW_RESIDENT  (state, new_resident) {
+            state.new_resident = new_resident
+        },
         SET_ALL_RESIDENTS (state, residents) {
             state.residents = residents
         },
@@ -153,7 +160,7 @@ export default {
             death_data.append("is_deceased", 1);
             await this.$axios.post('/api/declare-dead-resident',death_data)
             .then(response => {
-                console.log(response)
+                // console.log(response)
               })
               .catch((error) => {
                 console.log(error)
@@ -183,7 +190,7 @@ export default {
         
 
         async saveResidentProfile(context, payload) {
-            console.log(payload.profile_pic)
+            // console.log(payload.profile_pic)
             context.commit("SET_LOADING", true)
             let data = new FormData();
             data.append('salutation',payload.salutation);
@@ -214,14 +221,15 @@ export default {
             data.append('unique_identity',payload.unique_identity);
             data.append('added_by',payload.added_by);
             data.append('profile_pic', payload.profile_pic);
-            console.log("Debugging Here :",data)
+            // console.log("Debugging Here :",data)
             // formData.append('file', payload.profile_pic);
             await this.$axios.post('/api/residents',data, {
                 headers: {
                   "Content-Type": "multipart/form-data",
                 },
               }).then(response => {
-                console.log(response)
+                context.commit("SET_NEW_RESIDENT", response.data.data)
+                console.log(response.data.data)
               })
               .catch((error) => {
                 console.log(error)
