@@ -6,6 +6,7 @@
   "author": "John Paul Ustaris <johnpaulustaris@gmail.com>",
   "private": true,
   "scripts": {
+    "build": "quasar build -m spa",
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0"
   },
