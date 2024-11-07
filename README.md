@@ -1,5 +1,3 @@
-# OFS Mcd 2.0 Front End
-
 ## Framework 
 * Quasar CLI
 
