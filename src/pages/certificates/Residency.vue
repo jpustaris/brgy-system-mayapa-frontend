@@ -263,6 +263,7 @@
                     <q-separator />
                     <q-card-section class="q-pt-md q-ma-md q-pt-none">
                       <q-form
+                       ref="myForm"
                         class="q-gutter-md"
                       >
                       <q-select 
@@ -274,7 +275,10 @@
                         label="Resident" 
                         emit-value 
                         map-options 
-                        borderless/>
+                        borderless :rules="[
+                          val => val !== null && val !== '' || 'Select Resident',
+                        ]"
+                        />
                                         
                         <q-input
                           input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
@@ -287,6 +291,9 @@
                           bg-color="secondary"
                           label-color="primary"
                           no-error-icon
+                          :rules="[
+                          val => val !== null && val !== '' || 'Enter Purpose',
+                        ]"
                         >
                           <template v-slot:append>
                             <q-avatar>
@@ -303,7 +310,7 @@
                           class="text-center bg-green text-white"
                           id="addSubmitBtn"
                           label="Create Certificate"
-                          type="submit"
+                          
                           @click="addCertificate()"
                           />
                         </q-card-actions>
@@ -451,6 +458,7 @@ import { ref } from 'vue'
 import moment from 'moment'
   var today = new Date();
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+const myForm = ref(null);
 export default defineComponent({
   name: 'Certificate of Residency',
   data: () => ({
@@ -550,6 +558,7 @@ export default defineComponent({
     ...mapGetters('Certificate', {
       certificates: 'GET_ALL_CERTIFICATES',
       loading: "GET_LOADING",
+      message_res:'GET_MESSAGE_RES',
     }),
     ...mapGetters('ResidentManagement', {
       residents: 'GET_ALL_RESIDENTS',
@@ -593,18 +602,25 @@ export default defineComponent({
     },
 
     async addCertificate() {
-      await this.addBRGYResidencyCertificate({
-        resident_id: this.resident_id,
-        purpose: this.purpose,
-      }).then(response => {
-          console.log(response)
-          this.refresh()
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-        this.refresh()
-        location.reload();
+      // console.log(this.message_res);
+      this.$refs.myForm.validate().then(success => {
+        if (success) {
+          try {
+            let data = new FormData();
+            data.append("resident_id", this.resident_id);
+            data.append("purpose", this.purpose);
+            this.addBRGYResidencyCertificate(data);
+          } catch (error) {
+            // console.error("Error uploading", error);
+          }
+            alert("Uploaded Successfully");
+            this.refresh();
+        }
+        else {
+          alert("Upload Failed");
+        }
+      })
+      location.reload();
     },
 
     async editCertificateMethod(){
@@ -635,9 +651,8 @@ export default defineComponent({
     },
 
     async refresh(){
-      await this.getBRGYResidencies;
-      await this.getResidents;
-      this.rows = this.certificates;
+      this.purpose="";
+      this.resident_id="";
       this.addCertificateForm = false;
       this.editCertificateForm = false;
     },
@@ -681,7 +696,10 @@ export default defineComponent({
 
   // },
   async beforeMount(){
-        this.refresh()
+        this.refresh();
+        await this.getBRGYResidencies;
+        await this.getResidents;
+        this.rows = this.certificates;
 
   },
 

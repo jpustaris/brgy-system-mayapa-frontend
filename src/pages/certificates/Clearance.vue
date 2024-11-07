@@ -372,6 +372,7 @@
                     <q-separator />
                     <q-card-section class="q-pt-md q-ma-md q-pt-none">
                       <q-form
+                        ref="myForm"
                         class="q-gutter-md"
                       >
                      
@@ -384,7 +385,11 @@
                         label="Resident" 
                         emit-value 
                         map-options 
-                        borderless/>
+                        borderless
+                        :rules="[
+                          val => val !== null && val !== '' || 'Select Resident',
+                        ]"
+                        />
 
                       
                         <q-input
@@ -400,6 +405,9 @@
                           label-color="primary"
                           no-error-icon
                           autogrow
+                          :rules="[
+                          val => val !== null && val !== '' || 'Enter Purpose',
+                        ]"
                         >
                           <template v-slot:append>
                             <q-avatar>
@@ -684,6 +692,7 @@ import { ref } from 'vue'
 import moment from 'moment'
   var today = new Date();
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+const myForm = ref(null);
 export default defineComponent({
   name: 'Certificate of Clearance',
   data: () => ({
@@ -777,7 +786,7 @@ export default defineComponent({
       certificates: 'GET_ALL_CERTIFICATES',
       brgy_officials: 'GET_BRGY_OFFICIALS',
       // loading: "GET_LOADING",
-      api_response: "GET_API_RESPONSE",
+      message_clr:'GET_MESSAGE_CLR',
     }),
     ...mapGetters('ResidentManagement', {
       residents: 'GET_ALL_RESIDENTS',
@@ -838,36 +847,51 @@ export default defineComponent({
     // },
 
     async addCertificate() {
-      this.loading = true;
-      this.addBRGYClearanceCertificate({
-        resident_id: this.resident_id,
-        purpose: this.purpose,
-      }).then(response => {
-          // alert(response)
+      this.$refs.myForm.validate().then(success => {
+        if (success) {
+          try {
+            let data = new FormData();
+            data.append("resident_id", this.resident_id);
+            data.append("purpose", this.purpose);
+            this.addBRGYClearanceCertificate(data);
+          } catch (error) {
+            // console.error("Error uploading", error);
+          }
+            alert("Uploaded Successfully");
+            this.refresh();
+        }
+        else {
+          alert("Upload Failed");
+        }
       })
-      .catch(err => {
-          // alert(err)
-      })
-      
       location.reload();
 
-      // try {
+      // this.$refs.myForm.validate().then(success => {
+      //   if (success) {
+      //     try {
+      //       let data = new FormData();
+      //       data.append("resident_id", this.resident_id);
+      //       data.append("purpose", this.purpose);
+      //       this.addBRGYClearanceCertificate(data);
+      //     } catch (error) {
+      //       // console.error("Error uploading", error);
+      //     }
+      //     if (this.message_clr == 'Certificate created successfully') {
+      //       // alert(this.message_clr);
+      //       this.refresh();
+            
+      //     }else{
+      //       alert("Upload Failed");
+      //     }
+      //     location.reload();
+      //     console.log(this.message_clr)
+      //   }
+      //   else {
+      //     alert("Upload Failed");
+      //     }
+      //   })
 
-
-      //   const response = await this.addBRGYClearanceCertificate({
-      //     fullname: this.fullname,
-      //     age: this.age,
-      //     gender: this.gender,
-      //     address: this.address,
-      //     purpose: this.purpose,
-      //   });
-      //   console.log(response);
-      //   this.refresh();
-      // } catch (error) {
-      //   console.log(error);
-      // } finally {
-      //   this.loading = false;
-      // }
+      
     },
 
     // async addCertificate() {
@@ -915,10 +939,8 @@ export default defineComponent({
     },
 
     async refresh(){
-      await this.getBRGYClearances;
-      await this.getBRGYOfficials;
-      await this.getResidents;
-      this.rows = this.certificates;
+      this.resident_id = '';
+      this.purpose = '';
       this.addCertificateForm = false;
       this.editCertificateForm = false;
     },
@@ -969,6 +991,10 @@ export default defineComponent({
   // },
   async beforeMount(){
         this.refresh();
+        await this.getBRGYClearances;
+        await this.getBRGYOfficials;
+        await this.getResidents;
+        this.rows = this.certificates;
   },
 
 })

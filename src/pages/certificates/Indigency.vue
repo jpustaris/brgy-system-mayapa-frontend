@@ -263,8 +263,8 @@
                     <q-separator />
                     <q-card-section class="q-pt-md q-ma-md q-pt-none">
                       <q-form
+                       ref="myForm"
                         class="q-gutter-md"
-                        @submit="addCertificate"
                       >
                           
                       <q-select 
@@ -276,7 +276,10 @@
                         label="Resident" 
                         emit-value 
                         map-options 
-                        borderless/>
+                        borderless :rules="[
+                          val => val !== null && val !== '' || 'Select Resident',
+                        ]"
+                        />
 
                       
                         <q-input
@@ -292,6 +295,9 @@
                           label-color="primary"
                           no-error-icon
                           autogrow
+                          :rules="[
+                          val => val !== null && val !== '' || 'Enter Purpose',
+                        ]"
                         >
                           <template v-slot:append>
                             <q-avatar>
@@ -308,7 +314,7 @@
                           :loading="loading"
                           class="text-center bg-green text-white"
                           id="addSubmitBtn"
-                          type="submit"
+                          @click="addCertificate()"
                           label="Create Certificate"
                           />
                         </q-card-actions>
@@ -455,6 +461,7 @@ import { defineComponent } from 'vue'
 import { ref } from 'vue'
 import moment from 'moment'
   var today = new Date();
+  const myForm = ref(null);
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 export default defineComponent({
   name: 'Certificate of Indigency',
@@ -467,7 +474,7 @@ export default defineComponent({
       complainant_name:'', 
       filter: ref(''),
       certificate_created_at:'',
-
+      
       purpose:'',
       resident_id:'',
       day_now:'',
@@ -563,7 +570,7 @@ export default defineComponent({
     ...mapGetters('Certificate', {
       certificates: 'GET_ALL_CERTIFICATES',
       // loading: "GET_LOADING",
-      api_response: "GET_API_RESPONSE",
+      message_ind:'GET_MESSAGE_IND',
     }),
     ...mapGetters('ResidentManagement', {
       residents: 'GET_ALL_RESIDENTS',
@@ -606,15 +613,22 @@ export default defineComponent({
     },
 
     async addCertificate() {
-      this.loading = true;
-      this.addBRGYIndigencyCertificate({
-        resident_id: this.resident_id,
-        purpose: this.purpose,
-      }).then(response => {
-          alert(response)
-      })
-      .catch(err => {
-          alert(err)
+      this.$refs.myForm.validate().then(success => {
+        if (success) {
+          try {
+            let data = new FormData();
+            data.append("resident_id", this.resident_id);
+            data.append("purpose", this.purpose);
+            this.addBRGYIndigencyCertificate(data);
+          } catch (error) {
+            // console.error("Error uploading", error);
+          }
+            alert("Uploaded Successfully");
+            this.refresh();
+        }
+        else {
+          alert("Upload Failed");
+        }
       })
       location.reload();
     },

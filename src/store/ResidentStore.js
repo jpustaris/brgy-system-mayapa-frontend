@@ -15,6 +15,7 @@ export default {
         new_resident : [],
     },
     getters: {
+        
         GET_NEW_RESIDENT (state) {
             return state.new_resident
         },
@@ -229,7 +230,7 @@ export default {
                 },
               }).then(response => {
                 context.commit("SET_NEW_RESIDENT", response.data.data)
-                console.log(response.data.data)
+                // console.log(response.data.data)
               })
               .catch((error) => {
                 console.log(error)

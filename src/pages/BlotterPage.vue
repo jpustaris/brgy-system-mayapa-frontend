@@ -277,7 +277,6 @@
                           class="text-center bg-green text-white"
                           id="addSubmitBtn"
                           label="Add Record" 
-                          type="submit"
                           @click="addBlotter()"
                           />
                         </q-card-actions>
@@ -500,7 +499,7 @@ export default defineComponent({
     ...mapGetters('Blotter', {
       blotters: 'GET_ALL_BLOTTERS',
       loading: "GET_LOADING",
-      api_response: "GET_API_RESPONSE",
+      new_blotter: 'GET_NEW_BLOTTER',
     }),
     ...mapGetters('UserManagement', {
       users: 'GET_ALL_USERS',
@@ -549,19 +548,22 @@ export default defineComponent({
     },
 
     async addBlotter() {
-      await this.addSingleBlotter({
-        complainant: this.complainant,
-        defendant: this.defendant,
-        brgy_case_no: this.brgy_case_no,
-        complaint: this.complaint,
-        note: this.note
-      }).then(response => {
-          // console.log(response)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-        this.refresh()
+      try {
+          let data = new FormData();
+          data.append("complainant", this.complainant);
+          data.append("defendant", this.defendant);
+          data.append("brgy_case_no", this.brgy_case_no);
+          data.append("complaint", this.complaint);
+          data.append("note", this.note);
+          await this.addSingleBlotter(data);
+        } catch (error) {
+          // console.error("Error uploading", error);
+        }
+          if (this.new_blotter != []) {
+          await this.refresh();
+          alert("Resident Blotter Detail Uploaded");
+          location.reload();
+        }
     },
 
     async editBlotterMethod(){
@@ -592,6 +594,7 @@ export default defineComponent({
       this.rows = this.blotters;
       this.addBlotterForm = false;
       this.editBlotterForm = false;
+      this.filter = '';
     },
 
     async openViewBlotterForm(prop){

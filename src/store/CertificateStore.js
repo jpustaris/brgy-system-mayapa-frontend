@@ -7,9 +7,15 @@ export default {
         certificates:[],
         loading: false,
         officials:[],
-        // indigencies:[],
+        new_certificate:[],
+        message_ind:'',
+        message_res:'',
+        message_clr:'',
     },
     getters: {
+        GET_NEW_CERT (state) {
+            return state.new_certificate
+        },
         GET_ALL_CERTIFICATES (state) {
             return state.certificates
         },
@@ -18,10 +24,22 @@ export default {
         },
         GET_LOADING(state) {
             return state.loading;
+        },
+        GET_MESSAGE_IND(state) {
+            return state.message_ind;
+        },
+        GET_MESSAGE_RES(state) {
+            return state.message_res;
+        },
+        GET_MESSAGE_CLR(state) {
+            return state.message_clr;
         }
     },
     mutations: {
 
+        SET_NEW_CERT (state, new_certificate) {
+            state.new_certificate = new_certificate
+        },
         SET_ALL_CERTIFICATES (state, certificates) {
             state.certificates = certificates
         },
@@ -30,6 +48,15 @@ export default {
         },
         SET_LOADING(state, loading) {
             state.loading = loading;
+        },
+        SET_MESSAGE_IND(state, message_ind) {
+            state.message_ind = message_ind;
+        },
+        SET_MESSAGE_RES(state, message_res) {
+            state.message_res = message_res;
+        },
+        SET_MESSAGE_CLR(state, message_clr) {
+            state.message_clr = message_clr;
         }
     },
     actions:{
@@ -114,15 +141,17 @@ export default {
 
 
         async addBRGYIndigencyCertificate(context, payload) {
-            context.commit("SET_LOADING", true)
-            console.log("Step2: ", payload.created_by_user_id)
+            context.commit("SET_LOADING", true);
             await this.$axios.post('/api/certificates/indigencies', {
                 certificate_type_id: 4,
                 resident_id: payload.resident_id,
                 purpose: payload.purpose,
               }).then(response => {
                 console.log(response)
+                context.commit("SET_NEW_CERT", response.data.data)
+                context.commit("SET_MESSAGE_IND", response.data.message_ind)
                 context.commit("SET_LOADING", false)
+                
               })
               .catch((error) => {
                 console.log(error)
@@ -137,7 +166,9 @@ export default {
                 resident_id: payload.resident_id,
                 purpose: payload.purpose,
               }).then(response => {
-                console.log(response)
+                // console.log(response)
+                context.commit("SET_NEW_CERT", response.data.data)
+                context.commit("SET_MESSAGE_RES", response.data.message_res)
                 context.commit("SET_LOADING", false)
               })
               .catch((error) => {
@@ -153,7 +184,9 @@ export default {
                 resident_id: payload.resident_id,
                 purpose: payload.purpose,
               }).then(response => {
-                console.log(response)
+                // console.log(response)
+                context.commit("SET_NEW_CERT", response.data.data)
+                context.commit("SET_MESSAGE_CLR", response.data.message_clr)
                 context.commit("SET_LOADING", false)
               })
               .catch((error) => {
