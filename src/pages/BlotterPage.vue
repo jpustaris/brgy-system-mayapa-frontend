@@ -2,16 +2,16 @@
 <template>
   <div style="overflow: auto; height: 86vh;">
       <div>
-        <img src="~assets/img/blotter-banner.jpg" width="100%">
-        <!-- <div class="q-pa-md row" style="margin-left: 15px; margin-right: 15px; padding-left: 0px; border-bottom: 2px solid #DEDEDE; ">
+        <!--img src="~assets/img/blotter-banner.jpg" width="100%">-->
+        <div class="q-pa-md row" style="margin-left: 15px; margin-right: 15px; padding-left: 0px; border-bottom: 2px solid #DEDEDE; ">
                 <div class="col-6">
-                    <div style="font-size: 20px"><b> Mayapa > Brgy System > Blotters</b></div>
+                    <div style="font-size: 60px"><b> BLOTTERS</b></div>
                 </div>
                 <div class="col-6">
-                    <div style="font-size: 15px; text-align: right"><b>Date: </b>{{this.todate}}</div>
+                    <div style="font-size: 35px; text-align: right; margin-top: 20px"><b> </b>{{this.todate}}</div>
                 </div>
-            </div> -->
-            <!-- <div class="q-pa-md row justify-end q-mx-md border-bottom" style="border-bottom: 2px solid #DEDEDE; ">
+            </div>
+             <!--div class="q-pa-md row justify-end q-mx-md border-bottom" style="border-bottom: 2px solid #DEDEDE; ">
                   <div><b>Date: </b>{{this.todate}}</div>
             </div> -->
       </div>
@@ -81,7 +81,7 @@
                     :loading="loading" 
                     class="q-mx-sm q-pa-md" 
                     rounded  
-                    color="green" 
+                    color="blue" 
                     icon-right="add" 
                     label="Add Record" 
                     @click="openAddBlotterForm()" />
@@ -93,7 +93,7 @@
         <div class="col-md-3">
           <q-card
             class="my-card text-white"
-            style="background: radial-gradient(circle, rgb(53 255 241) 0%, rgb(1 136 92) 100%)"
+            style="background: blue"
             >
             <q-card-section>
               <div class="text-h1 text-center">{{ blotters.length }}</div>
@@ -109,7 +109,7 @@
               <q-table
                 style="border-top:#006596 8px solid; border-bottom:#006596 4px solid"
                 class="table"
-                title="Blotter Management"
+                title="BLOTTER RECORD"
                 :rows="rows"
                 :columns="columns"
                 row-key="name"
@@ -174,7 +174,7 @@
                 
                 <q-dialog v-model="addBlotterForm" transition-show="scale" transition-hide="scale">
                   <q-card  style="min-width: 600px">
-                    <q-card-section class="bg-green text-white">
+                    <q-card-section class="bg-blue text-white">
                       <div class="text-h6">Add Record Form</div>
                     </q-card-section>
                     <q-separator />
@@ -274,7 +274,7 @@
                         <q-separator></q-separator>
                         <q-card-actions align="right" >
                           <q-btn
-                          class="text-center bg-green text-white"
+                          class="text-center bg-blue text-white"
                           id="addSubmitBtn"
                           label="Add Record" 
                           @click="addBlotter()"

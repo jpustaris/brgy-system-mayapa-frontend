@@ -5,10 +5,10 @@
         <!-- <img src="~assets/role-management-banner.jpg" width="100%"> -->
             <div class="q-pa-md row" style="margin-left: 15px; margin-right: 15px; padding-left: 0px; border-bottom: 2px solid #DEDEDE; ">
                 <div class="col-6">
-                    <div style="font-size: 20px"><b>Mayapa > Brgy. System > Settings > Role Management</b></div>
+                    <div style="font-size: 60px"><b>ROLE MANAGEMENT</b></div>
                 </div>
                 <div class="col-6">
-                    <div style="font-size: 15px; text-align: right"><b>Date: </b>{{this.todate}}</div>
+                    <div style="font-size: 35px; text-align: right; margin-top: 20px"><b> </b>{{this.todate}}</div>
                 </div>
             </div>
       </div>
@@ -34,7 +34,7 @@
                       :loading="loading" 
                       class="q-mx-sm q-pa-md" 
                       rounded  
-                      color="green" 
+                      color="blue" 
                       icon-right="add" 
                       label="Add Role" 
                       @click="openAddRoleForm()" />
@@ -47,7 +47,7 @@
         <div class="col-md-3">
           <q-card
             class="my-card text-white"
-            style="background: radial-gradient(circle, rgb(53 255 241) 0%, rgb(1 136 92) 100%)"
+            style="background: blue"
             >
             <q-card-section>
               <div class="text-h1 text-center">{{ roles.length }}</div>
@@ -74,7 +74,7 @@
                     <q-btn 
                     :disabled="loading"
                     :loading="loading" 
-                    class="q-mx-sm bg-teal text-white" 
+                    class="q-mx-sm bg-blue text-white" 
                     icon-right="edit" 
                     label="Edit Role" 
                     @click="openEditRoleForm(props)" />
@@ -118,7 +118,7 @@
 
                 
                 <q-dialog v-model="addRoleForm" transition-show="scale" transition-hide="scale">
-                  <q-card class="bg-green text-white" style="min-width: 400px">
+                  <q-card class="bg-blue text-white" style="min-width: 400px">
                     <q-card-section>
                       <div class="text-h6">Add Role Form</div>
                     </q-card-section>
