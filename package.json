@@ -6,10 +6,8 @@
   "author": "John Paul Ustaris <johnpaulustaris@gmail.com>",
   "private": true,
   "scripts": {
-    "build": "quasar build -m spa",
     "lint": "eslint --ext .js,.vue ./",
-    "test": "echo \"No test specified\" && exit 0",
-    "start": "node server.js"
+    "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.9",
