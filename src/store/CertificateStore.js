@@ -143,7 +143,7 @@ export default {
         async addBRGYIndigencyCertificate(context, payload) {
             context.commit("SET_LOADING", true);
             await this.$axios.post('/api/certificates/indigencies', {
-                certificate_type_id: 4,
+                certificate_type_id: 2,
                 resident_id: payload.resident_id,
                 purpose: payload.purpose,
               }).then(response => {
@@ -162,7 +162,7 @@ export default {
         async addBRGYResidencyCertificate(context, payload) {
             context.commit("SET_LOADING", true)
             await this.$axios.post('/api/certificates/residencies', {
-                certificate_type_id: 5,
+                certificate_type_id: 3,
                 resident_id: payload.resident_id,
                 purpose: payload.purpose,
               }).then(response => {
@@ -180,7 +180,7 @@ export default {
         async addBRGYClearanceCertificate(context, payload) {
             context.commit("SET_LOADING", true)
             await this.$axios.post('/api/certificates/brgy-clearances', {
-                certificate_type_id: 2,
+                certificate_type_id: 1,
                 resident_id: payload.resident_id,
                 purpose: payload.purpose,
               }).then(response => {

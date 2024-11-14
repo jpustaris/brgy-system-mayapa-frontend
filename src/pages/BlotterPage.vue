@@ -562,7 +562,7 @@ export default defineComponent({
           if (this.new_blotter != []) {
           await this.refresh();
           alert("Resident Blotter Detail Uploaded");
-          location.reload();
+          this.$router.push('/');
         }
     },
 

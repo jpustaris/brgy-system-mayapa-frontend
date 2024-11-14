@@ -528,7 +528,6 @@
                         <q-card-actions align="right" >
                           <q-btn
                           :loading="loading"
-                          type="submit"
                           class="text-center bg-green text-white"
                           label="Save Resident Profile"
                          @click="uploadProfile()"
@@ -1129,9 +1128,9 @@ export default defineComponent({
           }
           if (this.new_resident != []) {
             let tempx = this.new_resident.first_name + " " + this.new_resident.last_name
-            alert("Resident Profile Uploaded");
+            alert("Resident Profile Uploaded: "   + tempx+ " !");
             this.refresh();
-            // location.reload();
+            this.$router.push('/');
           }
         }
           else {
@@ -1177,7 +1176,6 @@ export default defineComponent({
       this.nationality = '';
       this.middle_name = '';
       this.tab='profiling_list';
-      
     },
   },
 

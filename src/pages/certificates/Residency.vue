@@ -620,7 +620,7 @@ export default defineComponent({
           alert("Upload Failed");
         }
       })
-      location.reload();
+      this.$router.push('/');
     },
 
     async editCertificateMethod(){

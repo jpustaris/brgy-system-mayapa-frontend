@@ -621,7 +621,7 @@ export default defineComponent({
             data.append("purpose", this.purpose);
             this.addBRGYIndigencyCertificate(data);
           } catch (error) {
-            // console.error("Error uploading", error);
+            console.error("Error uploading", error);
           }
             alert("Uploaded Successfully");
             this.refresh();
@@ -630,7 +630,7 @@ export default defineComponent({
           alert("Upload Failed");
         }
       })
-      location.reload();
+      this.$router.push('/');
     },
 
     async editCertificateMethod(){

@@ -864,7 +864,7 @@ export default defineComponent({
           alert("Upload Failed");
         }
       })
-      location.reload();
+      this.$router.push('/');
 
       // this.$refs.myForm.validate().then(success => {
       //   if (success) {
@@ -883,7 +883,7 @@ export default defineComponent({
       //     }else{
       //       alert("Upload Failed");
       //     }
-      //     location.reload();
+      //     
       //     console.log(this.message_clr)
       //   }
       //   else {
