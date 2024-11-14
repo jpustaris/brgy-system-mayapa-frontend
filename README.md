@@ -1,4 +1,4 @@
-# OFS Mcd 2.0 Front End
+# Mayapa Brgy System Front End
 
 ## Framework 
 * Quasar CLI
