@@ -697,7 +697,7 @@ export default defineComponent({
   name: 'Certificate of Clearance',
   data: () => ({
       picture_source:'',
-      picture_source_thumbmark:"http://127.0.0.1:8000/storage/thumbmark.jpg",
+      picture_source_thumbmark:process.env.APP_URL+"storage/thumbmark.jpg",
       loading:false,
       selected: ref([]),
       complainant_name:'', 
@@ -952,7 +952,7 @@ export default defineComponent({
 
     async setSelected(prop){
       console.log(prop);
-      this.picture_source = "http://127.0.0.1:8000/storage/"+prop.row.resident_details.profile_pic;
+      this.picture_source = process.env.APP_URL+"storage/"+prop.row.resident_details.profile_pic;
       this.selected_id = prop.row.id;
       this.edit_control_number = prop.row.control_number;
       this.edit_fullname = prop.row.resident_details.first_name + ' ' + prop.row.resident_details.middle_name + ' ' + prop.row.resident_details.last_name;

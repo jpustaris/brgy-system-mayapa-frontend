@@ -135,6 +135,7 @@
                     <q-separator />
                     <q-card-section class="q-pt-md q-ma-md q-pt-none">
                       <q-form
+                        ref="addForm"
                         class="q-gutter-md"
                       >
                       <q-select 
@@ -234,7 +235,6 @@
                           class="text-center bg-blue text-white"
                           id="addSubmitBtn"
                           label="Create a New User" 
-                          type="submit"
                           @click="addUser()"
                           />
                         </q-card-actions>
@@ -252,6 +252,7 @@
 
                   <q-card-section style="max-height: 50vh" class="scroll" >
                     <q-form
+                      ref="editForm"
                       class="q-gutter-md"
                     >
                     <!-- <p class="text-black">Edit user details for Brgy case number {{ edit_brgy_case_number }}</p> -->
@@ -317,7 +318,6 @@
                         @click="editUserMethod"
                         id="editSubmitBtn" 
                         label="Submit" 
-                        type="submit"
                         class="bg-teal text-white full-width"
                         />
 
@@ -402,6 +402,8 @@ import { ref } from 'vue'
 import moment from 'moment'
   var today = new Date();
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+const addForm = ref(null);
+const editForm = ref(null);
 export default defineComponent({
   name: 'User Management',
   data: () => ({
@@ -511,36 +513,83 @@ export default defineComponent({
     },
 
     async addUser() {
-      await this.addSingleUser({
-        role_id: this.role_id,
-        first_name: this.first_name,
-        middle_name: this.middle_name,
-        last_name: this.last_name,
-        email: this.email
-      }).then(response => {
-          // console.log(response)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-        this.refresh()
+      this.$refs.addForm.validate().then(success => {
+        if (success) {
+          try {
+            let data = new FormData();
+            data.append("role_id", this.role_id);
+            data.append("first_name", this.first_name);
+            data.append("first_name", this.middle_name);
+            data.append("first_name", this.last_name);
+            data.append("first_name", this.email);
+            this.addSingleUser(data);
+          } catch (error) {
+            // console.error("Error uploading", error);
+          }
+            alert("Uploaded Successfully");
+            this.refresh();
+        }
+        else {
+          alert("Adding User Failed");
+        }
+      })
+      this.$router.push('/');
+
+      // await this.addSingleUser({
+      //   role_id: this.role_id,
+      //   first_name: this.first_name,
+      //   middle_name: this.middle_name,
+      //   last_name: this.last_name,
+      //   email: this.email
+      // }).then(response => {
+      //     // console.log(response)
+      //   })
+      //   .catch((error) => {
+      //     console.log(error)
+      //   })
+      //   this.refresh()
     },
 
     async editUserMethod(){
-      await this.editSingleUser({
-        edit_first_name: this.edit_first_name,
-        edit_middle_name: this.edit_middle_name,
-        edit_last_name: this.edit_last_name,
-        edit_email: this.edit_middle_name,
-        edit_role: this.edit_role,
-        edit_active: this.edit_active,
+
+
+      this.$refs.editForm.validate().then(success => {
+        if (success) {
+          try {
+            let edit_data = new FormData();
+            edit_data.append("edit_first_name", this.edit_first_name);
+            edit_data.append("edit_middle_name", this.edit_middle_name);
+            edit_data.append("edit_last_name", this.edit_last_name);
+            edit_data.append("edit_email", this.edit_email);
+            edit_data.append("edit_role", this.edit_role);
+            edit_data.append("edit_active", this.edit_active);
+            this.editSingleUser(edit_data);
+          } catch (error) {
+            // console.error("Error uploading", error);
+          }
+            alert("User Editted Successfully");
+            this.refresh();
+        }
+        else {
+          alert("User Edit Failed");
+        }
+      })
+      this.$router.push('/');
+
+      // await this.editSingleUser({
+      //   edit_first_name: this.edit_first_name,
+      //   edit_middle_name: this.edit_middle_name,
+      //   edit_last_name: this.edit_last_name,
+      //   edit_email: this.edit_email,
+      //   edit_role: this.edit_role,
+      //   edit_active: this.edit_active,
         
-      }).then(response => {
-          console.log(response)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+      // }).then(response => {
+      //     console.log(response)
+      //   })
+      //   .catch((error) => {
+      //     console.log(error)
+      //   })
       // this.refresh()
     },
 

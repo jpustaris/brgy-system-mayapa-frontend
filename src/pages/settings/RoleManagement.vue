@@ -124,7 +124,7 @@
                     </q-card-section>
                     <q-card-section class="q-pt-none">
                       <q-form
-                        
+                        ref="addForm"
                         class="q-gutter-md"
                       >
                       <q-input
@@ -149,8 +149,6 @@
 
                         <q-card-actions align="right" >
                           <q-btn 
-                          :disabled="loading"
-                          :loading="loading" 
                           id="addSubmitBtn" 
                           class="text-center" 
                           label="Create New Role" 
@@ -172,7 +170,7 @@
                   </q-card-section>
                   <q-separator />
                   <q-card-section style="max-height: 50vh" class="scroll" >
-                    <q-form class="q-gutter-md" >
+                    <q-form class="q-gutter-md" ref="editForm">
                       <q-input
                         color="black"
                         bg-color="secondary"
@@ -228,6 +226,8 @@ import { defineComponent } from 'vue'
 import { ref } from 'vue'
   var today = new Date();
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+const addForm = ref(null);
+const editForm = ref(null);
 export default defineComponent({
   name: 'User Management',
   data: () => ({
@@ -304,24 +304,60 @@ export default defineComponent({
     },
 
     async addRole() {
-      await this.addSingleRole({
-        role_name: this.role_name,
-      }).then(response => {
-          console.log(response)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-        this.refresh()
+      // await this.addSingleRole({
+      //   role_name: this.role_name,
+      // }).then(response => {
+      //     console.log(response)
+      //   })
+      //   .catch((error) => {
+      //     console.log(error)
+      //   })
+      //   this.refresh()
+
+      this.$refs.addForm.validate().then(success => {
+        if (success) {
+          try {
+            let data = new FormData();
+            data.append("role_name", this.role_name);
+            this.addSingleRole(data);
+          } catch (error) {
+            // console.error("Error uploading", error);
+          }
+            alert("Uploaded Successfully");
+            this.refresh();
+        }
+        else {
+          alert("Upload Failed");
+        }
+      })
+      this.$router.push('/');
     },
 
     async editRole(){
-      this.editSingleRole({
-        edit_role_name: this.edit_role_name,
-      }).then(response => {
-          console.log(response)
-        })
-      this.refresh()
+      this.$refs.editForm.validate().then(success => {
+        if (success) {
+          try {
+            let editData = new FormData();
+            editData.append("edit_role_name", this.edit_role_name);
+            this.editSingleRole(editData);
+          } catch (error) {
+            // console.error("Error uploading", error);
+          }
+            alert("Role Editted Successfully");
+            this.refresh();
+        }
+        else {
+          alert("Role Edit Failed");
+        }
+      })
+      this.$router.push('/');
+
+      // this.editSingleRole({
+      //   edit_role_name: this.edit_role_name,
+      // }).then(response => {
+      //     console.log(response)
+      //   })
+      // this.refresh()
     },
 
     async refresh(){

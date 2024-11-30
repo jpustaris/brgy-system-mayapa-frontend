@@ -24,6 +24,7 @@
                       <q-form
                         class="q-gutter-md"
                       >
+                      <i>Note that you will be logged out after successfully changing password.</i>
                       <q-input
                           input-style="font-size: 18px; font-weight: 900; padding-left: 20px;"
                           class="login-input"
@@ -94,7 +95,6 @@
                           class="text-center bg-blue text-white"
                           id="addSubmitBtn"
                           label="Change Password" 
-                        
                           @click="changePassword()"
                           />
                         </q-card-actions>

@@ -5,6 +5,7 @@ node_modules
 # Quasar core related directories
 .quasar
 /dist/spa/
+/dist-local/spa/
 /dist/spa/.htaccess
 /dist/spa/config.js
 
